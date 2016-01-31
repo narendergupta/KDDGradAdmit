@@ -1,0 +1,63 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Will_I_Get_In.aux
+The style file: abbrv.bst
+Database file #1: Will_I_Get_In.bib
+Warning--entry type for "dagap" isn't style-file defined
+--line 1 of file Will_I_Get_In.bib
+Warning--entry type for "usnews" isn't style-file defined
+--line 9 of file Will_I_Get_In.bib
+Warning--entry type for "qs" isn't style-file defined
+--line 16 of file Will_I_Get_In.bib
+Warning--entry type for "shanghai" isn't style-file defined
+--line 23 of file Will_I_Get_In.bib
+Warning--entry type for "national-importance" isn't style-file defined
+--line 30 of file Will_I_Get_In.bib
+Warning--entry type for "edulix" isn't style-file defined
+--line 70 of file Will_I_Get_In.bib
+Warning--to sort, need author or key in usnews
+Warning--to sort, need author or key in qs
+Warning--to sort, need author or key in shanghai
+Warning--to sort, need author or key in national-importance
+You've used 13 entries,
+            2118 wiz_defined-function locations,
+            568 strings with 5577 characters,
+and the built_in function-call counts, 3984 in all, are:
+= -- 372
+> -- 191
+< -- 1
++ -- 78
+- -- 64
+* -- 274
+:= -- 627
+add.period$ -- 30
+call.type$ -- 13
+change.case$ -- 70
+chr.to.int$ -- 0
+cite$ -- 17
+duplicate$ -- 137
+empty$ -- 347
+format.name$ -- 64
+if$ -- 848
+int.to.chr$ -- 0
+int.to.str$ -- 13
+missing$ -- 7
+newline$ -- 58
+num.names$ -- 20
+pop$ -- 95
+preamble$ -- 1
+purify$ -- 56
+quote$ -- 0
+skip$ -- 118
+stack$ -- 0
+substring$ -- 235
+swap$ -- 25
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 52
+warning$ -- 4
+while$ -- 30
+width$ -- 15
+write$ -- 121
+(There were 10 warnings)

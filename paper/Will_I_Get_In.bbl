@@ -1,0 +1,67 @@
+\begin{thebibliography}{10}
+
+\bibitem{shanghai}
+{Academic Ranking of World Universities}, 2015.
+
+\bibitem{national-importance}
+{List of Institutes of National Importance in India}, 2015.
+
+\bibitem{qs}
+{University Rankings | Top Universities}, 2015.
+
+\bibitem{usnews}
+{US News Best Graduate Schools}, 2015.
+
+\bibitem{apriori}
+R.~Agrawal, R.~Srikant, et~al.
+\newblock Fast algorithms for mining association rules.
+\newblock {\em Proc. 20th int. conf. very large data bases, VLDB},
+  1215:487--499, 1994.
+
+\bibitem{bruggink}
+T.~H. Bruggink and V.~Gambhir.
+\newblock Statistical models for college admission and enrollment: A case study
+  for a selective liberal arts college.
+\newblock {\em Research in Higher Education}, 37(2):221--240, 1996.
+
+\bibitem{GroveRoth}
+A.~Grove and D.~Roth.
+\newblock Linear concepts and hidden variables.
+\newblock {\em Machine Learning}, 42(1/2):123--141, 2001.
+
+\bibitem{Han2012243}
+J.~Han, M.~Kamber, and J.~Pei.
+\newblock 6 - mining frequent patterns, associations, and correlations: Basic
+  concepts and methods.
+\newblock In J.~H. Kamber and J.~Pei, editors, {\em Data Mining (Third
+  Edition)}, The Morgan Kaufmann Series in Data Management Systems, pages 243
+  -- 278. Morgan Kaufmann, Boston, third edition edition, 2012.
+
+\bibitem{edulix}
+S.~Kassegne.
+\newblock Edulix - premier site for scholars - 'education crowdsourced'.
+
+\bibitem{moore}
+J.~S. Moore.
+\newblock An expert system approach to graduate school admission decisions and
+  academic performance prediction.
+\newblock {\em Omega}, 26(5):659 -- 670, 1998.
+
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
+
+\bibitem{dagap}
+K.~Raghunathan.
+\newblock Demystifying the american graduate admissions process, 2010.
+
+\bibitem{waters:iaai13}
+A.~Waters and R.~Miikkulainen.
+\newblock Grade: Machine learning support for graduate admissions.
+\newblock In {\em Proceedings of the 25th Conference on Innovative Applications
+  of Artificial Intelligence}, 2013.
+
+\end{thebibliography}
