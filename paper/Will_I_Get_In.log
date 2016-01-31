@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.16)  30 JAN 2016 20:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.16)  30 JAN 2016 22:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -438,21 +438,6 @@ Overfull \hbox (8.1412pt too wide) in paragraph at lines 340--341
 mes,
  []
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 416--418
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 416--418
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 416--418
-
- []
-
 Package epstopdf Info: Source file: <simple_features.eps>
 (epstopdf)                    date: 2015-10-31 22:53:13
 (epstopdf)                    size: 23487 bytes
@@ -461,17 +446,17 @@ Package epstopdf Info: Source file: <simple_features.eps>
 (epstopdf)                    size: 12349 bytes
 (epstopdf)             Command: <repstopdf --outfile=simple_features-eps-conver
 ted-to.pdf simple_features.eps>
-(epstopdf)             \includegraphics on input line 427.
+(epstopdf)             \includegraphics on input line 365.
 Package epstopdf Info: Output file is already uptodate.
-<simple_features-eps-converted-to.pdf, id=34, 421.575pt x 316.18124pt>
+<simple_features-eps-converted-to.pdf, id=28, 421.575pt x 316.18124pt>
 File: simple_features-eps-converted-to.pdf Graphic file (type pdf)
 
 <use simple_features-eps-converted-to.pdf>
 Package pdftex.def Info: simple_features-eps-converted-to.pdf used on input lin
-e 427.
+e 365.
 (pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
 
-Overfull \hbox (12.94695pt too wide) in paragraph at lines 427--428
+Overfull \hbox (12.94695pt too wide) in paragraph at lines 365--366
  [][] 
  []
 
@@ -483,21 +468,21 @@ Package epstopdf Info: Source file: <tree_features.eps>
 (epstopdf)                    size: 11993 bytes
 (epstopdf)             Command: <repstopdf --outfile=tree_features-eps-converte
 d-to.pdf tree_features.eps>
-(epstopdf)             \includegraphics on input line 434.
+(epstopdf)             \includegraphics on input line 372.
 Package epstopdf Info: Output file is already uptodate.
-<tree_features-eps-converted-to.pdf, id=35, 414.54875pt x 294.09875pt>
+<tree_features-eps-converted-to.pdf, id=29, 414.54875pt x 294.09875pt>
 File: tree_features-eps-converted-to.pdf Graphic file (type pdf)
 
 <use tree_features-eps-converted-to.pdf>
 Package pdftex.def Info: tree_features-eps-converted-to.pdf used on input line 
-434.
+372.
 (pdftex.def)             Requested size: 248.73116pt x 176.4606pt.
 
-Overfull \hbox (8.73116pt too wide) in paragraph at lines 434--435
+Overfull \hbox (8.73116pt too wide) in paragraph at lines 372--373
  [][] 
  []
 
-[5]
+[4 <./simple_features-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <simple_vs_tree.eps>
 (epstopdf)                    date: 2015-10-31 22:53:13
 (epstopdf)                    size: 18775 bytes
@@ -506,24 +491,28 @@ Package epstopdf Info: Source file: <simple_vs_tree.eps>
 (epstopdf)                    size: 9818 bytes
 (epstopdf)             Command: <repstopdf --outfile=simple_vs_tree-eps-convert
 ed-to.pdf simple_vs_tree.eps>
-(epstopdf)             \includegraphics on input line 445.
+(epstopdf)             \includegraphics on input line 383.
 Package epstopdf Info: Output file is already uptodate.
- <simple_vs_tree-eps-converted-to.pdf, id=39, 414.54875pt x 315.1775pt>
+
+<simple_vs_tree-eps-converted-to.pdf, id=44, 414.54875pt x 315.1775pt>
 File: simple_vs_tree-eps-converted-to.pdf Graphic file (type pdf)
 
 <use simple_vs_tree-eps-converted-to.pdf>
 Package pdftex.def Info: simple_vs_tree-eps-converted-to.pdf used on input line
- 445.
+ 383.
 (pdftex.def)             Requested size: 248.73116pt x 189.10796pt.
 
-Overfull \hbox (8.73116pt too wide) in paragraph at lines 445--446
+Overfull \hbox (8.73116pt too wide) in paragraph at lines 383--384
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 450--451
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
 
  []
+
+
+Underfull \vbox (badness 1019) has occurred while \output is active []
 
 Package epstopdf Info: Source file: <ablation.eps>
 (epstopdf)                    date: 2015-11-09 00:36:35
@@ -533,41 +522,41 @@ Package epstopdf Info: Source file: <ablation.eps>
 (epstopdf)                    size: 8565 bytes
 (epstopdf)             Command: <repstopdf --outfile=ablation-eps-converted-to.
 pdf ablation.eps>
-(epstopdf)             \includegraphics on input line 456.
+(epstopdf)             \includegraphics on input line 397.
 Package epstopdf Info: Output file is already uptodate.
-<ablation-eps-converted-to.pdf, id=40, 414.54875pt x 315.1775pt>
+
+<ablation-eps-converted-to.pdf, id=45, 414.54875pt x 315.1775pt>
 File: ablation-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ablation-eps-converted-to.pdf>
-Package pdftex.def Info: ablation-eps-converted-to.pdf used on input line 456.
+Package pdftex.def Info: ablation-eps-converted-to.pdf used on input line 397.
 (pdftex.def)             Requested size: 248.73116pt x 189.10796pt.
 
-Overfull \hbox (8.73116pt too wide) in paragraph at lines 456--457
+Overfull \hbox (8.73116pt too wide) in paragraph at lines 397--398
  [][] 
  []
 
 
-Overfull \hbox (8.35417pt too wide) in paragraph at lines 466--466
+Overfull \hbox (8.35417pt too wide) in paragraph at lines 407--407
 []\T1/aer/m/n/9 Index| 
  []
 
 
-Overfull \hbox (9.47768pt too wide) in paragraph at lines 466--466
+Overfull \hbox (9.47768pt too wide) in paragraph at lines 407--407
 []\T1/aer/m/n/9 Cumulative
  []
 
 
-Overfull \hbox (4.0504pt too wide) in paragraph at lines 466--466
+Overfull \hbox (4.0504pt too wide) in paragraph at lines 407--407
 []\T1/aer/m/n/9 Individual
  []
 
-
-Overfull \hbox (3.1027pt too wide) in paragraph at lines 495--496
+[5 <./tree_features-eps-converted-to.pdf> <./simple_vs_tree-eps-converted-to.pd
+f> <./ablation-eps-converted-to.pdf>]
+Overfull \hbox (3.1027pt too wide) in paragraph at lines 436--437
 []\T1/aer/m/n/9 We ob-served from ex-per-i-ments that GPA re-sults in a higher
  []
 
-[6 <./simple_features-eps-converted-to.pdf> <./tree_features-eps-converted-to.p
-df> <./simple_vs_tree-eps-converted-to.pdf> <./ablation-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <simple_vs_tree_vs_em.eps>
 (epstopdf)                    date: 2015-10-31 22:53:13
 (epstopdf)                    size: 20178 bytes
@@ -577,36 +566,36 @@ Package epstopdf Info: Source file: <simple_vs_tree_vs_em.eps>
 (epstopdf)                    size: 10384 bytes
 (epstopdf)             Command: <repstopdf --outfile=simple_vs_tree_vs_em-eps-c
 onverted-to.pdf simple_vs_tree_vs_em.eps>
-(epstopdf)             \includegraphics on input line 502.
+(epstopdf)             \includegraphics on input line 445.
 Package epstopdf Info: Output file is already uptodate.
-
-<simple_vs_tree_vs_em-eps-converted-to.pdf, id=76, 414.54875pt x 294.09875pt>
+<simple_vs_tree_vs_em-eps-converted-to.pdf, id=73, 414.54875pt x 294.09875pt>
 File: simple_vs_tree_vs_em-eps-converted-to.pdf Graphic file (type pdf)
 
 <use simple_vs_tree_vs_em-eps-converted-to.pdf>
 Package pdftex.def Info: simple_vs_tree_vs_em-eps-converted-to.pdf used on inpu
-t line 502.
+t line 445.
 (pdftex.def)             Requested size: 248.73116pt x 176.4606pt.
 
-Overfull \hbox (8.73116pt too wide) in paragraph at lines 502--503
+Overfull \hbox (8.73116pt too wide) in paragraph at lines 445--446
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 512--512
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 []\T1/aer/m/n/9 EM
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 512--512
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 \T1/aer/m/n/9 +
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 512--512
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 []\T1/aer/m/n/9 EM
  []
 
+[6 <./simple_vs_tree_vs_em-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <undergrad_rank_gain.eps>
 (epstopdf)                    date: 2015-10-31 22:53:13
 (epstopdf)                    size: 15487 bytes
@@ -615,54 +604,61 @@ Package epstopdf Info: Source file: <undergrad_rank_gain.eps>
 (epstopdf)                    size: 9400 bytes
 (epstopdf)             Command: <repstopdf --outfile=undergrad_rank_gain-eps-co
 nverted-to.pdf undergrad_rank_gain.eps>
-(epstopdf)             \includegraphics on input line 534.
+(epstopdf)             \includegraphics on input line 505.
 Package epstopdf Info: Output file is already uptodate.
-<undergrad_rank_gain-eps-converted-to.pdf, id=77, 421.575pt x 316.18124pt>
+
+<undergrad_rank_gain-eps-converted-to.pdf, id=85, 421.575pt x 316.18124pt>
 File: undergrad_rank_gain-eps-converted-to.pdf Graphic file (type pdf)
 
 <use undergrad_rank_gain-eps-converted-to.pdf>
 Package pdftex.def Info: undergrad_rank_gain-eps-converted-to.pdf used on input
- line 534.
+ line 505.
 (pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
 
-Overfull \hbox (12.94695pt too wide) in paragraph at lines 534--535
+Overfull \hbox (12.94695pt too wide) in paragraph at lines 505--506
  [][] 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 539.
+               Default added (so using `tbp') on input line 510.
 
 
-Overfull \hbox (6.83504pt too wide) in paragraph at lines 544--544
+Overfull \hbox (6.83504pt too wide) in paragraph at lines 515--515
 []\T1/aer/m/n/9 RSSDRL| 
  []
 
 
-Overfull \hbox (8.63509pt too wide) in paragraph at lines 544--544
+Overfull \hbox (8.63509pt too wide) in paragraph at lines 515--515
 []\T1/aer/m/n/9 RSUDRL| 
  []
 
 
-Overfull \hbox (4.63371pt too wide) in paragraph at lines 543--551
+Overfull \hbox (4.63371pt too wide) in paragraph at lines 514--522
  [][] 
  []
 
-[7 <./simple_vs_tree_vs_em-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 572--573
+[7 <./undergrad_rank_gain-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 551--552
 
  []
 
 
-Overfull \hbox (9.33783pt too wide) in paragraph at lines 599--599
+Overfull \hbox (9.33783pt too wide) in paragraph at lines 580--580
 []\T1/aer/bx/n/9 Support| 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: Reference `subsec:similarity-result' on page \thepage  undefined
+ on input line 592.
 
- [8 <./undergrad_rank_gain-eps-converted-to.pdf>]
-Overfull \hbox (4.25508pt too wide) in paragraph at lines 644--645
+[8]
+
+LaTeX Warning: Reference `subsec:similarity-result' on page \thepage  undefined
+ on input line 620.
+
+
+Overfull \hbox (4.25508pt too wide) in paragraph at lines 624--625
 []\T1/aer/m/n/9 This pa-per stud-ies the grad-u-ate ad-mis-sion pro-cess in Ame
 r-
  []
@@ -678,10 +674,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4156 strings out of 494957
- 55452 string characters out of 6180027
- 142647 words of memory out of 5000000
- 7235 multiletter control sequences out of 15000+600000
+ 4150 strings out of 494957
+ 55321 string characters out of 6180027
+ 139579 words of memory out of 5000000
+ 7229 multiletter control sequences out of 15000+600000
  59265 words of font info for 83 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  49i,16n,34p,1763b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -703,7 +699,7 @@ fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Will_I_Get_In.pdf (10 pages, 307220 bytes).
+Output written on Will_I_Get_In.pdf (10 pages, 307093 bytes).
 PDF statistics:
  169 PDF objects out of 1000 (max. 8388607)
  118 compressed objects within 2 object streams

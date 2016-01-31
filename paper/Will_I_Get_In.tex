@@ -340,7 +340,7 @@ Using this equation and differentiating Eq (\ref{eq:expected-ll}) partially with
 Using above update rules, and various initialization schemes, we performed multiple experiments with EM. Current results are reported for \textit{z}=2 in a hard-boundary setting.
 
 
-\section{Experiments}
+\section{Experimental Evaluation}
 \label{sec:experiments}
 Our experimental study is designed to investigate the following issues:
 \begin{itemize}
@@ -360,69 +360,7 @@ We ran multiple experiments with various classifiers such as - SVM with linear k
 \end{itemize}
 Using grid search, we found that \textit{d}=60 yields maximum average F1 over all universities. These classifiers can provide the probability of the label as well which we utilize in Section \ref{sec:recommendations}. We observed that SVM with RBF kernel and Random Forest (with adjusted class weights) perform the best, hence we will report only their results for further experiments. These experiments were conducted using software implementation of Scikit-learn \cite{scikit-learn}.
 
-\subsection{Feature Ablation}
-\label{subsec:ablation-exp}
-These experiments were aimed at understanding the value in each feature. We trained multiple classifiers using single features and evaluated their performances. Then we iteratively added more features to each of the classifiers and evaluated gain in performance. Each feature, when considered individually, is the only classifying parameter. We call its corresponding F1 result the Discriminative Power of feature. It was observed that undergraduate GPA has the highest discriminative power and has an average F1 over all universities close to 0.65. Figure \ref{fig:ablation} shows how overall F1 increases if we sort the features into descending order of discriminative power and keep on adding them to the classifiers.
-
-
-\subsection{EM}
-\label{subsec:em-exp}
-The EM model formulated in Section \ref{subsec:generative-modeling} was used to cluster students into different groups, representing potential programs. Subsequently, individual classifiers were learned for each of the clusters. Results for few of the universities for which significant growth was observed are listed in Table \ref{tab:em-gain}. As per the model assumption, EM bifurcates the data into two clusters (\textit{z}=2), each of which can be separated in a better way than the earlier cumulative cluster thereby increasing the performance of the models significantly. Improvement in F1 due to EM clustering is reported in Fig \ref{fig:simple_vs_tree_vs_em}.
-
-\subsection{Understanding Institution Rankings}
-\label{subsec:ranking-exp}
-This experiment explored the role of \textit{reputation} or \textit{rank} of the applicant`s undergraduate institution in graduate admissions. Ranks could be categorical or numerically ordered. Each university may have a different view of how they perceive an undergraduate institution and, hence, rank it differently. But these ideas do not have a firm ground and the following experiments analyzed this hypothesis.
-
-First, we investigated if the notion of an undergraduate institution`s rank or category even exists. If it does, providing this extra knowledge should help improve the classifier`s performance. Our dataset has applicant records from a variety of departments belonging to thousands of undergraduate institutions across many countries. Since it is not practical to rank all of them in numeric order, we used information from other proxies to group them into categories. These proxies included, but were not limited to, rankings provided by US News \cite{usnews}, QS (Top Universities) rankings \cite{qs}, Shanghai rankings \cite{shanghai}, and other lists provided by various government or non-government agencies such as 'List of Institute of National Importance in India' \cite{national-importance}.
-
-Using these proxies, we created four categories:
-\begin{itemize}
-\item[A-] Institutions ranked as top tier and widely recognized.
-\item[B-] Institutions ranked in the middle tier or recognized regionally.
-\item[C-] Institutions ranked in the low tier.
-\item[D-] Institutions that are neither recognized nor ranked.
-\end{itemize}
-We want to emphasize that our goal is not to come up with an \textit{`ideal'} university rank-list but to evaluate the existence of such a list. This can be answered by answering two sub-questions:
-\begin{enumerate}
-\item Does a list provide any gain in discriminative power of classifier?
-\item Does any other list, similar or random, provide any gain in discriminative power of classifier?
-\end{enumerate}
-
-Our hypothesis was that if a largely agreed upon rank-list existed, and if our proxies are representative of such a list, then this rank-list should provide gain to the classifier. At the same time, any other list which deviates drastically from such a list should not provide comparable gain during classification.
-
-This category distribution was referred to as \textbf{`Original Rank List' (ORL)}. ORL had following category distribution: A=47, B=217, C=363, D=2354. Next, we \textbf{consciously shuffled} this list using following rules:
-\begin{enumerate}
-\item A university can have either the same category as it originally had, or it can move to its closest category, e.g. B can move to either A or C. The probability of an institution moving to neighbor category is linearly proportional to the target size.
-\item Each category still has the same number of institutions as it originally had.
-\end{enumerate}
-
-Since, we shuffled the institution categories based on precise rules, we called the result as \textbf{`Consciously Shuffled Rank List' (CSRL)}. We were taking into account that ranking of a university varies with ranking agencies or regions. In addition, we maintained the original category distribution (size of category) of the institutions. \textbf{`Randomly Shuffled Same Distribution Rank List' (RSSDRL)} was created by assigning a randomly chosen category to each institution but by maintaining original category distribution. Finally, we created a \textbf{`Randomly Shuffled Uniform Distribution Rank List' (RSUDRL)} by assigning a random category to each institution, without the constraint of maintaining original distribution. In RSUDRL, each category has uniform probability of occurring within the rank list. Results of these are shown in Fig \ref{fig:undergrad_rank_gain}.
-
-
-\subsection{Impact of Change in Application Year}
-\label{subsec:year-change-exp}
-In this experiment, we asked the question - Do universities change taste of students over time? Hence, we explored the change in decision to an application in a different application year. Some assume that since there is an increment in the number of applications every year, admissions become more competitive over time. We performed a carefully controlled experiment to test the validity of this hypothesis. In this setting, for every university:
-\begin{itemize}
-\item[1.]Choose a training set (80\%) and test set (20\%), by random selection.
-\item[2.]For each record in test set, record the application year, admission decision and prediction of classifier.
-\item[3.]For each record in test set, change the application year (choose randomly between 2001 and 2015), and record the new prediction, using the classifier used in the previous step.
-\item[4.]Perform this experiment for n(=100) iterations.
-\end{itemize}
-Our hypothesis was that if yearly factors do not have an effect then changing application year should not change the decision.
-
-
-\subsection{Which Universities Go Together}
-\label{subsec:similarity-exp}
-One of the unique features of our dataset construction is that applicant records capture various university combinations that the users apply to along with their results. This allowed us to find patterns, and formulate similarities among universities. Apriori algorithm \cite{apriori} produces interesting results that are reported in table \ref{tab:apriori}. But Apriori favors heavily populated universities over the less frequent ones. Hence, we expanded our experiments to include null-invariant measures. We computed similarity of two universities based on candidate acceptance using several null-invariant measures such as: AllConf, Jaccard, Cosine Similarity, Kulczynski coefficient, MaxConf defined in \cite{Han2012243}.
-Results of the experiments are reported in table \ref{tab:kulc} and \ref{tab:apriori}.\\\\\\
-
-
-\section{Results}
-\label{sec:results}
-
-\subsection{Discriminative Classifiers}
-\label{subsec:supervised-result}
-\begin{figure}[t]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{simple_features.eps}
 \caption{F1 scores for classification using supervised learning on simple features.}
@@ -449,16 +387,19 @@ These results are for 69 universities having more than a thresholded number of a
 
 As we can see from Fig \ref{fig:tree_features} that we can get very good predictions for certain universities (F1 $\geq$ 0.8), while it is decent but not as good for certain others (0.6 $\leq$ F1 $<$ 0.8), and low for certain other universities. But it is interesting to see the growth trend in F1 as we go from top-tier to lower-tier rank universities. The trend represents that we can classify with very high confidence for lower-tier universities using available features, in spite of lack of qualitative features such as Statement of Purpose or Letter of Recommendation, Research Publications etc. At the same time, top-tier universities might put more focus on these qualitative features.\\
 
+
 \subsection{Feature Ablation}
-\label{subsec:ablation-result}
-\begin{figure}[t]
+\label{subsec:ablation-exp}
+These experiments were aimed at understanding the value in each feature. We trained multiple classifiers using single features and evaluated their performances. Then we iteratively added more features to each of the classifiers and evaluated gain in performance. Each feature, when considered individually, is the only classifying parameter. We call its corresponding F1 result the Discriminative Power of feature. It was observed that undergraduate GPA has the highest discriminative power and has an average F1 over all universities close to 0.65. Figure \ref{fig:ablation} shows how overall F1 increases if we sort the features into descending order of discriminative power and keep on adding them to the classifiers.
+
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{ablation.eps}
 \caption{Cumulative F1 as we keep on increasing features on top of GPA}
 \label{fig:ablation}
 \end{figure}
 
-\begin{table}[t]
+\begin{table}[h]
 \centering
 \caption{Discriminative Power of each feature}
 \label{tab:ablation}
@@ -496,7 +437,9 @@ We observed from experiments that GPA results in a higher F1 score compared to a
 
 
 \subsection{EM}
-\label{subsec:em-result}
+\label{subsec:em-exp}
+The EM model formulated in Section \ref{subsec:generative-modeling} was used to cluster students into different groups, representing potential programs. Subsequently, individual classifiers were learned for each of the clusters. Results for few of the universities for which significant growth was observed are listed in Table \ref{tab:em-gain}. As per the model assumption, EM bifurcates the data into two clusters (\textit{z}=2), each of which can be separated in a better way than the earlier cumulative cluster thereby increasing the performance of the models significantly. Improvement in F1 due to EM clustering is reported in Fig \ref{fig:simple_vs_tree_vs_em}.
+
 \begin{figure}
 \centering
 \includegraphics[scale=0.6]{simple_vs_tree_vs_em.eps}
@@ -504,7 +447,7 @@ We observed from experiments that GPA results in a higher F1 score compared to a
 \label{fig:simple_vs_tree_vs_em}
 \end{figure}
 
-\begin{table}[t]
+\begin{table}[h]
 \centering
 \caption{Gain in F1 score due to EM clustering}
 \label{tab:em-gain}
@@ -527,8 +470,36 @@ CMU & 0.66 & 0.71 & 0.05 \\ \hline
 Our model before the use of EM relied on the fact that data for each university is coming from a single source. The improvements in F1 as result of splitting the data according to EM formulation indicates that our model is able to capture underlying different distributions of source data. Also, since we know that UIUC offers different degree programs (Professional, Thesis), and CMU offers different specifications (Machine Learning, HCI etc) for the data reported as CS, it is probable that several other universities have more than one underlying distribution because of other factors. Fig \ref{fig:simple_vs_tree_vs_em} shows overall increase in F1 over all of the universities using EM splitting in two clusters (\textit{z}=2). Table \ref{tab:em-gain} reports significant improvement for some of the universities in our dataset by splitting data using EM.
 
 
-\subsection{Undergraduate Institution Rankings}
-\label{subsec:ranking-result}
+
+\subsection{Understanding Institution Rankings}
+\label{subsec:ranking-exp}
+This experiment explored the role of \textit{reputation} or \textit{rank} of the applicant`s undergraduate institution in graduate admissions. Ranks could be categorical or numerically ordered. Each university may have a different view of how they perceive an undergraduate institution and, hence, rank it differently. But these ideas do not have a firm ground and the following experiments analyzed this hypothesis.
+
+First, we investigated if the notion of an undergraduate institution`s rank or category even exists. If it does, providing this extra knowledge should help improve the classifier`s performance. Our dataset has applicant records from a variety of departments belonging to thousands of undergraduate institutions across many countries. Since it is not practical to rank all of them in numeric order, we used information from other proxies to group them into categories. These proxies included, but were not limited to, rankings provided by US News \cite{usnews}, QS (Top Universities) rankings \cite{qs}, Shanghai rankings \cite{shanghai}, and other lists provided by various government or non-government agencies such as 'List of Institute of National Importance in India' \cite{national-importance}.
+
+Using these proxies, we created four categories:
+\begin{itemize}
+\item[A-] Institutions ranked as top tier and widely recognized.
+\item[B-] Institutions ranked in the middle tier or recognized regionally.
+\item[C-] Institutions ranked in the low tier.
+\item[D-] Institutions that are neither recognized nor ranked.
+\end{itemize}
+We want to emphasize that our goal is not to come up with an \textit{`ideal'} university rank-list but to evaluate the existence of such a list. This can be answered by answering two sub-questions:
+\begin{enumerate}
+\item Does a list provide any gain in discriminative power of classifier?
+\item Does any other list, similar or random, provide any gain in discriminative power of classifier?
+\end{enumerate}
+
+Our hypothesis was that if a largely agreed upon rank-list existed, and if our proxies are representative of such a list, then this rank-list should provide gain to the classifier. At the same time, any other list which deviates drastically from such a list should not provide comparable gain during classification.
+
+This category distribution was referred to as \textbf{`Original Rank List' (ORL)}. ORL had following category distribution: A=47, B=217, C=363, D=2354. Next, we \textbf{consciously shuffled} this list using following rules:
+\begin{enumerate}
+\item A university can have either the same category as it originally had, or it can move to its closest category, e.g. B can move to either A or C. The probability of an institution moving to neighbor category is linearly proportional to the target size.
+\item Each category still has the same number of institutions as it originally had.
+\end{enumerate}
+
+Since, we shuffled the institution categories based on precise rules, we called the result as \textbf{`Consciously Shuffled Rank List' (CSRL)}. We were taking into account that ranking of a university varies with ranking agencies or regions. In addition, we maintained the original category distribution (size of category) of the institutions. \textbf{`Randomly Shuffled Same Distribution Rank List' (RSSDRL)} was created by assigning a randomly chosen category to each institution but by maintaining original category distribution. Finally, we created a \textbf{`Randomly Shuffled Uniform Distribution Rank List' (RSUDRL)} by assigning a random category to each institution, without the constraint of maintaining original distribution. In RSUDRL, each category has uniform probability of occurring within the rank list. Results of these are shown in Fig \ref{fig:undergrad_rank_gain}.
+
 \begin{figure}[t]
 \centering
 \includegraphics[scale=0.6]{undergrad_rank_gain.eps}
@@ -564,24 +535,34 @@ A probable reason for this behavior (1) is that either the universities such as 
 Hence, it can be claimed that there is no single rank-list that every university uses, and there is no consensus over these ranks. So, two similar universities might respond differently to the same candidate even though all the other factors are consistent in his applications.
 
 
-
 \subsection{Impact of Change in Application Year}
-\label{subsec:year-change-result}
+\label{subsec:year-change-exp}
+In this experiment, we asked the question - Do universities change taste of students over time? Hence, we explored the change in decision to an application in a different application year. Some assume that since there is an increment in the number of applications every year, admissions become more competitive over time. We performed a carefully controlled experiment to test the validity of this hypothesis. In this setting, for every university:
+\begin{itemize}
+\item[1.]Choose a training set (80\%) and test set (20\%), by random selection.
+\item[2.]For each record in test set, record the application year, admission decision and prediction of classifier.
+\item[3.]For each record in test set, change the application year (choose randomly between 2001 and 2015), and record the new prediction, using the classifier used in the previous step.
+\item[4.]Perform this experiment for n(=100) iterations.
+\end{itemize}
+Our hypothesis was that if yearly factors do not have an effect then changing application year should not change the decision.
+
 The experiment is aimed at testing the hypothesis that a change in the application year leads to a change in the decision. If an application was correctly classified initially then if there isn't any change in the competition of the application pool then it should still be correctly classified. Over 100 iterations, approximately 60K records were tested, out of which ~55K were classified correctly. It was observed that out of these, a vast majority (>98\%) retained the same label even after the change of application year.
 
 We define competition per application to increase if increase in application year changed the decision from \textit{Admit} to \textit{Reject}, and vice versa. Out of all of the decision changes, a record was assigned `+1' if it showed that the competition increased, and `-1' if the competition decreased. Overall sum of these scores for most of the universities was very close to 0. For all of the universities, the overall sum was -56, which means 56/55K, approximately 0.1\% decrease in competition. Hence, it can be said that decision for an application depends solely on the university and the application, and not the application year.\\
 
 
-
 \subsection{Which Universities Go Together}
-\label{subsec:similarity-result}
+\label{subsec:similarity-exp}
+One of the unique features of our dataset construction is that applicant records capture various university combinations that the users apply to along with their results. This allowed us to find patterns, and formulate similarities among universities. Apriori algorithm \cite{apriori} produces interesting results that are reported in table \ref{tab:apriori}. But Apriori favors heavily populated universities over the less frequent ones. Hence, we expanded our experiments to include null-invariant measures. We computed similarity of two universities based on candidate acceptance using several null-invariant measures such as: AllConf, Jaccard, Cosine Similarity, Kulczynski coefficient, MaxConf defined in \cite{Han2012243}.
+Results of the experiments are reported in table \ref{tab:kulc} and \ref{tab:apriori}.
+
 As described earlier, applicants have the tendency to apply to universities in buckets \textit{(Ambitious, Reachable, Safe)}. This leads to the hypothesis that since applicants apply in buckets, it should be apparent through the similarity scores of the universities. As the results show this is infact the case. Kulczynski coefficient represents the average of conditional probability conditioned on each of the variables. Table \ref{tab:kulc} lists a few interesting associations based on the kulczynski coefficient and Table \ref{tab:apriori} lists such results for Apriori algorithm.
 
 \begin{table}[htbp]
 \caption{Interesting similar universities based on Kulczynski score}
 \label{tab:kulc}
 \begin {center}
-\begin{tabular}{p{2.5 cm}| p{2.5 cm}| p{1.0 cm}}
+\begin{tabular}{p{2.5 cm} p{2.5 cm} p{1.0 cm}}
 \textbf{University 1} &\textbf{University 2} &\textbf{Kulc} \\ \hline
 UChicago\tablefootnote{University of Chicago} & CSU\tablefootnote{Chicago State University} & 0.286 \\ \hline
 UNCC\tablefootnote{University of North Carolina Charlotte} & UNLV\tablefootnote{University of Nevada Las Vegas} & 0.303 \\ \hline
@@ -595,7 +576,7 @@ URI\tablefootnote{University of Rhode Island} & UWisc\tablefootnote{University o
 \caption{Universities that go together based on Apriori algorithm}
 \label{tab:apriori}
 \begin {center}
-\begin{tabular}{p{3 cm}| p{3 cm}| p{1 cm}}
+\begin{tabular}{p{3 cm} p{3 cm} p{1 cm}}
 \textbf{University 1} &\textbf{University 2} &\textbf{Support} \\ \hline
 UM Twin\tablefootnote{University of Minnesota twin cities} & SUNY Stony\tablefootnote{State University of New York Stony Brook} & 218 \\ \hline
 UIC\tablefootnote{University of Illinois Chicago} & Indiana\tablefootnote{Indiana University-Bloomington} & 112 \\ \hline
@@ -604,7 +585,6 @@ SUNY Buffalo\tablefootnote{State University of New York Buffalo} & GMU\tablefoot
 \end{tabular}
 \end {center}
 \end{table}
-
 
 
 \section{Recommendations}
