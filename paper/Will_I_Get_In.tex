@@ -135,9 +135,9 @@ Aman Sawhney\\
 
 \maketitle
 \begin{abstract}
-We study the graduate admission process in American universities. Our goal is to build a decision support model that provides candidates with pertinent information as well as the ability to assess their choices during the application process. This model is driven by extensive machine learning based analysis of large amounts of historic data available on the web. Our analysis considers factors including, but not limited to, standardized test scores and GPA as well as world knowledge regarding university \textit{reputation} and \textit{similarity} with other universities. The learning problem is modeled as a binary classification problem with latent variables that account for unavailable information, such as multiple graduate programs within the same institution.
+We study the graduate admission process in American universities. Our goal is to build a decision support model that provides candidates with pertinent information as well as the ability to assess their choices during the application process. This model is driven by extensive machine learning based analysis of large amounts of historic data available on the web. Our analysis considers factors including, but not limited to, standardized test scores and GPA as well as world knowledge such as university \textit{similarity} and \textit{reputation}. The learning problem is modeled as a binary classification problem with latent variables that account for hidden information, such as multiple graduate programs within the same institution.
 
-An additional contribution of this paper is the creation of a new dataset of more than 25,000 student application data, covering hundreds of universities over several years. This dataset allows us to develop models that provide insight into student application behavior and university decision patterns. Our experimental study reveals some key factors in the decision process of programs and, consequently, allows us to propose a recommendation algorithm that provides applicants the ability to make an informed decision of programs to apply to given their profile, with high confidence of being accepted.
+An additional contribution of this paper is the collection of a new dataset of more than 25,000 students, with 6 applications per student on average and, hence, amounting to more than 150,000 applications. The dataset covers hundreds of universities over several years, and allows us to develop models that provide insight into student application behavior and university decision patterns. Our experimental study reveals some key factors in the decision process of programs and, consequently, allows us to propose a recommendation algorithm that provides applicants the ability to make an informed decision of programs to apply to given their profile, with high confidence of being accepted.
 \end{abstract}
 
 
@@ -186,19 +186,17 @@ An additional contribution of this paper is the creation of a new dataset of mor
 
 \section{Introduction}
 \label{sec:intro}
-Every year, thousands of students apply to American graduate programs and in the process, discover that there is a dearth of reliable sources to aid them in making an informed decision. There are several sources that provide admission related statistics in aggregate form, but not tailored to individual profiles, thus, leaving the applicant with the only option of guessing and hoping for the best. Even though learning models have been used in variety of real-world applications, there is surprisingly little literature available on understanding admission dynamics and decision making.
+Every year, thousands of students apply to American graduate programs and in the process, discover that there is a dearth of reliable sources to aid them in making an informed decision. There are several sources that provide admission related statistics in aggregate form \cite{usnews, qs}, but not tailored to individual profiles, thus, leaving the applicant with the only option of guessing and hoping for the best. Even though learning models have been used in variety of real-world applications, there is surprisingly little literature available on understanding admission dynamics and decision making.
 
-A typical university application process involves the applicant submitting his transcripts, standardized test scores, a few letters of recommendation, a statement of purpose that expresses his aims, ambitions and research interests, and descriptive answers to a few additional questions. Test scores include GRE\footnote{Graduate Record Examination \tiny{www.ets.org/gre}}, language test scores - such as TOEFL\footnote{Test Of English as Foreign Language \tiny{www.ets.org/toefl}} or IELTS\footnote{International English Language Testing System \tiny{www.ielts.org}} etc. Since requirements, deadlines and the specific process to meet them is university specific, the applicant needs to first choose the universities he would apply to. Hence, an applicant is generally advised to start about an year in advance of the university deadlines to timely complete these requirements.
+A typical university application packet comprises of transcripts, standardized test scores, letters of recommendation, a statement of purpose that expresses student’s aims, ambitions and research interests, and descriptive answers to a few additional questions. Test scores include GRE\footnote{Graduate Record Examination \tiny{www.ets.org/gre}}, language test scores - such as TOEFL\footnote{Test Of English as Foreign Language \tiny{www.ets.org/toefl}} or IELTS\footnote{International English Language Testing System \tiny{www.ielts.org}} etc. Universities, then, evaluate application packets based on rules or heuristics which are unknown to students, and release decisions. Since requirements, deadlines and the specific process to meet them is university specific, the applicant needs to first choose the universities he would apply to.
 
-Given the uncertainty, a naive solution is to apply to a large number of universities. But, more applications imply a deeper investment of time and energy on the applicant's part. This also implies a greater monetary investment, which is a major concern for applicants from developing countries. An efficient strategy to circumvent this is to categorize the universities so that one can cover a wide spectrum by applying to a few representatives from each category. A popular scheme includes three categories: \textit{Ambitious}: where the chances of admission are slim; \textit{Reachable}: where the chances of admission are decent; \textit{Safe}: where there is a fair certainty of being accepted \cite{susnytimes}. Multiple admission offers resulting from these decisions allow the applicant to choose, suboptimally, their best option.
-
-The description of these categories is very subjective, and even more subjective is the applicant's ability to predict his probability of \textit{Admit} i.e. chances of being admitted to a given program and, hence, the university categorization. This prediction is generally based on hearsay or semi-informed opinions, resulting in confusion and a waste of resources for both the applicant as well as the university. 
+Given the uncertainty, a naive solution is to apply to a large number of universities. But, the more the number of applications, the higher the investment of time and energy. This also implies a large monetary investment, which is a major concern for applicants from developing countries. One of the strategies to circumvent this is to categorize the universities into buckets so that one only applies to a few representatives from each category. A popular scheme includes three categories: \textit{Dream}: where the chances of admission are slim; \textit{Reach}: where the chances of admission are decent; \textit{Safety}: where there is a fair certainty of being accepted \cite{sushnytimes}. Multiple admission offers resulting from these decisions allow the applicant to choose, suboptimally, their best option. The description of these categories is very subjective, and even more subjective is the applicant's ability to predict his probability of \textit{Admit} i.e. chances of being admitted to a given program \cite{sushnytimes}. This prediction is generally based on hearsay or semi-informed opinions, resulting in confusion and a waste of resources for both the applicant as well as the university.
 
 In this paper, we address this problem by developing a machine learning approach which enables applicants to make informed decisions by evaluating their chances of admission. We suggest a latent variable based generative modeling approach which is easily extensible. Another contribution of this paper is the dataset we provide which enables others to build upon the system we have created. Additionally, we analyze our system from student's perspective but it can be easily extended to university's perspective as well.
 
 Some researchers have briefly reflected on the process of decision making, but only qualitatively \cite{dagap}.The work done by Waters et al. models the problem from the university's perspective \cite{waters:iaai13}. They used a learning approach to aid the university admission committee by identifying the candidates that are unlikely to be offered admission. Their model is quite simplistic, considering the problem as a straightforward classification problem (via Logistic Regression) without attempting to reveal the diverse and rich patterns in the data. More importantly, their approach is university centric and does not provide any support to the decision process of applicants. The primary reason for the lack of such endeavours is the unavailability of a relevant dataset. One contribution of our work is the creation of such a dataset, which we will make available to the community. The dataset allowed us not only to determine the acceptability of an application but also suggest better choices.
 
-Works such as Bruggink et al. and Moore et al. utilize domain knowledge to build statistical models\cite{bruggink, moore}. Bruggink et al. model undergraduate university admissions to a private liberal arts college \cite{bruggink}. The model treats application components as independent variables 	and assumes the decision to be dependent (\textit{Admit} or \textit{Reject}) on these. The independent variables include GPA \footnote{Grade Points Average}, SAT scores, other academic scores and extracurricular factors all of which have been quantized. Beyond strong statistical assumption, this approach assumes that the modelled university (and its application pool) provide a good representation of the whole distribution. Our study shows that this is not the case because different universities focus on different features, and hence produce decisions differently. We conclude that learning a decision model should be done separately for each university, if possible. Moore et al. model the problem with rule induction using ID3 algorithm \cite{moore}. Such an approach without care for bounded depth is prone to overfitting. Similar to Bruggink et al. the model is centered around one university and considers very small applicant sample size \cite{bruggink}.
+Works such as Bruggink et al. and Moore et al. utilize domain knowledge to build statistical models\cite{bruggink, moore}. Bruggink et al. model undergraduate university admissions to a private liberal arts college \cite{bruggink}. The model treats application components as independent variables and assumes the decision to be dependent (\textit{Admit} or \textit{Reject}) on these. The independent variables include GPA \footnote{Grade Points Average}, SAT scores, other academic scores and extracurricular factors all of which have been quantized. Beyond strong statistical assumption, this approach assumes that the modelled university (and its application pool) provide a good representation of the whole distribution. Our study shows that this is not the case because different universities focus on different features, and hence produce decisions differently. We conclude that learning a decision model should be done separately for each university, if possible. Moore et al. model the problem with rule induction using ID3 algorithm \cite{moore}. Such an approach without care for bounded depth is prone to overfitting. Similar to Bruggink et al. the model is centered around one university and considers very small applicant sample size \cite{bruggink}.
 
 
 \section{Problem Modeling}
@@ -206,7 +204,7 @@ Works such as Bruggink et al. and Moore et al. utilize domain knowledge to build
 
 \subsection{Data}
 \label{subsec:dataset}
-There are several online resources where applicants share their admission experiences; Edulix is one commonly used resource \cite{edulix}. It is an active resource which hosts applicant profiles from all over the world. GRE scores, undergraduate university name, GPA, TOEFL scores and other accomplishments such as work experience and research publications pertinent to the graduate admissions are reported in the profile. In addition, users mention the universities that they applied to and the result of each application (\textit{Admit}, \textit{Reject} or \textit{Result Not Available}).
+There are several online resources where applicants share their admission experiences \cite{edulix, gradcafe}. We scraped the data present on Edulix \cite{edulix}. It is an active resource which hosts applicant profiles from all over the world. GRE scores, undergraduate university name, GPA, TOEFL scores and other accomplishments such as work experience and research publications pertinent to the graduate admissions are reported in the profile. In addition, users mention the universities that they applied to and the result of each application (\textit{Admit}, \textit{Reject} or \textit{Result Not Available}).
 
 \subsection{Data Cleaning}
 \label{subsec:dataset-cleaning}
@@ -218,7 +216,7 @@ Since the data is self reported, it had some erroneous records. We fixed these p
 \item \textit{Quantitative Normalization}: Undergraduate institutions all over the world follow different scales for reporting GPA. Similarly, GRE and TOEFL tests have undergone various scale transformations over the years. As a standardization measure, we mapped these fields linearly to a scale of [0,100].
 \item \textit{Categorical Normalization}: Sometimes students refer to the same degree using various acronyms such as \textit{BE} or \textit{BEng} for \textit{Bachelor of Engineering}. Similar is the case for departmental majors such as \textit{CS} or \textit{Comp Science} for \textit{Computer Science}. Also, sometimes there are spelling mistakes and typos in these fields. Each of these fields is, hence, normalized to manually created codes e.g. \textit{\{ba,bs,be,btech etc.\}} instead of original strings, where assignment is done using string to code mapping and regular expressions.
 \item \textit{University Normalization}: An undergraduate university might be referred to by the differing names due to reasons such as usage of a popular acronym or spelling errors. We mitigated this problem by mapping the university names to their unique website homepage using web search engine. Under this scheme, a program queried a search engine which returned a ranked list of relevant URLs. These URLs were then filtered based on heuristics (e.g. remove blog or social network URLs, prefer \textit{.edu} domains and so on) and most relevant URL was assigned to the university. These assignments were then manually verified for consistency.
-\item \textit{Labels}: We excluded any application that was not classified as either \textit{Admit} or \textit{Reject}.
+\item \textit{Labels}: There were no such labels present in dataset as \textit{Waitlisted}, or \textit{Conditionally Accepted}. We excluded any application that was classified as \textit{Result Not Available} because it simply represents either a missing value or a pending decision.
 \end{itemize}
 
 In this paper we focus on modeling admission to computer science graduate programs, which form the plurality of our data. Our experiments are conducted only on this subset of the data. A few of the features of the resulting dataset for the computer science applications are in Table \ref{tab:dataset}.
@@ -252,7 +250,7 @@ Degrees sought & [MS, PhD] \\
 
 \subsection{Supervised Learning}
 \label{subsec:supervised-learning}
-Each university offers binary decisions to applicants (\textit{Admit} or \textit{Reject}) and this decision is unaffected by the decision of other universities. Hence, the overall problem can be modeled as a set of individual binary classification problems. Supervised learning algorithms can be trained using features extracted from a labeled dataset and evaluated on prediction accuracy. However, accuracy, in this case, is a biased metric since most universities have very low acceptance rates, some of them being as low as 5\%. In such a scenario, even by blindly rejecting all the applications the classifier will still evaluate to over 90\% accuracy, without the need to learn anything. Also, acceptance rates vary across universities and thus accuracy will not be a true representative of the learning model's performance. Hence, we chose F1 as our evaluation metric which combines precision and recall. Since number of admitted students is less than that of the rejected ones, we report our results for \textit{Admit} label which provides a stricter bound on evaluations. F1 score takes into account not just the correct number of predictions made for \textit{Admit} (\textit{Precision}), but also the ratio of \textit{Admit} students out of true \textit{Admit} count (\textit{Recall}).
+Each university offers binary decisions to applicants (\textit{Admit} or \textit{Reject}) and this decision is unaffected by the decision of other universities. Hence, the overall problem can be modeled as a set of individual binary classification problems. Supervised learning algorithms can be trained using features extracted from a labeled dataset and evaluated on prediction accuracy. However, accuracy, in this case, is a biased metric since most universities have very low acceptance rates, some of them being as low as 8\%. In such a scenario, even by blindly rejecting all the applications the classifier will still evaluate to over 90\% accuracy, without the need to learn anything. Also, acceptance rates vary across universities and thus accuracy will not be a true representative of the learning model's performance. Hence, we chose F1 as our evaluation metric which combines precision and recall. Since number of admitted students is less than that of the rejected ones, we report our results for \textit{Admit} label which provides a stricter bound on evaluations. F1 score takes into account not just the correct number of predictions made for \textit{Admit} (\textit{Precision}), but also the ratio of \textit{Admit} students out of true \textit{Admit} count (\textit{Recall}).
 
 $$F1 = \frac{2 \times Precision \times Recall}{Precision + Recall}$$
 $$Precision = \frac{TP}{TP + FP}$$
@@ -281,7 +279,7 @@ To improve the system performance, we use ensemble learning. Training decision t
 
 \subsection{Generative Modeling}
 \label{subsec:generative-modeling}
-For a few universities, we noticed that our discriminative classifiers do not perform as expected, despite relatively large amount of data. we attribute it to the fact that some universities offer multiple degree programs that might target different kinds of applicants and have different admission criteria, e.g. professional master`s versus thesis master`s program at UIUC\footnote{University of Illinois at Urbana-Champaign}. Certain other universities, such as CMU\footnote{Carnegie Mellon University}, offer specific programs at same degree level such as master's degree in Machine Learning versus HCI\footnote{Human Computer Interaction} which fall under the purview of Computer Science. These distinctions, however, are not captured in the dataset, and are thus \textit{hidden} from our models. This distribution causes difficulties for linear separators which assume that data is coming from single source. In case the data is coming from multiple sources, it is impossible to linearly separate the data using a single classifier. To accommodate these phenomena, we use an \textit{Expectation-Maximization (EM)} algorithm that allows us to learn a model with a latent variable, capturing the missing information. The rest of this section, describes how we model the problem in this case. 
+For a few universities, we noticed that our discriminative classifiers do not perform as expected, despite relatively large amount of data. we attribute it to the fact that some universities offer multiple degree programs that might target different kinds of applicants and have different admission criteria, e.g. professional master`s versus thesis master`s program at UIUC\footnote{University of Illinois at Urbana-Champaign}. Certain other universities, such as CMU\footnote{Carnegie Mellon University}, offer specific programs at same degree level such as master's degree in Machine Learning versus HCI\footnote{Human Computer Interaction} which fall under the purview of Computer Science. These distinctions, however, are not captured in the dataset, and are thus \textit{hidden} from our models. This distribution causes difficulties for linear separators which assume that data is coming from single source. In case the data is coming from multiple sources, it is impossible to linearly separate the data using a single classifier. To accommodate these phenomena, we use an \textit{Expectation-Maximization (EM)} algorithm that allows us to learn a model with a latent variable, capturing the missing information. The rest of this section, describes how we model the problem in this case.
 
 EM is one of the very effective techniques for finding a \textit{Maximum Likelihood Estimate} with \textit{hidden variables}. For the sake of brevity, we are not going into details of \textit{EM}. We will be using a setup similar to the one Grove et al. used in \cite{GroveRoth}.
 
@@ -295,7 +293,7 @@ where
 We assume that an applicant \textit{belongs} to a program $ z \in \{1,2,...,k\} $ with probability $\alpha_r = p(z=r)$. Given this program, feature $x_i$ of the applicant $x$ is generated independently by a Gaussian distribution with model parameters $(\mu_i, \sigma_i)$.
 
 Let us define a hidden variable, $ z \in \{1,2,...,k\} $. A student record (sample), \textit{x}, consists of \textit{(n+1)} features,
-$$ x = (x_0, x_1, x_2, ..., x_n). $$
+
 The likelihood of sample is given by
 \begin{equation}
 P(x) = \sum_z p(x | z) p(z)
@@ -336,8 +334,8 @@ Using this equation and differentiating Eq (\ref{eq:expected-ll}) partially with
 \begin{equation}
 \alpha_z = \Bigg\{
 \begin{array}{ll}
-	\alpha_k\frac{\sum_j P_z^j}{\sum_j P_k^j} & \mbox{if } z \neq k \\
-	1 - \sum_{i\in [1...k-1]}\alpha_i & \mbox{if } z = k
+    \alpha_k\frac{\sum_j P_z^j}{\sum_j P_k^j} & \mbox{if } z \neq k \\
+    1 - \sum_{i\in [1...k-1]}\alpha_i & \mbox{if } z = k
 \end{array}
 \end{equation}
 \begin{equation}
@@ -347,7 +345,7 @@ Using this equation and differentiating Eq (\ref{eq:expected-ll}) partially with
 \mu^z_i = \frac{\sum_j \sum_z P^j_z x_i^j}{\sum_j \sum_z P^j_z}
 \end{equation}
 
-Using above update rules, and various initialization schemes, we performed multiple experiments with EM. Current results are reported for \textit{z}=2 in a hard-boundary setting.
+Using above update rules, and various initializations for the latent variables, we performed multiple experiments with EM. Current results are reported for \textit{z}=2 in a hard-boundary setting.
 
 
 \section{Experimental Evaluation}
@@ -355,20 +353,20 @@ Using above update rules, and various initialization schemes, we performed multi
 Our experimental study is designed to investigate the following issues:
 \begin{itemize}
 \item The ability to to make reliable prediction on whether a specific student can be admitted to a given program.
-\item Our ability to identify sub-programs in a given university, and its significance on the performance of our admission model. 
+\item Our ability to identify sub-programs in a given university, and its significance on the performance of our admission model.
 \item Understanding the factors that contribute to admission.
 \item Understanding the differences among universities in terms of their admission decisions.
 \end{itemize}
-The rest of this section describes the details of our experimental study, and its results. For practical purposes, we selected a university for classification only if it has more than a certain number of applicant records. We chose the threshold of at least 10 admitted and at least 10 rejected students. In all our experiments we are reporting average F1 over 5-fold cross-validation.
+The rest of this section describes the details of our experimental study, and its results. In all our experiments we are reporting average F1 over 5-fold cross-validation.
 
 \subsection{Discriminative Classifiers}
 \label{subsec:supervised-exp}
-We ran multiple experiments with various classifiers such as - SVM with linear kernel or Radial Basis Function kernel, Logistic Regression, Adaboost with decision trees, and Random Forest. We also experimented with all of the above classifiers by adjusting class weights according to sample frequency. Each of these setups is used in two different settings:
+We ran multiple experiments with various classifiers such as - SVM with linear kernel or Radial Basis Function kernel \cite{libsvm}, \cite{svmtutorial}, Logistic Regression, Adaboost \cite{adaboost} with decision trees \cite{decisiontree}, and Random Forest \cite{randomforest}. We also experimented with all of the above classifiers by adjusting class weights inversely proportional to the class frequency in input data. Each of these setups is used in two different settings:
 \begin{itemize}
 \item Using simple features extracted from student records
 \item Training \textit{d} decision tree classifiers with bounded-depth (depth=3) and then using predictions of these classifiers as features. Each decision tree is trained on 50\% data, selected randomly.
 \end{itemize}
-Using grid search, we found that \textit{d}=60 yields maximum average F1 over all universities. These classifiers can provide the probability of the label as well which we utilize in Section \ref{sec:recommendations}. We observed that SVM with RBF kernel and Random Forest (with adjusted class weights) perform the best, hence we will report only their results for further experiments. These experiments were conducted using software implementation of Scikit-learn \cite{scikit-learn}.
+Using grid search in the range [10,1000], we found that \textit{d}=60 yields maximum average F1 over all universities. Table \ref{tab:classifierparams} lists the ranges for grid search and best parameters for the classifiers. These classifiers can provide the probability of the label as well which we utilize in Section \ref{sec:recommendations}. We observed that SVM with RBF kernel and Random Forest (with adjusted class weights, as explained above) perform the best, hence we will report only their results for further experiments. These experiments were conducted using Scikit-learn \cite{scikit-learn}.
 
 \begin{figure}[h]
 \centering
@@ -483,32 +481,33 @@ Our model before the use of EM relied on the fact that data for each university 
 
 \subsection{Understanding Institution Rankings}
 \label{subsec:ranking-exp}
-This experiment explored the role of \textit{reputation} or \textit{rank} of the applicant`s undergraduate institution in graduate admissions. Ranks could be categorical or numerically ordered. Each university may have a different view of how they perceive an undergraduate institution and, hence, rank it differently. But these ideas do not have a firm ground and the following experiments analyzed this hypothesis.
+There is evidence in literature that if an applicant belongs to a \textit{reputed} institution it  is regarded as grounds for, at least, some liberality in the way the admission decision would swing \cite{dagap}. We aimed to qualify this notion by formally validating the assumption - \textit{Undergrad university ranking plays an important role in admissions}. Proving or disproving such an assumption required two-fold experiments:\\
+\begin{enumerate}
+\item Does university ranking play any role in admission?
+\item If yes, what is this rank list?
+\end{enumerate}
 
-First, we investigated if the notion of an undergraduate institution`s rank or category even exists. If it does, providing this extra knowledge should help improve the classifier`s performance. Our dataset has applicant records from a variety of departments belonging to thousands of undergraduate institutions across many countries. Since it is not practical to rank all of them in numeric order, we used information from other proxies to group them into categories. These proxies included, but were not limited to, rankings provided by US News \cite{usnews}, QS (Top Universities) rankings \cite{qs}, Shanghai rankings \cite{shanghai}, and other lists provided by various government or non-government agencies such as 'List of Institute of National Importance in India' \cite{national-importance}.
+First, we investigated if the notion of an undergraduate institution`s rank or category even exists. If it does, providing this extra knowledge should help improve the classifier`s performance. Our dataset has applicant records from a variety of departments belonging to thousands of undergraduate institutions across many countries. 
+
+Since there does not exist any reputation marker or rank for most of the domestic as well as international universities, we used information from other proxies to group them into categories. These proxies included, but were not limited to, rankings provided by US News \cite{usnews}, QS (Top Universities) rankings \cite{qs}, Shanghai rankings \cite{shanghai}, and other lists provided by various private or government agencies such as 'List of Institute of National Importance in India' \cite{national-importance}.
 
 Using these proxies, we created four categories:
 \begin{itemize}
-\item[A-] Institutions ranked as top tier and widely recognized.
-\item[B-] Institutions ranked in the middle tier or recognized regionally.
-\item[C-] Institutions ranked in the low tier.
-\item[D-] Institutions that are neither recognized nor ranked.
+\item \textit{Rank-A}: Institutions ranked as top tier and widely recognized.
+\item \textit{Rank-B}: Institutions ranked in the middle tier or recognized regionally.
+\item \textit{Rank-C}: Institutions ranked in the low tier.
+\item \textit{Rank-D}: Institutions that are neither recognized nor ranked.
 \end{itemize}
-We want to emphasize that our goal is not to come up with an \textit{`ideal'} university rank-list but to evaluate the existence of such a list. This can be answered by answering two sub-questions:
-\begin{enumerate}
-\item Does a list provide any gain in discriminative power of classifier?
-\item Does any other list, similar or random, provide any gain in discriminative power of classifier?
-\end{enumerate}
 
 Our hypothesis was that if a largely agreed upon rank-list existed, and if our proxies are representative of such a list, then this rank-list should provide gain to the classifier. At the same time, any other list which deviates drastically from such a list should not provide comparable gain during classification.
 
-This category distribution was referred to as \textbf{`Original Rank List' (ORL)}. ORL had following category distribution: A=47, B=217, C=363, D=2354. Next, we \textbf{consciously shuffled} this list using following rules:
+This category distribution was referred to as \textbf{`Original Rank List' (ORL)}. ORL had following category distribution: Rank-A=47, Rank-B=217, Rank-C=363, Rank-D=2354. Next, we \textbf{consciously shuffled} this list using following rules:
 \begin{enumerate}
-\item A university can have either the same category as it originally had, or it can move to its closest category, e.g. B can move to either A or C. The probability of an institution moving to neighbor category is linearly proportional to the target size.
+\item A university can have either the same category as it originally had, or it can move to its closest category, e.g. Rank-B can move to either Rank-A or Rank-C. The probability of an institution moving to neighbor category is linearly proportional to the target size.
 \item Each category still has the same number of institutions as it originally had.
 \end{enumerate}
 
-Since, we shuffled the institution categories based on precise rules, we called the result as \textbf{`Consciously Shuffled Rank List' (CSRL)}. We were taking into account that ranking of a university varies with ranking agencies or regions. In addition, we maintained the original category distribution (size of category) of the institutions. \textbf{`Randomly Shuffled Same Distribution Rank List' (RSSDRL)} was created by assigning a randomly chosen category to each institution but by maintaining original category distribution. Finally, we created a \textbf{`Randomly Shuffled Uniform Distribution Rank List' (RSUDRL)} by assigning a random category to each institution, without the constraint of maintaining original distribution. In RSUDRL, each category has uniform probability of occurring within the rank list. Results of these are shown in Fig \ref{fig:undergrad_rank_gain}.
+Since, we shuffled the institution categories based on precise rules, we called the result as \textbf{`Consciously Shuffled Rank List' (CSRL)}. We were taking into account that ranking of a university varies with ranking agencies or regions. In addition, we maintained the original category distribution (size of category) of the institutions. \textbf{`Randomly Shuffled Same Distribution Rank List' (RSSDRL)} was created by assigning a randomly chosen category to each institution but by maintaining original category distribution. Finally, we created a \textbf{`Randomly Shuffled Uniform Distribution Rank List' (RSUDRL)} by assigning a random category to each institution, without the constraint of maintaining original distribution. In RSUDRL, each category has uniform probability of occurring within the rank list. These rank-lists will also be released as part of the dataset.
 
 \begin{figure}[t]
 \centering
@@ -542,7 +541,7 @@ Table \ref{tab:undergrad_rank_gain} provides gain in F1 corresponding to each ra
 
 A probable reason for this behavior (1) is that either the universities such as ASU or CMU don't use ranking system at all, and hence providing rank-lists causes the classifier to learn on irrelevant features causing a net loss, or none of the rank-lists is even close to the rank-lists used by these universities. For behavior (2), some of the rank-lists are close to the ones used by these universities while other rank-lists deviate drastically. For observation (3), all of the rank-lists are partially matching to the rank-lists used by these universities. Also, from $3^{rd}$ and $4^{th}$ rows in Table \ref{tab:undergrad_rank_gain}, it can be seen that one rank-lists provides gain to a specific university, while the other does the same for some other university.
 
-Hence, it can be claimed that there is no single rank-list that every university uses, and there is no consensus over these ranks. So, two similar universities might respond differently to the same candidate even though all the other factors are consistent in his applications.
+Hence, it can be claimed that although the universities use some form of rank-list, there is no consensus over what this actual list is. So, two similar universities might respond differently to the same candidate even though all the other factors are consistent in his applications.
 
 
 \subsection{Impact of Change in Application Year}
@@ -558,13 +557,13 @@ Our hypothesis was that if yearly factors do not have an effect then changing ap
 
 The experiment is aimed at testing the hypothesis that a change in the application year leads to a change in the decision. If an application was correctly classified initially then if there isn't any change in the competition of the application pool then it should still be correctly classified. Over 100 iterations, approximately 60K records were tested, out of which ~55K were classified correctly. It was observed that out of these, a vast majority (>98\%) retained the same label even after the change of application year.
 
-We define competition per application to increase if increase in application year changed the decision from \textit{Admit} to \textit{Reject}, and vice versa. Out of all of the decision changes, a record was assigned `+1' if it showed that the competition increased, and `-1' if the competition decreased. Overall sum of these scores for most of the universities was very close to 0. For all of the universities, the overall sum was -56, which means 56/55K, approximately 0.1\% decrease in competition. Hence, it can be said that decision for an application depends solely on the university and the application, and not the application year.\\
+We define competition per application to increase if increase in application year changed the decision from \textit{Admit} to \textit{Reject}, and vice versa. Out of all of the decision changes, a record was assigned `+1' if it showed that the competition increased, and `-1' if the competition decreased. Overall sum of these scores for most of the universities, individually, was very close to 0. Whereas, for all of the universities put together, the net sum was -56, which means 56/55K, approximately 0.1\% decrease in competition. Hence, it can be said that decision for an application depends solely on the university and the application, and not the application year.\\
 
 
 \subsection{Which Universities Go Together}
 \label{subsec:similarity-exp}
 One of the unique features of our dataset construction is that applicant records capture various university combinations that the users apply to along with their results. This allowed us to find patterns, and formulate similarities among universities. Apriori algorithm \cite{apriori} produces interesting results that are reported in table \ref{tab:apriori}. But Apriori favors heavily populated universities over the less frequent ones. Hence, we expanded our experiments to include null-invariant measures. We computed similarity of two universities based on candidate acceptance using several null-invariant measures such as: AllConf, Jaccard, Cosine Similarity, Kulczynski coefficient, MaxConf defined in \cite{Han2012243}.
-Results of the experiments are reported in table \ref{tab:kulc} and \ref{tab:apriori}.
+Results of the experiments are reported in table \ref{tab:kulc} and \ref{tab:apriori}.\\\\\\
 
 As described earlier, applicants have the tendency to apply to universities in buckets \textit{(Ambitious, Reachable, Safe)}. This leads to the hypothesis that since applicants apply in buckets, it should be apparent through the similarity scores of the universities. As the results show this is infact the case. Kulczynski coefficient represents the average of conditional probability conditioned on each of the variables. Table \ref{tab:kulc} lists a few interesting associations based on the kulczynski coefficient and Table \ref{tab:apriori} lists such results for Apriori algorithm.
 
@@ -606,30 +605,30 @@ The first level of decision is coarse and the next level result is fine-grained.
 This algorithm consists of 5 steps:
 \begin {enumerate}
 \item \textbf{University clustering}
-	\begin {itemize}
-	\item Cluster similar universities together based on US News rankings e.g. Universities in rank [1,10] fall into cluster 1, universities from [11,20] fall into cluster 2 and so on. 
-	\end {itemize}
+    \begin {itemize}
+    \item Cluster similar universities together based on US News rankings e.g. Universities in rank [1,10] fall into cluster 1, universities from [11,20] fall into cluster 2 and so on.
+    \end {itemize}
 \item \textbf {Coarse classification}
-	\begin {itemize}
-	\item Using coarse decision, we find the cluster that offers \textit{Admit} and is closest to the top-tier universities. We call this cluster as `Reachable' because it is the best ranked university cluster that can offer Admission.
-	\end {itemize}
+    \begin {itemize}
+    \item Using coarse decision, we find the cluster that offers \textit{Admit} and is closest to the top-tier universities. We call this cluster as `Reachable' because it is the best ranked university cluster that can offer Admission.
+    \end {itemize}
 \item \textbf {Reachable Universities}
-	\begin {itemize}
-	\item Perform fine-grained classification on each of the universities in `Reachable', and return those which produce an \textit{Admit} with highest probability.
-	\end {itemize}
+    \begin {itemize}
+    \item Perform fine-grained classification on each of the universities in `Reachable', and return those which produce an \textit{Admit} with highest probability.
+    \end {itemize}
 \item \textbf {Safe Universities}
-	\begin {itemize}
-	\item We call the cluster next to `Reachable' as `Safe' because it also offers admission and does so with higher probability. Then fine-grained classification is applied on `Safe' to report Safe universities.
-	\end {itemize}
+    \begin {itemize}
+    \item We call the cluster next to `Reachable' as `Safe' because it also offers admission and does so with higher probability. Then fine-grained classification is applied on `Safe' to report Safe universities.
+    \end {itemize}
 \item \textbf {Ambitious Universities}
-	\begin {itemize}
-	\item For `Ambitious' universities, we find those universities which are similar to the ones produced by `Reachable' and `Safe' but are towards the top tier universities and hence do not offer admission. These similar universities are based on the higher similarity score based on common admissions.
-	\end {itemize}
+    \begin {itemize}
+    \item For `Ambitious' universities, we find those universities which are similar to the ones produced by `Reachable' and `Safe' but are towards the top tier universities and hence do not offer admission. These similar universities are based on the higher similarity score based on common admissions.
+    \end {itemize}
 \end {enumerate}
 
 In step 1, the benefit of using US News rankings is that as the universities get closer to top rank, probability of admission of any candidate decreases. We also verified the same observation from data. As a future work, there many clustering schemes can be employed here, including university similarity scores reported in section \ref{subsec:similarity-result}, as long as proximity of various clusters is known.
 
-\section{Conclusions}
+\section{Conclusions and Discussions}
 \label{sec:conclusions}
 This paper studies the graduate admission process in American universities using a machine learning approach. Our goal is to build a decision support model that allows candidates to make informed decisions on which schools to apply to, what are their chances of admission, and a slew of other decision-related issues. We modeled the decision process as a learning problem and presented a system that can achieve high accuracy and can be generalized across multiple universities. By employing many approaches towards solving this problem, such as supervised learning and generative modeling, we prove that a mixture of approaches can provide better results than any of the individual approaches. We also provide a dataset that provides avenues for further research. This work can be extended in multiple ways such as towards improving accuracy or validating common notions. Some of the additions of this work may include expanding the EM formulation by modeling further variables such as undergraduate institution ranking mechanism. We proved that every university has a custom ranking mechanism. This mechanism can be modeled as a distribution which can, then, be assigned to one of the hidden variables in the EM model. Theoretically, such a model has more expressive power and can, thus, learn better regarding application decisions. We believe this is but a brisk start to the research that can be performed on the topic. Many more enhancements are possible by expanding the dataset and extracting richer data features from Letters of Recommendation or Statement of Purpose. By asking these questions and providing this dataset, we hope to initiate a discussion that can lead to better understanding of how academia accepts its new members.
 
