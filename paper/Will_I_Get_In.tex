@@ -273,8 +273,7 @@ $$Recall = \frac{TP}{TP + FN}$$
 The dataset contains several fields such as standardized test scores and academic history records. We extract several numerical features from these such as GRE test scores (AWA\footnote{Analytical Writing Analysis}, Verbal \& Quantitative), undergraduate GPA, language test scores (TOEFL), as well as categorical features such as program applied to (e.g. MS, PhD), term (e.g. Fall, Spring) etc. These features are used for learning Logistic Regression, Support Vector Machine and Random Forest. Since most work available in the literature is confined to approaches we have mentioned so far, we`ll regard it as the baseline for any novelties that we propose.
 
 \textbf{Ensemble Learning:}
-To improve the system performance, we use ensemble learning. Training decision trees without bounded depth is prone to overfitting. But we can hope to generalize better if we use several limited-depth decision trees using partial data, and then feeding each decision as a feature into another regularized classifier. Constrained by the variance-bias trade-off, the second classifier captures variance of data through multiple underlying decision trees while keeping a limit on its own variance by choosing simple models such as linear separators e.g. soft-margin support vector machine. We create \textit{d} such limited-depth decision tree classifiers where each classifier is trained on a bootstrapped sample from the original dataset. Corresponding to decision of each such classifier, we get a feature for the next classifier. In section \ref{subsec:supervised-exp}, we perform grid search to find optimum value of \textit{d} for all universities.
-
+To improve the system performance, we use ensemble learning. Training decision trees without bounded depth is prone to overfitting. But we can hope to generalize better if we use several limited-depth decision trees using partial data, and then feeding each decision as a feature into another regularized classifier. Constrained by the variance-bias trade-off, the second classifier captures variance of data through multiple underlying decision trees while keeping a limit on its own variance by choosing simple models such as linear separators e.g. soft-margin support vector machine. We create \textit{d} such limited-depth decision tree classifiers where each classifier is trained on a bootstrapped sample from the original dataset. Corresponding to decision of each such classifier, we get a feature for the next classifier.
 
 
 \subsection{Generative Modeling}
@@ -366,7 +365,7 @@ We ran multiple experiments with various classifiers such as - SVM with linear k
 \item Using simple features extracted from student records
 \item Training \textit{d} decision tree classifiers with bounded-depth (depth=3) and then using predictions of these classifiers as features. Each decision tree is trained on 50\% data, selected randomly.
 \end{itemize}
-Using grid search in the range [10,1000], we found that \textit{d}=60 yields maximum average F1 over all universities. Table \ref{tab:classifierparams} lists the ranges for grid search and best parameters for the classifiers. These classifiers can provide the probability of the label as well which we utilize in Section \ref{sec:recommendations}. We observed that SVM with RBF kernel and Random Forest (with adjusted class weights, as explained above) perform the best, hence we will report only their results for further experiments. These experiments were conducted using Scikit-learn \cite{scikit-learn}.
+Using grid search in the range [10,1000], we found that \textit{d}=60 yields maximum average F1 over all universities. These classifiers can provide the probability of the label as well which we utilize in Section \ref{sec:recommendations}. We observed that SVM with RBF kernel and Random Forest (with adjusted class weights, as explained above) perform the best, hence we will report only their results for further experiments. These experiments were conducted using Scikit-learn \cite{scikit-learn}.
 
 \begin{figure}[h]
 \centering
@@ -557,17 +556,17 @@ Our hypothesis was that if yearly factors do not have an effect then changing ap
 
 The experiment is aimed at testing the hypothesis that a change in the application year leads to a change in the decision. If an application was correctly classified initially then if there isn't any change in the competition of the application pool then it should still be correctly classified. Over 100 iterations, approximately 60K records were tested, out of which ~55K were classified correctly. It was observed that out of these, a vast majority (>98\%) retained the same label even after the change of application year.
 
-We define competition per application to increase if increase in application year changed the decision from \textit{Admit} to \textit{Reject}, and vice versa. Out of all of the decision changes, a record was assigned `+1' if it showed that the competition increased, and `-1' if the competition decreased. Overall sum of these scores for most of the universities, individually, was very close to 0. Whereas, for all of the universities put together, the net sum was -56, which means 56/55K, approximately 0.1\% decrease in competition. Hence, it can be said that decision for an application depends solely on the university and the application, and not the application year.\\
+We define competition per application to increase if increase in application year changed the decision from \textit{Admit} to \textit{Reject}, and vice versa. Out of all of the decision changes, a record was assigned `+1' if it showed that the competition increased, and `-1' if the competition decreased. Overall sum of these scores for most of the universities, individually, was very close to 0. Whereas, for all of the universities put together, the net sum was -56, which means 56/55K, approximately 0.1\% decrease in competition. Hence, it can be said that decision for an application depends solely on the university and the application, and not the application year.
 
 
 \subsection{Which Universities Go Together}
 \label{subsec:similarity-exp}
 One of the unique features of our dataset construction is that applicant records capture various university combinations that the users apply to along with their results. This allowed us to find patterns, and formulate similarities among universities. Apriori algorithm \cite{apriori} produces interesting results that are reported in table \ref{tab:apriori}. But Apriori favors heavily populated universities over the less frequent ones. Hence, we expanded our experiments to include null-invariant measures. We computed similarity of two universities based on candidate acceptance using several null-invariant measures such as: AllConf, Jaccard, Cosine Similarity, Kulczynski coefficient, MaxConf defined in \cite{Han2012243}.
-Results of the experiments are reported in table \ref{tab:kulc} and \ref{tab:apriori}.\\\\\\
+Results of the experiments are reported in table \ref{tab:kulc} and \ref{tab:apriori}.
 
-As described earlier, applicants have the tendency to apply to universities in buckets \textit{(Ambitious, Reachable, Safe)}. This leads to the hypothesis that since applicants apply in buckets, it should be apparent through the similarity scores of the universities. As the results show this is infact the case. Kulczynski coefficient represents the average of conditional probability conditioned on each of the variables. Table \ref{tab:kulc} lists a few interesting associations based on the kulczynski coefficient and Table \ref{tab:apriori} lists such results for Apriori algorithm.
+As described earlier, applicants have the tendency to apply to universities in buckets \textit{(Dream, Reach, Safety)}. This leads to the hypothesis that since applicants apply in buckets, it should be apparent through the similarity scores of the universities. As the results show this is infact the case. Kulczynski coefficient represents the average of conditional probability conditioned on each of the variables. Table \ref{tab:kulc} lists a few interesting associations based on the kulczynski coefficient and Table \ref{tab:apriori} lists such results for Apriori algorithm.
 
-\begin{table}[htbp]
+\begin{table}[t]
 \caption{Interesting similar universities based on Kulczynski score}
 \label{tab:kulc}
 \begin {center}
@@ -581,7 +580,7 @@ URI\tablefootnote{University of Rhode Island} & UWisc\tablefootnote{University o
 \end {center}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[t]
 \caption{Universities that go together based on Apriori algorithm}
 \label{tab:apriori}
 \begin {center}
@@ -598,7 +597,7 @@ SUNY Buffalo\tablefootnote{State University of New York Buffalo} & GMU\tablefoot
 
 \section{Recommendations}
 \label{sec:recommendations}
-Since, now we have a system that can predict application decisions for a university, we can utilize it  to aid students in making informed choices. In Section \ref{subsec:similarity-result}, we provide evidence that students apply to universities based on their notion of `Ambitious', `Reachable' and `Safe' buckets. We include this notion into our algorithm to generate recommendations. Since the classifier system we have is not 100\% accurate, it can generate erroneous recommendations if we simply classify for each university and return the results. Fig \ref{fig:simple_vs_tree_vs_em} shows that although the trend in university ranks is not strictly monotonous, it becomes very smooth if we cluster neighboring universities and then plot it. Hence, we cluster universities and employ multi-level classification to produce robust results while generating recommendations.
+Since, now we have a system that can predict application decisions for a university, we can utilize it  to aid students in making informed choices. In Section \ref{subsec:similarity-exp}, we provide evidence that students apply to universities based on their notion of `Dream', `Reachable' and `Safe' buckets. We include this notion into our algorithm to generate recommendations. Since the classifier system we have is not 100\% accurate, it can generate erroneous recommendations if we simply classify for each university and return the results. Fig \ref{fig:simple_vs_tree_vs_em} shows that although the trend in university ranks is not strictly monotonous, it becomes very smooth if we cluster neighboring universities and then plot it. Hence, we cluster universities and employ multi-level classification to produce robust results while generating recommendations.
 
 The first level of decision is coarse and the next level result is fine-grained. While classifying coarsely over a range of universities, we mix  the records of all universities inside a cluster and train a single classifier on all of them. If the universities in the cluster are similar, the classifier learns the common patterns of admission versus rejection and provides a more general decision than any of the component universities. While in Fine-grained classification an individual classifier is trained for each university.
 
@@ -620,13 +619,13 @@ This algorithm consists of 5 steps:
     \begin {itemize}
     \item We call the cluster next to `Reachable' as `Safe' because it also offers admission and does so with higher probability. Then fine-grained classification is applied on `Safe' to report Safe universities.
     \end {itemize}
-\item \textbf {Ambitious Universities}
+\item \textbf {Dream Universities}
     \begin {itemize}
-    \item For `Ambitious' universities, we find those universities which are similar to the ones produced by `Reachable' and `Safe' but are towards the top tier universities and hence do not offer admission. These similar universities are based on the higher similarity score based on common admissions.
+    \item For `Dream' universities, we find those universities which are similar to the ones produced by `Reachable' and `Safe' but are towards the top tier universities and hence do not offer admission. These similar universities are based on the higher similarity score based on common admissions.
     \end {itemize}
 \end {enumerate}
 
-In step 1, the benefit of using US News rankings is that as the universities get closer to top rank, probability of admission of any candidate decreases. We also verified the same observation from data. As a future work, there many clustering schemes can be employed here, including university similarity scores reported in section \ref{subsec:similarity-result}, as long as proximity of various clusters is known.
+In step 1, the benefit of using US News rankings is that as the universities get closer to top rank, probability of admission of any candidate decreases. We also verified the same observation from data. As a future work, there many clustering schemes can be employed here, including university similarity scores reported in section \ref{subsec:similarity-exp}, as long as proximity of various clusters is known.
 
 \section{Conclusions and Discussions}
 \label{sec:conclusions}

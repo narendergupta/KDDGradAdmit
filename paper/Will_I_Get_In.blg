@@ -3,62 +3,56 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Will_I_Get_In.aux
 The style file: abbrv.bst
 Database file #1: Will_I_Get_In.bib
-Warning--entry type for "dagap" isn't style-file defined
---line 1 of file Will_I_Get_In.bib
-Warning--entry type for "usnews" isn't style-file defined
---line 9 of file Will_I_Get_In.bib
-Warning--entry type for "qs" isn't style-file defined
---line 16 of file Will_I_Get_In.bib
-Warning--entry type for "shanghai" isn't style-file defined
---line 23 of file Will_I_Get_In.bib
-Warning--entry type for "national-importance" isn't style-file defined
---line 30 of file Will_I_Get_In.bib
-Warning--entry type for "edulix" isn't style-file defined
---line 70 of file Will_I_Get_In.bib
-Warning--I didn't find a database entry for "susnytimes"
 Warning--to sort, need author or key in usnews
 Warning--to sort, need author or key in qs
+Warning--to sort, need author or key in gradcafe
 Warning--to sort, need author or key in shanghai
 Warning--to sort, need author or key in national-importance
-You've used 13 entries,
+Warning--empty author in shanghai
+Warning--empty author in national-importance
+Warning--empty author in gradcafe
+Warning--empty author in qs
+Warning--empty author in usnews
+Warning--empty year in edulix
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            569 strings with 5587 characters,
-and the built_in function-call counts, 3984 in all, are:
-= -- 372
-> -- 191
-< -- 1
-+ -- 78
-- -- 64
-* -- 274
-:= -- 627
-add.period$ -- 30
-call.type$ -- 13
-change.case$ -- 70
+            603 strings with 6343 characters,
+and the built_in function-call counts, 5932 in all, are:
+= -- 575
+> -- 268
+< -- 2
++ -- 111
+- -- 88
+* -- 415
+:= -- 981
+add.period$ -- 56
+call.type$ -- 20
+change.case$ -- 103
 chr.to.int$ -- 0
-cite$ -- 17
-duplicate$ -- 137
-empty$ -- 347
-format.name$ -- 64
-if$ -- 848
+cite$ -- 31
+duplicate$ -- 235
+empty$ -- 475
+format.name$ -- 88
+if$ -- 1233
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 7
-newline$ -- 58
-num.names$ -- 20
-pop$ -- 95
+int.to.str$ -- 20
+missing$ -- 19
+newline$ -- 97
+num.names$ -- 32
+pop$ -- 106
 preamble$ -- 1
-purify$ -- 56
+purify$ -- 82
 quote$ -- 0
-skip$ -- 118
+skip$ -- 170
 stack$ -- 0
-substring$ -- 235
-swap$ -- 25
-text.length$ -- 1
+substring$ -- 318
+swap$ -- 40
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 52
-warning$ -- 4
-while$ -- 30
-width$ -- 15
-write$ -- 121
+type$ -- 80
+warning$ -- 11
+while$ -- 48
+width$ -- 22
+write$ -- 203
 (There were 11 warnings)

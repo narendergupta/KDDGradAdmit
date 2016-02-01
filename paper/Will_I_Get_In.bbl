@@ -1,16 +1,24 @@
 \begin{thebibliography}{10}
 
 \bibitem{shanghai}
-{Academic Ranking of World Universities}, 2015.
+{Academic Ranking of World Universities}.
+\newblock {\em Web}, 2015.
 
 \bibitem{national-importance}
-{List of Institutes of National Importance in India}, 2015.
+{List of Institutes of National Importance in India}.
+\newblock {\em Web}, 2015.
+
+\bibitem{gradcafe}
+{The Grad Cafe}.
+\newblock {\em Web}, 2015.
 
 \bibitem{qs}
-{University Rankings | Top Universities}, 2015.
+{University Rankings | Top Universities}.
+\newblock {\em Web}, 2015.
 
 \bibitem{usnews}
-{US News Best Graduate Schools}, 2015.
+{US News Best Graduate Schools}.
+\newblock {\em Web}, 2015.
 
 \bibitem{apriori}
 R.~Agrawal, R.~Srikant, et~al.
@@ -18,11 +26,33 @@ R.~Agrawal, R.~Srikant, et~al.
 \newblock {\em Proc. 20th int. conf. very large data bases, VLDB},
   1215:487--499, 1994.
 
+\bibitem{randomforest}
+L.~Breiman.
+\newblock Random forests.
+\newblock {\em Machine learning}, 45(1):5--32, 2001.
+
+\bibitem{decisiontree}
+L.~Breiman, J.~H. Friedman, R.~A. Olshen, and C.~J. Stone.
+\newblock Classification and regression trees. wadsworth.
+\newblock {\em Belmont, CA}, 1984.
+
 \bibitem{bruggink}
 T.~H. Bruggink and V.~Gambhir.
 \newblock Statistical models for college admission and enrollment: A case study
   for a selective liberal arts college.
 \newblock {\em Research in Higher Education}, 37(2):221--240, 1996.
+
+\bibitem{libsvm}
+C.-C. Chang and C.-J. Lin.
+\newblock Libsvm: A library for support vector machines.
+\newblock {\em ACM Transactions on Intelligent Systems and Technology (TIST)},
+  2(3):27, 2011.
+
+\bibitem{adaboost}
+Y.~Freund and R.~E. Schapire.
+\newblock A desicion-theoretic generalization of on-line learning and an
+  application to boosting.
+\newblock In {\em Computational learning theory}, pages 23--37. Springer, 1995.
 
 \bibitem{GroveRoth}
 A.~Grove and D.~Roth.
@@ -40,6 +70,12 @@ J.~Han, M.~Kamber, and J.~Pei.
 \bibitem{edulix}
 S.~Kassegne.
 \newblock Edulix - premier site for scholars - 'education crowdsourced'.
+\newblock {\em Web}.
+
+\bibitem{sushnytimes}
+S.~Krishnamoorthy.
+\newblock Acceptance rates, apparently, are poor predictors of getting in.
+\newblock {\em The New York Times}, Apr 2013.
 
 \bibitem{moore}
 J.~S. Moore.
@@ -56,7 +92,12 @@ F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
 
 \bibitem{dagap}
 K.~Raghunathan.
-\newblock Demystifying the american graduate admissions process, 2010.
+\newblock {Demystifying the American Graduate Admissions Process}.
+\newblock {\em Web}, 2010.
+
+\bibitem{svmtutorial}
+A.~J. Smola and B.~Sch\"olkopf.
+\newblock A tutorial on support vector regression, 2004.
 
 \bibitem{waters:iaai13}
 A.~Waters and R.~Miikkulainen.
