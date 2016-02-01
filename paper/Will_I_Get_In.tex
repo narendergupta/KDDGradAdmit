@@ -190,7 +190,7 @@ Every year, thousands of students apply to American graduate programs and in the
 
 A typical university application process involves the applicant submitting his transcripts, standardized test scores, a few letters of recommendation, a statement of purpose that expresses his aims, ambitions and research interests, and descriptive answers to a few additional questions. Test scores include GRE\footnote{Graduate Record Examination \tiny{www.ets.org/gre}}, language test scores - such as TOEFL\footnote{Test Of English as Foreign Language \tiny{www.ets.org/toefl}} or IELTS\footnote{International English Language Testing System \tiny{www.ielts.org}} etc. Since requirements, deadlines and the specific process to meet them is university specific, the applicant needs to first choose the universities he would apply to. Hence, an applicant is generally advised to start about an year in advance of the university deadlines to timely complete these requirements.
 
-Given the uncertainty, a naive solution is to apply to a large number of universities. But, more applications imply a deeper investment of time and energy on the applicant's part. This also implies a greater monetary investment, which is a major concern for applicants from developing countries. An efficient strategy to circumvent this is to categorize the universities so that one can cover a wide spectrum by applying to a few representatives from each category. A popular scheme includes three categories: \textit{Ambitious}: where the chances of admission are slim; \textit{Reachable}: where the chances of admission are decent; \textit{Safe}: where there is a fair certainty of being accepted. Multiple admission offers resulting from these decisions allow the applicant to choose, suboptimally, their best option.
+Given the uncertainty, a naive solution is to apply to a large number of universities. But, more applications imply a deeper investment of time and energy on the applicant's part. This also implies a greater monetary investment, which is a major concern for applicants from developing countries. An efficient strategy to circumvent this is to categorize the universities so that one can cover a wide spectrum by applying to a few representatives from each category. A popular scheme includes three categories: \textit{Ambitious}: where the chances of admission are slim; \textit{Reachable}: where the chances of admission are decent; \textit{Safe}: where there is a fair certainty of being accepted \cite{susnytimes}. Multiple admission offers resulting from these decisions allow the applicant to choose, suboptimally, their best option.
 
 The description of these categories is very subjective, and even more subjective is the applicant's ability to predict his probability of \textit{Admit} i.e. chances of being admitted to a given program and, hence, the university categorization. This prediction is generally based on hearsay or semi-informed opinions, resulting in confusion and a waste of resources for both the applicant as well as the university. 
 
@@ -206,10 +206,20 @@ Works such as Bruggink et al. and Moore et al. utilize domain knowledge to build
 
 \subsection{Data}
 \label{subsec:dataset}
-\label{subsec:dataset}
 There are several online resources where applicants share their admission experiences; Edulix is one commonly used resource \cite{edulix}. It is an active resource which hosts applicant profiles from all over the world. GRE scores, undergraduate university name, GPA, TOEFL scores and other accomplishments such as work experience and research publications pertinent to the graduate admissions are reported in the profile. In addition, users mention the universities that they applied to and the result of each application (\textit{Admit}, \textit{Reject} or \textit{Result Not Available}).
 
-We collected the data present on this website. Since the data is self reported, it had some erroneous reports, which we identified and removed by completely deleting any such record. We also excluded any application that was not classified as either \textit{Admit} or \textit{Reject}. We observed that GRE and TOEFL scores have undergone various changes in grading scale over the years. Also, undergraduate institutions all over the world follow different scales for reporting GPA. As a standardization measure, we mapped these fields linearly to a scale of 0-100. An undergraduate university might be referred to by the differing names due to reasons such as usage of a popular acronym or spelling errors. We mitigated this problem by mapping the university names to their unique website URL.
+\subsection{Data Cleaning}
+\label{subsec:dataset-cleaning}
+Since the data is self reported, it had some erroneous records. We fixed these problematic entries using following techniques:
+\begin{itemize}
+\item \textit{Missing Values}: If the record did not have mandatory fields such as GRE Verbal \& Quantitative, or GPA, then such a record was completely deleted. Both missing year and missing term were replaced with the mean of existing values.
+\item \textit{Out of Range Errors}: Records which had invalid values such as negative GPA, or out of range value for GRE score components were removed in a rule-based fashion.
+\item \textit{Illegal Data-types}: Records having incompatible data-types such as string for GPA, or numerical value for degree were removed.
+\item \textit{Quantitative Normalization}: Undergraduate institutions all over the world follow different scales for reporting GPA. Similarly, GRE and TOEFL tests have undergone various scale transformations over the years. As a standardization measure, we mapped these fields linearly to a scale of [0,100].
+\item \textit{Categorical Normalization}: Sometimes students refer to the same degree using various acronyms such as \textit{BE} or \textit{BEng} for \textit{Bachelor of Engineering}. Similar is the case for departmental majors such as \textit{CS} or \textit{Comp Science} for \textit{Computer Science}. Also, sometimes there are spelling mistakes and typos in these fields. Each of these fields is, hence, normalized to manually created codes e.g. \textit{\{ba,bs,be,btech etc.\}} instead of original strings, where assignment is done using string to code mapping and regular expressions.
+\item \textit{University Normalization}: An undergraduate university might be referred to by the differing names due to reasons such as usage of a popular acronym or spelling errors. We mitigated this problem by mapping the university names to their unique website homepage using web search engine. Under this scheme, a program queried a search engine which returned a ranked list of relevant URLs. These URLs were then filtered based on heuristics (e.g. remove blog or social network URLs, prefer \textit{.edu} domains and so on) and most relevant URL was assigned to the university. These assignments were then manually verified for consistency.
+\item \textit{Labels}: We excluded any application that was not classified as either \textit{Admit} or \textit{Reject}.
+\end{itemize}
 
 In this paper we focus on modeling admission to computer science graduate programs, which form the plurality of our data. Our experiments are conducted only on this subset of the data. A few of the features of the resulting dataset for the computer science applications are in Table \ref{tab:dataset}.
 
@@ -271,7 +281,7 @@ To improve the system performance, we use ensemble learning. Training decision t
 
 \subsection{Generative Modeling}
 \label{subsec:generative-modeling}
-For a few universities, we noticed that our discriminative classifiers do not perform as expected, despite relatively large amount of data. we attribute it to the fact that some universities offer multiple degree programs that might target different kinds of applicants and have different admission criteria, e.g. professional master`s versus thesis master`s program at UIUC\footnote{University of Illinois at Urbana-Champaign}. Certain other universities, such as CMU\footnote{Carnegie Mellon University}, offer specific programs at same degree level such as master's degree in Machine Learning versus HCI\footnote{Human Computer Interaction} which fall under the purview of Computer Science. These distinctions, however, are not captured in the dataset, and are thus \textit{hidden} from our models. This distribution causes difficulties for linear separators which assume that data is coming from single source. In case the data is coming from multiple sources such as in Figure \ref{fig:linear}, it is impossible to linearly separate the data using a single classifier. To accommodate these phenomena, we use an \textit{Expectation-Maximization (EM)} algorithm that allows us to learn a model with a latent variable, capturing the missing information. The rest of this section, describes how we model the problem in this case. 
+For a few universities, we noticed that our discriminative classifiers do not perform as expected, despite relatively large amount of data. we attribute it to the fact that some universities offer multiple degree programs that might target different kinds of applicants and have different admission criteria, e.g. professional master`s versus thesis master`s program at UIUC\footnote{University of Illinois at Urbana-Champaign}. Certain other universities, such as CMU\footnote{Carnegie Mellon University}, offer specific programs at same degree level such as master's degree in Machine Learning versus HCI\footnote{Human Computer Interaction} which fall under the purview of Computer Science. These distinctions, however, are not captured in the dataset, and are thus \textit{hidden} from our models. This distribution causes difficulties for linear separators which assume that data is coming from single source. In case the data is coming from multiple sources, it is impossible to linearly separate the data using a single classifier. To accommodate these phenomena, we use an \textit{Expectation-Maximization (EM)} algorithm that allows us to learn a model with a latent variable, capturing the missing information. The rest of this section, describes how we model the problem in this case. 
 
 EM is one of the very effective techniques for finding a \textit{Maximum Likelihood Estimate} with \textit{hidden variables}. For the sake of brevity, we are not going into details of \textit{EM}. We will be using a setup similar to the one Grove et al. used in \cite{GroveRoth}.
 
@@ -416,7 +426,7 @@ Index & Feature Name & Cumulative F1 & Individual F1 \\ \hline
 \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[t]
 \centering
 \caption{F1 without each feature. Less F1 due to missing feature indicates more discriminative power of that feature.}
 \label{tab:ablation-2}
@@ -440,7 +450,7 @@ We observed from experiments that GPA results in a higher F1 score compared to a
 \label{subsec:em-exp}
 The EM model formulated in Section \ref{subsec:generative-modeling} was used to cluster students into different groups, representing potential programs. Subsequently, individual classifiers were learned for each of the clusters. Results for few of the universities for which significant growth was observed are listed in Table \ref{tab:em-gain}. As per the model assumption, EM bifurcates the data into two clusters (\textit{z}=2), each of which can be separated in a better way than the earlier cumulative cluster thereby increasing the performance of the models significantly. Improvement in F1 due to EM clustering is reported in Fig \ref{fig:simple_vs_tree_vs_em}.
 
-\begin{figure}
+\begin{figure}[t]
 \centering
 \includegraphics[scale=0.6]{simple_vs_tree_vs_em.eps}
 \caption{Improvement in F1 scores due to EM clustering}
