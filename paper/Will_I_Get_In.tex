@@ -393,6 +393,29 @@ Random Forest$_{balanced}$ 			& 0.42 & 0.56 & \textbf{0.62} & 0.72 & \textbf{0.6
 \end{tabular}
 \end{table*}
 
+\begin{table}[t]
+\centering
+\caption{Classifier parameters tuned by grid search}
+\label{tab:params}
+\begin{tabular}{l l l}
+\hline
+Classifier (Param) & Range & Best Value \\ \hline
+SVM(Linear): C & [1,100] & 29.55 \\
+SVM$_{balanced}$(Linear): C & [1,100] & 26.29 \\ \hline
+SVM(RBF): C & [1,100] & 3.68 \\
+SVM(RBF): $\gamma$ & [0.01,1.0] & 0.05 \\
+SVM$_{balanced}$(RBF): C & [1,100] & 2.59 \\
+SVM$_{balanced}$(RBF): $\gamma$ & [0.01,1.0] & 0.11 \\ \hline
+Logistic: C & [1,100] & 11.29 \\
+Logistic: penalty & {L1,L2} & L1 \\
+Logistic$_{balanced}$: C & [1,100] & 14.91 \\
+Logistic$_{balanced}$: penalty & {L1,L2} & L1 \\ \hline
+Adaboost: No. of estimators & [1,100] & 68 \\ \hline
+Random Forest: depth & [1,5] & 3 \\
+Random Forest: depth & [1,5] & 3 \\ \hline 
+\end{tabular}
+\end{table}
+
 \begin{figure}[t]
 \centering
 \includegraphics[scale=0.6]{sparse_label_vs_simple_tree_em.eps}
@@ -407,7 +430,7 @@ Random Forest$_{balanced}$ 			& 0.42 & 0.56 & \textbf{0.62} & 0.72 & \textbf{0.6
 \label{fig:acceptance_simple_tree_em}
 \end{figure}
 
-Table \ref{tab:all-f1} lists $F1_{sparse}$ and $F1_{admit}$ for both the schemes i.e. Simple features as well as Tree features. It should be noted that Logistic regression as used by Water et al \cite{waters:iaai13} does provide the best results if features extracted from the application are fed into the classifier directly, but these decisions can be improved significantly by other forms of modeling such as decision stumps, and even further by using generative modeling as detailed in Section \ref{subsec:em-exp}.
+Table \ref{tab:all-f1} lists $F1_{sparse}$ and $F1_{admit}$ for both the schemes i.e. Simple features as well as Tree features. Table \ref{tab:params} lists the tuned parameter values for different classifiers. It should be noted that Logistic regression as used by Water et al \cite{waters:iaai13} does provide the best results if features extracted from the application are fed into the classifier directly, but these decisions can be improved significantly by other forms of modeling such as decision stumps, and even further by using generative modeling as detailed in Section \ref{subsec:em-exp}.
 
 Figure \ref{fig:sparse_simple_tree_em} plots $F1_{sparse}$ as a function of the presence of sparser label. As expected, performance of the model gets better as the sparse label ratio gets closer to 0.5 (i.e. sparse label percentage gets closer to 50\%). It is also evident from the figure that all the individual $F1^{(i)}$s for decision tree featured model are performing better than simple feature model. The curves, fitted to the individual points by using moving average over a window of 5, show similar trend. Similar is the case for $F1_{admit}$ when it is plotted against \textit{Acceptance Ratio}, in Figure \ref{fig:acceptance_simple_tree_em}.
 
