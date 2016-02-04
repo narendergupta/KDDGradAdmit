@@ -250,11 +250,14 @@ Degrees sought & [MS, PhD] \\
 
 \subsection{Supervised Learning}
 \label{subsec:supervised-learning}
-Each university offers binary decisions to applicants (\textit{Admit} or \textit{Reject}) and this decision is unaffected by the decision of other universities. Hence, the overall problem can be modeled as a set of individual binary classification problems. Supervised learning algorithms can be trained using features extracted from a labeled dataset and evaluated on prediction accuracy. However, accuracy, in this case, is a biased metric since most universities have very low acceptance rates, some of them being as low as 8\%. In such a scenario, even by blindly rejecting all the applications the classifier will still evaluate to over 90\% accuracy, without the need to learn anything. Also, acceptance rates vary across universities and thus accuracy will not be a true representative of the learning model's performance. Hence, we chose F1 as our evaluation metric which combines precision and recall. Since number of admitted students is less than that of the rejected ones, we report our results for \textit{Admit} label which provides a stricter bound on evaluations. F1 score takes into account not just the correct number of predictions made for \textit{Admit} (\textit{Precision}), but also the ratio of \textit{Admit} students out of true \textit{Admit} count (\textit{Recall}).
+Each university offers binary decision to applicant (\textit{Admit} or \textit{Reject}) and this decision is independent of the decision of other universities. Hence, the overall problem can be modeled as a set of individual binary classification problems. Supervised learning algorithms can be trained using features extracted from a labeled dataset and evaluated on prediction accuracy. Accuracy, however, is a biased metric in this case, because most universities have moderate to heavy imbalance in terms of the presence of labels and a high accuracy doesn't necessarily indicate effective learning. Some of the universities have as low acceptance rate as 8\% while others accept most of the candidates that apply. We choose F1 as our evaluation metric which combines precision and recall. From a machine learning perspective, it is easy and uninteresting to predict for the denser label, but from a student's perspective, it makes sense to predict \textit{Admit}. Hence, we evaluate our models on both of the metrics i.e. F1 over sparser label ($F1_{sparse}$), as well as F1 over \textit{Admit} ($F1_{admit}$). F1 score takes into account not just the correct number of predictions made for the label (\textit{Precision}), but also the ratio of predicted true labels out of total true labels (\textit{Recall}). Let $U=\{1,2,...,N\}$ is the set of $N$ universities, then $F1^{(i)}$ for the university $i$ is defined as:
+$$F1^{(i)} = \frac{2 \times Precision^{(i)} \times Recall^{(i)}}{Precision^{(i)} + Recall^{(i)}}$$
+$$Precision^{(i)} = \frac{TP}{TP + FP}$$
+$$Recall^{(i)} = \frac{TP}{TP + FN}$$
 
-$$F1 = \frac{2 \times Precision \times Recall}{Precision + Recall}$$
-$$Precision = \frac{TP}{TP + FP}$$
-$$Recall = \frac{TP}{TP + FN}$$
+$F1$ over the set $U$ is defined as the statistical mean of individual $F1$s i.e.
+$$F1_{sparse} = \langle \{ F1^{(i)}_{sparse} \forall~i \in U \} \rangle $$
+$$F1_{admit} = \langle \{ F1^{(i)}_{admit} \forall~i \in U \} \rangle $$
 
 \begin{table}[]
 \centering
@@ -273,7 +276,7 @@ $$Recall = \frac{TP}{TP + FN}$$
 The dataset contains several fields such as standardized test scores and academic history records. We extract several numerical features from these such as GRE test scores (AWA\footnote{Analytical Writing Analysis}, Verbal \& Quantitative), undergraduate GPA, language test scores (TOEFL), as well as categorical features such as program applied to (e.g. MS, PhD), term (e.g. Fall, Spring) etc. These features are used for learning Logistic Regression, Support Vector Machine and Random Forest. Since most work available in the literature is confined to approaches we have mentioned so far, we`ll regard it as the baseline for any novelties that we propose.
 
 \textbf{Ensemble Learning:}
-To improve the system performance, we use ensemble learning. Training decision trees without bounded depth is prone to overfitting. But we can hope to generalize better if we use several limited-depth decision trees using partial data, and then feeding each decision as a feature into another regularized classifier. Constrained by the variance-bias trade-off, the second classifier captures variance of data through multiple underlying decision trees while keeping a limit on its own variance by choosing simple models such as linear separators e.g. soft-margin support vector machine. We create \textit{d} such limited-depth decision tree classifiers where each classifier is trained on a bootstrapped sample from the original dataset. Corresponding to decision of each such classifier, we get a feature for the next classifier.
+To improve the system performance, we use ensemble learning. Training decision trees without bounded depth is prone to overfitting \cite{tree-overfitting}. But we can hope to generalize better if we use several limited-depth decision trees using partial data, and then feeding each decision as a feature into another regularized classifier. Constrained by the variance-bias trade-off, the second classifier captures variance of data through multiple underlying decision trees while keeping a limit on its own variance by choosing simple models such as linear separators e.g. soft-margin support vector machine. We create \textit{d} such limited-depth decision tree classifiers where each classifier is trained on a bootstrapped sample from the original dataset. Corresponding to decision of each such classifier, we get a feature for the next classifier.
 
 
 \subsection{Generative Modeling}
@@ -351,7 +354,8 @@ Using above update rules, and various initializations for the latent variables, 
 \label{sec:experiments}
 Our experimental study is designed to investigate the following issues:
 \begin{itemize}
-\item The ability to to make reliable prediction on whether a specific student can be admitted to a given program.
+\item The ability to make reliable prediction on sparser label for a university for any student.
+\item The ability to make reliable prediction on whether a specific student can be admitted to a given program.
 \item Our ability to identify sub-programs in a given university, and its significance on the performance of our admission model.
 \item Understanding the factors that contribute to admission.
 \item Understanding the differences among universities in terms of their admission decisions.
@@ -360,37 +364,57 @@ The rest of this section describes the details of our experimental study, and it
 
 \subsection{Discriminative Classifiers}
 \label{subsec:supervised-exp}
-We ran multiple experiments with various classifiers such as - SVM with linear kernel or Radial Basis Function kernel \cite{libsvm}, \cite{svmtutorial}, Logistic Regression, Adaboost \cite{adaboost} with decision trees \cite{decisiontree}, and Random Forest \cite{randomforest}. We also experimented with all of the above classifiers by adjusting class weights inversely proportional to the class frequency in input data. Each of these setups is used in two different settings:
+We ran multiple experiments with various classifiers such as - SVM with linear kernel or Radial Basis Function kernel \cite{libsvm}, \cite{svmtutorial}, Logistic Regression, Adaboost \cite{adaboost} with decision trees \cite{decisiontree}, and Random Forest \cite{randomforest}. We also experimented with all of the above classifiers with balanced class weights by adjusting them inversely proportional to the class frequency in input data. Each of these setups is used in two different settings:
 \begin{itemize}
-\item Using simple features extracted from student records
-\item Training \textit{d} decision tree classifiers with bounded-depth (depth=3) and then using predictions of these classifiers as features. Each decision tree is trained on 50\% data, selected randomly.
+\item \textbf{Simple features}: Features extracted from student records
+\item \textbf{Tree features} Training \textit{d} decision tree classifiers with bounded-depth and then using predictions of these classifiers as features. Each decision tree is trained on uniformly sampled 50\% data restricted to maximum depth of 3.
 \end{itemize}
-Using grid search in the range [10,1000], we found that \textit{d}=60 yields maximum average F1 over all universities. These classifiers can provide the probability of the label as well which we utilize in Section \ref{sec:recommendations}. We observed that SVM with RBF kernel and Random Forest (with adjusted class weights, as explained above) perform the best, hence we will report only their results for further experiments. These experiments were conducted using Scikit-learn \cite{scikit-learn}.
+Using grid search in the range [10,1000], we found that \textit{d}=60 yields maximum average F1 over all universities. These classifiers can provide the probability of the label as well which we utilize in Section \ref{sec:recommendations}. These experiments were conducted using Scikit-learn \cite{scikit-learn}.
 
-\begin{figure}[h]
+\begin{table*}[t]
 \centering
-\includegraphics[scale=0.6]{simple_features.eps}
-\caption{F1 scores for classification using supervised learning on simple features.}
-\label{fig:simple_features}
+\caption{F1 over different classifiers and schemes}
+\label{tab:all-f1}
+\begin{tabular}{|l|l l|l l|l l|}
+\hline
+Classifier / \textbf{Scheme} & \multicolumn{2}{l|}{\textbf{Simple Features}} & \multicolumn{2}{l|}{\textbf{Tree Features}} & \multicolumn{2}{l|}{\textbf{Generative Modeling}} \\
+ & $F1_{sparse}$ & $F1_{admit}$ & $F1_{sparse}$ & $F1_{admit}$ & $F1_{sparse}$ & $F1_{admit}$ \\ \hline
+SVM (Linear Kernel) 				& 0.34 & 0.52 & 0.60 & \textbf{0.73} & 0.66 & 0.75 \\ \hline
+SVM$_{balanced}$ (Linear Kernel)	& 0.46 & \textbf{0.58} & 0.61 & 0.70 & 0.66 & 0.75 \\ \hline
+SVM (RBF Kernel) 					& 0.18 & 0.46 & 0.57 & 0.70 & 0.60 & 0.76 \\ \hline
+SVM$_{balanced}$ (RBF Kernel) 		& 0.09 & 0.41 & 0.35 & 0.57 & 0.37 & 0.62 \\ \hline
+Logistic 							& 0.36 & 0.56 & 0.57 & 0.70 & 0.60 & 0.72 \\ \hline
+Logistic$_{balanced}$ 				& \textbf{0.48} & 0.57 & 0.57 & 0.68 & 0.62 & 0.72 \\ \hline
+AdaBoost 							& 0.37 & 0.54 & 0.55 & 0.70 & 0.59 & 0.71 \\ \hline
+Random Forest 						& 0.24 & 0.49 & 0.59 & 0.71 & 0.62 & 0.74 \\ \hline
+Random Forest$_{balanced}$ 			& 0.42 & 0.56 & \textbf{0.62} & 0.72 & \textbf{0.65} & \textbf{0.77} \\ \hline
+\end{tabular}
+\end{table*}
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.8]{sparse_label_vs_simple_tree_em.eps}
+\caption{Sparse label presence v/s $moving\_average(F1^{(i)}_{sparse})$ with a window of size 5}
+\label{fig:sparse_simple_tree_em}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[t]
 \centering
-\includegraphics[scale=0.6]{tree_features.eps}
-\caption{F1 scores for classification using supervised learning on bounded-depth decision tree features.}
-\label{fig:tree_features}
+\includegraphics[scale=0.8]{acceptance_ratio_vs_simple_tree_em.eps}
+\caption{Acceptance Ratio v/s $moving\_average(F1^{(i)}_{admit})$ with a window of size 5}
+\label{fig:acceptance_simple_tree_em}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.8]{rank_vs_simple_tree_em.eps}
+\caption{University Rank v/s $moving\_average(F1^{(i)}_{admit})$ with a window of size 5}
+\label{fig:rank_simple_tree_em}
 \end{figure}
 
 To garner insights out of classification results for different universities, we needed to sort them in some order. To explore the trends i.e. the variation in prediction performance on universities of varied reputation, an ordering on the basis of reputation was required. We chose this order to be US News Graduate School Ranking, primarily, because of its popularity among applicants. Whenever a rank was not available in this resource, a similar resource was consulted. In US News ranks, sometimes multiple adjacently ranked universities were stacked up on a single rank, and the resulting emptied out slots were left vacant. We flattened each stack to its nearest available slots. Fig \ref{fig:simple_features} shows F1 on y-axis and university ranking on x-axis.
 
 These results are for 69 universities having more than a thresholded number of applicants. For simplicity purposes, we treated these discrete values as a continuous function while plotting the graph. It can be observed that SVM with RBF kernel yields best results, hence, a smooth curve, using moving averages of span 5, of it is also plotted for easy visualization. Similar graph is plotted for ensemble learning with Decision Tree features in Fig \ref{fig:tree_features}. Fig \ref{fig:simple_vs_tree} shows that Decision Tree feature classifier is a huge improvement over simple features.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.6]{simple_vs_tree.eps}
-\caption{Comparison of Decision Tree feature classifier with baseline of simple feature classifier.}
-\label{fig:simple_vs_tree}
-\end{figure}
 
 As we can see from Fig \ref{fig:tree_features} that we can get very good predictions for certain universities (F1 $\geq$ 0.8), while it is decent but not as good for certain others (0.6 $\leq$ F1 $<$ 0.8), and low for certain other universities. But it is interesting to see the growth trend in F1 as we go from top-tier to lower-tier rank universities. The trend represents that we can classify with very high confidence for lower-tier universities using available features, in spite of lack of qualitative features such as Statement of Purpose or Letter of Recommendation, Research Publications etc. At the same time, top-tier universities might put more focus on these qualitative features.\\
 
@@ -443,16 +467,9 @@ Previous Department & 0.7518 \\ \hline
 We observed from experiments that GPA results in a higher F1 score compared to any other single feature for any university. Also, if we calculate F1 by excluding individual features, exclusion of GPA causes maximum loss in F1. Both of these observations lead to the conclusion that GPA has the highest discriminative power among all available features. The result is intuitive as it validates the expectation that, broadly speaking, GPA is the prime factor in the admission process. It can also be seen that as the number of features that are considered is increased, performance goes up and is the highest when all the features are considered. Table \ref{tab:ablation} lists individual discriminative powers of each feature, as well as cumulative power for $i$ features i.e. when features ${1,...,i}$ are used for classification. Table \ref{tab:ablation-2} lists loss in F1 due to exclusion of each feature during classification. Fig \ref{fig:ablation} plots the cumulative discriminative power when we keep on adding features.
 
 
-\subsection{EM}
+\subsection{Generative Modeling}
 \label{subsec:em-exp}
 The EM model formulated in Section \ref{subsec:generative-modeling} was used to cluster students into different groups, representing potential programs. Subsequently, individual classifiers were learned for each of the clusters. Results for few of the universities for which significant growth was observed are listed in Table \ref{tab:em-gain}. As per the model assumption, EM bifurcates the data into two clusters (\textit{z}=2), each of which can be separated in a better way than the earlier cumulative cluster thereby increasing the performance of the models significantly. Improvement in F1 due to EM clustering is reported in Fig \ref{fig:simple_vs_tree_vs_em}.
-
-\begin{figure}[t]
-\centering
-\includegraphics[scale=0.6]{simple_vs_tree_vs_em.eps}
-\caption{Improvement in F1 scores due to EM clustering}
-\label{fig:simple_vs_tree_vs_em}
-\end{figure}
 
 \begin{table}[h]
 \centering

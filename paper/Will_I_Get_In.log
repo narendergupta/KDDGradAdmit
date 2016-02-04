@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.16)  1 FEB 2016 14:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.16)  3 FEB 2016 18:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -403,100 +403,151 @@ Overfull \hbox (12.70601pt too wide) in paragraph at lines 228--248
 [2]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 259.
+               Default added (so using `tbp') on input line 262.
 
 
-Overfull \hbox (2.9597pt too wide) in paragraph at lines 272--274
+Overfull \hbox (2.9597pt too wide) in paragraph at lines 275--277
 []\T1/aer/bx/n/9 Feature En-gi-neer-ing: \T1/aer/m/n/9 The dataset con-tains se
 v-eral fields
  []
 
 
-Overfull \hbox (3.78673pt too wide) in paragraph at lines 272--274
+Overfull \hbox (3.78673pt too wide) in paragraph at lines 275--277
 \T1/aer/m/n/9 such as stan-dard-ized test scores and aca-demic his-tory records
 .
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
-Overfull \hbox (7.58861pt too wide) in paragraph at lines 325--325
+[3]
+Overfull \hbox (7.58861pt too wide) in paragraph at lines 328--328
 [] 
  []
 
-Package epstopdf Info: Source file: <simple_features.eps>
-(epstopdf)                    date: 2015-10-31 22:53:13
-(epstopdf)                    size: 23487 bytes
-(epstopdf)             Output file: <simple_features-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-01-30 19:36:24
-(epstopdf)                    size: 12349 bytes
-(epstopdf)             Command: <repstopdf --outfile=simple_features-eps-conver
-ted-to.pdf simple_features.eps>
-(epstopdf)             \includegraphics on input line 372.
-Package epstopdf Info: Output file is already uptodate.
-<simple_features-eps-converted-to.pdf, id=26, 421.575pt x 316.18124pt>
-File: simple_features-eps-converted-to.pdf Graphic file (type pdf)
 
-<use simple_features-eps-converted-to.pdf>
-Package pdftex.def Info: simple_features-eps-converted-to.pdf used on input lin
-e 372.
-(pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
-
-Overfull \hbox (12.94695pt too wide) in paragraph at lines 372--373
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-Package epstopdf Info: Source file: <tree_features.eps>
-(epstopdf)                    date: 2015-10-31 22:53:13
-(epstopdf)                    size: 22490 bytes
-(epstopdf)             Output file: <tree_features-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-01-30 19:36:24
-(epstopdf)                    size: 11993 bytes
-(epstopdf)             Command: <repstopdf --outfile=tree_features-eps-converte
-d-to.pdf tree_features.eps>
-(epstopdf)             \includegraphics on input line 379.
-Package epstopdf Info: Output file is already uptodate.
-<tree_features-eps-converted-to.pdf, id=27, 414.54875pt x 294.09875pt>
-File: tree_features-eps-converted-to.pdf Graphic file (type pdf)
-
-<use tree_features-eps-converted-to.pdf>
-Package pdftex.def Info: tree_features-eps-converted-to.pdf used on input line 
-379.
-(pdftex.def)             Requested size: 248.73116pt x 176.4606pt.
-
-Overfull \hbox (8.73116pt too wide) in paragraph at lines 379--380
- [][] 
+Overfull \hbox (1.84285pt too wide) in paragraph at lines 370--371
+\T1/aer/m/n/9 bounded-depth and then us-ing pre-dic-tions of these clas-
  []
 
 [4]
-Package epstopdf Info: Source file: <simple_vs_tree.eps>
-(epstopdf)                    date: 2015-10-31 22:53:13
-(epstopdf)                    size: 18775 bytes
-(epstopdf)             Output file: <simple_vs_tree-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-01-30 19:51:44
-(epstopdf)                    size: 9818 bytes
-(epstopdf)             Command: <repstopdf --outfile=simple_vs_tree-eps-convert
-ed-to.pdf simple_vs_tree.eps>
-(epstopdf)             \includegraphics on input line 390.
+Package epstopdf Info: Source file: <sparse_label_vs_simple_tree_em.eps>
+(epstopdf)                    date: 2016-02-03 18:04:31
+(epstopdf)                    size: 51582 bytes
+(epstopdf)             Output file: <sparse_label_vs_simple_tree_em-eps-convert
+ed-to.pdf>
+(epstopdf)                    date: 2016-02-03 18:05:16
+(epstopdf)                    size: 12337 bytes
+(epstopdf)             Command: <repstopdf --outfile=sparse_label_vs_simple_tre
+e_em-eps-converted-to.pdf sparse_label_vs_simple_tree_em.eps>
+(epstopdf)             \includegraphics on input line 396.
 Package epstopdf Info: Output file is already uptodate.
- <simple_vs_tree-eps-converted-to.pdf, id=36, 414.54875pt x 315.1775pt>
-File: simple_vs_tree-eps-converted-to.pdf Graphic file (type pdf)
 
-<use simple_vs_tree-eps-converted-to.pdf>
-Package pdftex.def Info: simple_vs_tree-eps-converted-to.pdf used on input line
- 390.
-(pdftex.def)             Requested size: 248.73116pt x 189.10796pt.
+<sparse_label_vs_simple_tree_em-eps-converted-to.pdf, id=34, 312.16624pt x 333.
+245pt>
+File: sparse_label_vs_simple_tree_em-eps-converted-to.pdf Graphic file (type pd
+f)
+ <use sparse_label_vs_simple_tree_em-eps-converted-to.pdf>
+Package pdftex.def Info: sparse_label_vs_simple_tree_em-eps-converted-to.pdf us
+ed on input line 396.
+(pdftex.def)             Requested size: 249.73334pt x 266.59634pt.
 
-Overfull \hbox (8.73116pt too wide) in paragraph at lines 390--391
+Overfull \hbox (9.73334pt too wide) in paragraph at lines 396--397
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 395--396
+Underfull \hbox (badness 10000) in paragraph at lines 397--397
+[]\T1/aer/bx/n/9 Figure 1: Sparse la-bel pres-ence v/s
+ []
+
+
+Underfull \hbox (badness 2932) in paragraph at lines 397--397
+\OML/cmm/m/it/9 moving[]average\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 F\OT1/cmr/m/n/9 
+1[])$ \T1/aer/bx/n/9 with a win-dow of size
+ []
+
+Package epstopdf Info: Source file: <acceptance_ratio_vs_simple_tree_em.eps>
+(epstopdf)                    date: 2016-02-03 18:09:03
+(epstopdf)                    size: 50800 bytes
+(epstopdf)             Output file: <acceptance_ratio_vs_simple_tree_em-eps-con
+verted-to.pdf>
+(epstopdf)                    date: 2016-02-03 18:09:27
+(epstopdf)                    size: 12342 bytes
+(epstopdf)             Command: <repstopdf --outfile=acceptance_ratio_vs_simple
+_tree_em-eps-converted-to.pdf acceptance_ratio_vs_simple_tree_em.eps>
+(epstopdf)             \includegraphics on input line 403.
+Package epstopdf Info: Output file is already uptodate.
+
+<acceptance_ratio_vs_simple_tree_em-eps-converted-to.pdf, id=35, 315.1775pt x 3
+48.30125pt>
+File: acceptance_ratio_vs_simple_tree_em-eps-converted-to.pdf Graphic file (typ
+e pdf)
+ <use acceptance_ratio_vs_simple_tree_em-eps-converted-to.pdf>
+Package pdftex.def Info: acceptance_ratio_vs_simple_tree_em-eps-converted-to.pd
+f used on input line 403.
+(pdftex.def)             Requested size: 252.14233pt x 278.64137pt.
+
+Overfull \hbox (12.14233pt too wide) in paragraph at lines 403--404
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 404--404
+[]\T1/aer/bx/n/9 Figure 2: Ac-cep-tance Ra-tio v/s
+ []
+
+
+Underfull \hbox (badness 3679) in paragraph at lines 404--404
+\OML/cmm/m/it/9 moving[]average\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 F\OT1/cmr/m/n/9 
+1[])$ \T1/aer/bx/n/9 with a win-dow of size
+ []
+
+Package epstopdf Info: Source file: <rank_vs_simple_tree_em.eps>
+(epstopdf)                    date: 2016-02-03 18:12:36
+(epstopdf)                    size: 49894 bytes
+(epstopdf)             Output file: <rank_vs_simple_tree_em-eps-converted-to.pd
+f>
+(epstopdf)                    date: 2016-02-03 18:13:30
+(epstopdf)                    size: 12493 bytes
+(epstopdf)             Command: <repstopdf --outfile=rank_vs_simple_tree_em-eps
+-converted-to.pdf rank_vs_simple_tree_em.eps>
+(epstopdf)             \includegraphics on input line 410.
+Package epstopdf Info: Output file is already uptodate.
+<rank_vs_simple_tree_em-eps-converted-to.pdf, id=36, 313.17pt x 334.24875pt>
+File: rank_vs_simple_tree_em-eps-converted-to.pdf Graphic file (type pdf)
+
+<use rank_vs_simple_tree_em-eps-converted-to.pdf>
+Package pdftex.def Info: rank_vs_simple_tree_em-eps-converted-to.pdf used on in
+put line 410.
+(pdftex.def)             Requested size: 250.53633pt x 267.39935pt.
+
+Overfull \hbox (10.53633pt too wide) in paragraph at lines 410--411
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 411--411
+[]\T1/aer/bx/n/9 Figure 3: Uni-ver-sity Rank v/s
+ []
+
+
+Underfull \hbox (badness 3679) in paragraph at lines 411--411
+\OML/cmm/m/it/9 moving[]average\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 F\OT1/cmr/m/n/9 
+1[])$ \T1/aer/bx/n/9 with a win-dow of size
+ []
+
+
+LaTeX Warning: Reference `fig:simple_features' on page \thepage  undefined on i
+nput line 415.
+
+
+LaTeX Warning: Reference `fig:tree_features' on page \thepage  undefined on inp
+ut line 417.
+
+
+LaTeX Warning: Reference `fig:tree_features' on page \thepage  undefined on inp
+ut line 419.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 419--420
 
  []
 
@@ -508,16 +559,16 @@ Package epstopdf Info: Source file: <ablation.eps>
 (epstopdf)                    size: 8565 bytes
 (epstopdf)             Command: <repstopdf --outfile=ablation-eps-converted-to.
 pdf ablation.eps>
-(epstopdf)             \includegraphics on input line 404.
+(epstopdf)             \includegraphics on input line 428.
 Package epstopdf Info: Output file is already uptodate.
 <ablation-eps-converted-to.pdf, id=37, 414.54875pt x 315.1775pt>
 File: ablation-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ablation-eps-converted-to.pdf>
-Package pdftex.def Info: ablation-eps-converted-to.pdf used on input line 404.
+Package pdftex.def Info: ablation-eps-converted-to.pdf used on input line 428.
 (pdftex.def)             Requested size: 248.73116pt x 189.10796pt.
 
-Overfull \hbox (8.73116pt too wide) in paragraph at lines 404--405
+Overfull \hbox (8.73116pt too wide) in paragraph at lines 428--429
  [][] 
  []
 
@@ -525,17 +576,17 @@ Overfull \hbox (8.73116pt too wide) in paragraph at lines 404--405
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (8.35417pt too wide) in paragraph at lines 414--414
+Overfull \hbox (8.35417pt too wide) in paragraph at lines 438--438
 []\T1/aer/m/n/9 Index| 
  []
 
 
-Overfull \hbox (9.47768pt too wide) in paragraph at lines 414--414
+Overfull \hbox (9.47768pt too wide) in paragraph at lines 438--438
 []\T1/aer/m/n/9 Cumulative
  []
 
 
-Overfull \hbox (4.0504pt too wide) in paragraph at lines 414--414
+Overfull \hbox (4.0504pt too wide) in paragraph at lines 438--438
 []\T1/aer/m/n/9 Individual
  []
 
@@ -543,48 +594,28 @@ Overfull \hbox (4.0504pt too wide) in paragraph at lines 414--414
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (3.1027pt too wide) in paragraph at lines 443--444
+Overfull \hbox (3.1027pt too wide) in paragraph at lines 467--468
 []\T1/aer/m/n/9 We ob-served from ex-per-i-ments that GPA re-sults in a higher
  []
 
-[5 <./simple_features-eps-converted-to.pdf> <./tree_features-eps-converted-to.p
-df> <./simple_vs_tree-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <simple_vs_tree_vs_em.eps>
-(epstopdf)                    date: 2015-10-31 22:53:13
-(epstopdf)                    size: 20178 bytes
-(epstopdf)             Output file: <simple_vs_tree_vs_em-eps-converted-to.pdf>
+[5 <./sparse_label_vs_simple_tree_em-eps-converted-to.pdf> <./acceptance_ratio_
+vs_simple_tree_em-eps-converted-to.pdf>]
 
-(epstopdf)                    date: 2016-01-30 19:51:44
-(epstopdf)                    size: 10384 bytes
-(epstopdf)             Command: <repstopdf --outfile=simple_vs_tree_vs_em-eps-c
-onverted-to.pdf simple_vs_tree_vs_em.eps>
-(epstopdf)             \includegraphics on input line 452.
-Package epstopdf Info: Output file is already uptodate.
-
-<simple_vs_tree_vs_em-eps-converted-to.pdf, id=65, 414.54875pt x 294.09875pt>
-File: simple_vs_tree_vs_em-eps-converted-to.pdf Graphic file (type pdf)
-
-<use simple_vs_tree_vs_em-eps-converted-to.pdf>
-Package pdftex.def Info: simple_vs_tree_vs_em-eps-converted-to.pdf used on inpu
-t line 452.
-(pdftex.def)             Requested size: 248.73116pt x 176.4606pt.
-
-Overfull \hbox (8.73116pt too wide) in paragraph at lines 452--453
- [][] 
- []
+LaTeX Warning: Reference `fig:simple_vs_tree_vs_em' on page \thepage  undefined
+ on input line 472.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 462--462
+Underfull \hbox (badness 10000) in paragraph at lines 479--479
 []\T1/aer/m/n/9 EM
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 462--462
+Underfull \hbox (badness 10000) in paragraph at lines 479--479
 \T1/aer/m/n/9 +
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 462--462
+Underfull \hbox (badness 10000) in paragraph at lines 479--479
 []\T1/aer/m/n/9 EM
  []
 
@@ -592,16 +623,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 462--462
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: Reference `fig:simple_vs_tree_vs_em' on page \thepage  undefined
+ on input line 494.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 483--484
+[6 <./rank_vs_simple_tree_em-eps-converted-to.pdf> <./ablation-eps-converted-to
+.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 500--501
 
  []
 
-[6 <./ablation-eps-converted-to.pdf> <./simple_vs_tree_vs_em-eps-converted-to.p
-df>]
-Overfull \hbox (8.49837pt too wide) in paragraph at lines 503--504
+
+Overfull \hbox (8.49837pt too wide) in paragraph at lines 520--521
 \T1/aer/m/n/9 tion: Rank-A=47, Rank-B=217, Rank-C=363, Rank-D=2354.
  []
 
@@ -613,63 +645,68 @@ Package epstopdf Info: Source file: <undergrad_rank_gain.eps>
 (epstopdf)                    size: 9400 bytes
 (epstopdf)             Command: <repstopdf --outfile=undergrad_rank_gain-eps-co
 nverted-to.pdf undergrad_rank_gain.eps>
-(epstopdf)             \includegraphics on input line 513.
+(epstopdf)             \includegraphics on input line 530.
 Package epstopdf Info: Output file is already uptodate.
-<undergrad_rank_gain-eps-converted-to.pdf, id=85, 421.575pt x 316.18124pt>
+<undergrad_rank_gain-eps-converted-to.pdf, id=67, 421.575pt x 316.18124pt>
 File: undergrad_rank_gain-eps-converted-to.pdf Graphic file (type pdf)
 
 <use undergrad_rank_gain-eps-converted-to.pdf>
 Package pdftex.def Info: undergrad_rank_gain-eps-converted-to.pdf used on input
- line 513.
+ line 530.
 (pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
 
-Overfull \hbox (12.94695pt too wide) in paragraph at lines 513--514
+Overfull \hbox (12.94695pt too wide) in paragraph at lines 530--531
  [][] 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 518.
+               Default added (so using `tbp') on input line 535.
 
 
-Overfull \hbox (6.83504pt too wide) in paragraph at lines 523--523
+Overfull \hbox (6.83504pt too wide) in paragraph at lines 540--540
 []\T1/aer/m/n/9 RSSDRL| 
  []
 
 
-Overfull \hbox (8.63509pt too wide) in paragraph at lines 523--523
+Overfull \hbox (8.63509pt too wide) in paragraph at lines 540--540
 []\T1/aer/m/n/9 RSUDRL| 
  []
 
 
-Overfull \hbox (4.63371pt too wide) in paragraph at lines 522--530
+Overfull \hbox (4.63371pt too wide) in paragraph at lines 539--547
  [][] 
  []
 
-[7 <./undergrad_rank_gain-eps-converted-to.pdf>]
-Overfull \hbox (9.33783pt too wide) in paragraph at lines 588--588
+[7] [8 <./undergrad_rank_gain-eps-converted-to.pdf>]
+Overfull \hbox (9.33783pt too wide) in paragraph at lines 605--605
 []\T1/aer/bx/n/9 Support| 
  []
 
-[8]
-Overfull \hbox (4.25508pt too wide) in paragraph at lines 632--633
+
+LaTeX Warning: Reference `fig:simple_vs_tree_vs_em' on page \thepage  undefined
+ on input line 617.
+
+
+Overfull \hbox (4.25508pt too wide) in paragraph at lines 649--650
 []\T1/aer/m/n/9 This pa-per stud-ies the grad-u-ate ad-mis-sion pro-cess in Ame
 r-
  []
 
-(./Will_I_Get_In.bbl [9]) [10
+[9] (./Will_I_Get_In.bbl) [10] (./Will_I_Get_In.aux)
 
-] (./Will_I_Get_In.aux)
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4156 strings out of 494957
- 55390 string characters out of 6180027
- 138617 words of memory out of 5000000
- 7235 multiletter control sequences out of 15000+600000
- 59265 words of font info for 83 fonts, out of 8000000 for 9000
+ 4160 strings out of 494957
+ 55552 string characters out of 6180027
+ 142629 words of memory out of 5000000
+ 7238 multiletter control sequences out of 15000+600000
+ 62289 words of font info for 85 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  49i,16n,34p,1763b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -690,10 +727,10 @@ fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Will_I_Get_In.pdf (10 pages, 311060 bytes).
+Output written on Will_I_Get_In.pdf (10 pages, 315730 bytes).
 PDF statistics:
- 169 PDF objects out of 1000 (max. 8388607)
- 118 compressed objects within 2 object streams
+ 151 PDF objects out of 1000 (max. 8388607)
+ 106 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

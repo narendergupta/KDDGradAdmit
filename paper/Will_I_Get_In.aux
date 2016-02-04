@@ -23,6 +23,7 @@
 \newlabel{subsec:dataset-cleaning}{{2.2}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Supervised Learning}{\thepage }}
 \newlabel{subsec:supervised-learning}{{2.3}{\thepage }}
+\citation{tree-overfitting}
 \citation{GroveRoth}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Features of Data}}{\thepage }}
 \newlabel{tab:dataset}{{1}{\thepage }}
@@ -41,46 +42,50 @@
 \newlabel{sec:experiments}{{3}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Discriminative Classifiers}{\thepage }}
 \newlabel{subsec:supervised-exp}{{3.1}{\thepage }}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces F1 scores for classification using supervised learning on simple features.}}{\thepage }}
-\newlabel{fig:simple_features}{{1}{\thepage }}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces F1 scores for classification using supervised learning on bounded-depth decision tree features.}}{\thepage }}
-\newlabel{fig:tree_features}{{2}{\thepage }}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Comparison of Decision Tree feature classifier with baseline of simple feature classifier.}}{\thepage }}
-\newlabel{fig:simple_vs_tree}{{3}{\thepage }}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Sparse label presence v/s $moving\_average(F1^{(i)}_{sparse})$ with a window of size 5}}{\thepage }}
+\newlabel{fig:sparse_simple_tree_em}{{1}{\thepage }}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Acceptance Ratio v/s $moving\_average(F1^{(i)}_{admit})$ with a window of size 5}}{\thepage }}
+\newlabel{fig:acceptance_simple_tree_em}{{2}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Feature Ablation}{\thepage }}
 \newlabel{subsec:ablation-exp}{{3.2}{\thepage }}
-\citation{dagap}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces F1 over different classifiers and schemes}}{\thepage }}
+\newlabel{tab:all-f1}{{3}{\thepage }}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces University Rank v/s $moving\_average(F1^{(i)}_{admit})$ with a window of size 5}}{\thepage }}
+\newlabel{fig:rank_simple_tree_em}{{3}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Generative Modeling}{\thepage }}
+\newlabel{subsec:em-exp}{{3.3}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Cumulative F1 as we keep on increasing features on top of GPA}}{\thepage }}
 \newlabel{fig:ablation}{{4}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Discriminative Power of each feature}}{\thepage }}
-\newlabel{tab:ablation}{{3}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}EM}{\thepage }}
-\newlabel{subsec:em-exp}{{3.3}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces F1 without each feature. Less F1 due to missing feature indicates more discriminative power of that feature.}}{\thepage }}
-\newlabel{tab:ablation-2}{{4}{\thepage }}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Improvement in F1 scores due to EM clustering}}{\thepage }}
-\newlabel{fig:simple_vs_tree_vs_em}{{5}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Understanding Institution Rankings}{\thepage }}
-\newlabel{subsec:ranking-exp}{{3.4}{\thepage }}
+\citation{dagap}
 \citation{usnews}
 \citation{qs}
 \citation{shanghai}
 \citation{national-importance}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Gain in F1 score due to EM clustering}}{\thepage }}
-\newlabel{tab:em-gain}{{5}{\thepage }}
-\newlabel{tab:em-gain}{{5}{\thepage }}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Gain in F1 due to various rank-lists}}{\thepage }}
-\newlabel{fig:undergrad_rank_gain}{{6}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Gain in F1 due to various rank-lists}}{\thepage }}
-\newlabel{tab:undergrad_rank_gain}{{6}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Discriminative Power of each feature}}{\thepage }}
+\newlabel{tab:ablation}{{4}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces F1 without each feature. Less F1 due to missing feature indicates more discriminative power of that feature.}}{\thepage }}
+\newlabel{tab:ablation-2}{{5}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Understanding Institution Rankings}{\thepage }}
+\newlabel{subsec:ranking-exp}{{3.4}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Gain in F1 score due to EM clustering}}{\thepage }}
+\newlabel{tab:em-gain}{{6}{\thepage }}
+\newlabel{tab:em-gain}{{6}{\thepage }}
 \citation{apriori}
 \citation{Han2012243}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Gain in F1 due to various rank-lists}}{\thepage }}
+\newlabel{fig:undergrad_rank_gain}{{5}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Gain in F1 due to various rank-lists}}{\thepage }}
+\newlabel{tab:undergrad_rank_gain}{{7}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Impact of Change in Application Year}{\thepage }}
 \newlabel{subsec:year-change-exp}{{3.5}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Interesting similar universities based on Kulczynski score}}{\thepage }}
-\newlabel{tab:kulc}{{7}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Which Universities Go Together}{\thepage }}
 \newlabel{subsec:similarity-exp}{{3.6}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Interesting similar universities based on Kulczynski score}}{\thepage }}
+\newlabel{tab:kulc}{{8}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Universities that go together based on Apriori algorithm}}{\thepage }}
+\newlabel{tab:apriori}{{9}{\thepage }}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Recommendations}{\thepage }}
+\newlabel{sec:recommendations}{{4}{\thepage }}
 \bibstyle{abbrv}
 \bibdata{Will_I_Get_In}
 \bibcite{shanghai}{1}
@@ -88,13 +93,6 @@
 \bibcite{gradcafe}{3}
 \bibcite{qs}{4}
 \bibcite{usnews}{5}
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Universities that go together based on Apriori algorithm}}{\thepage }}
-\newlabel{tab:apriori}{{8}{\thepage }}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Recommendations}{\thepage }}
-\newlabel{sec:recommendations}{{4}{\thepage }}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusions and Discussions}{\thepage }}
-\newlabel{sec:conclusions}{{5}{\thepage }}
-\@writefile{toc}{\contentsline {section}{\numberline {6}References}{\thepage }}
 \bibcite{apriori}{6}
 \bibcite{randomforest}{7}
 \bibcite{decisiontree}{8}
@@ -106,7 +104,11 @@
 \bibcite{edulix}{14}
 \bibcite{sushnytimes}{15}
 \bibcite{moore}{16}
-\bibcite{scikit-learn}{17}
-\bibcite{dagap}{18}
-\bibcite{svmtutorial}{19}
-\bibcite{waters:iaai13}{20}
+\bibcite{tree-overfitting}{17}
+\bibcite{scikit-learn}{18}
+\bibcite{dagap}{19}
+\bibcite{svmtutorial}{20}
+\bibcite{waters:iaai13}{21}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusions and Discussions}{\thepage }}
+\newlabel{sec:conclusions}{{5}{\thepage }}
+\@writefile{toc}{\contentsline {section}{\numberline {6}References}{\thepage }}

@@ -14,45 +14,45 @@ Warning--empty author in gradcafe
 Warning--empty author in qs
 Warning--empty author in usnews
 Warning--empty year in edulix
-You've used 20 entries,
+You've used 21 entries,
             2118 wiz_defined-function locations,
-            603 strings with 6343 characters,
-and the built_in function-call counts, 5932 in all, are:
-= -- 575
-> -- 268
+            607 strings with 6464 characters,
+and the built_in function-call counts, 6165 in all, are:
+= -- 599
+> -- 281
 < -- 2
-+ -- 111
-- -- 88
-* -- 415
-:= -- 981
-add.period$ -- 56
-call.type$ -- 20
-change.case$ -- 103
++ -- 116
+- -- 92
+* -- 428
+:= -- 1027
+add.period$ -- 59
+call.type$ -- 21
+change.case$ -- 107
 chr.to.int$ -- 0
-cite$ -- 31
-duplicate$ -- 235
-empty$ -- 475
-format.name$ -- 88
-if$ -- 1233
+cite$ -- 32
+duplicate$ -- 244
+empty$ -- 489
+format.name$ -- 92
+if$ -- 1278
 int.to.chr$ -- 0
-int.to.str$ -- 20
+int.to.str$ -- 21
 missing$ -- 19
-newline$ -- 97
-num.names$ -- 32
-pop$ -- 106
+newline$ -- 102
+num.names$ -- 34
+pop$ -- 110
 preamble$ -- 1
-purify$ -- 82
+purify$ -- 86
 quote$ -- 0
-skip$ -- 170
+skip$ -- 177
 stack$ -- 0
-substring$ -- 318
-swap$ -- 40
+substring$ -- 323
+swap$ -- 41
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 80
+type$ -- 84
 warning$ -- 11
-while$ -- 48
-width$ -- 22
-write$ -- 203
+while$ -- 50
+width$ -- 23
+write$ -- 214
 (There were 11 warnings)

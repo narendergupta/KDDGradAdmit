@@ -83,6 +83,11 @@ J.~S. Moore.
   academic performance prediction.
 \newblock {\em Omega}, 26(5):659 -- 670, 1998.
 
+\bibitem{tree-overfitting}
+K.~V.~S. Murthy and S.~L. Salzberg.
+\newblock {\em On growing better decision trees from data}.
+\newblock PhD thesis, Citeseer, 1995.
+
 \bibitem{scikit-learn}
 F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
   M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
