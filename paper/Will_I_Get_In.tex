@@ -395,23 +395,16 @@ Random Forest$_{balanced}$ 			& 0.42 & 0.56 & \textbf{0.62} & 0.72 & \textbf{0.6
 
 \begin{figure}[t]
 \centering
-\includegraphics[scale=0.8]{sparse_label_vs_simple_tree_em.eps}
+\includegraphics[scale=0.6]{sparse_label_vs_simple_tree_em.eps}
 \caption{Sparse label presence v/s $moving\_average(F1^{(i)}_{sparse})$ with a window of size 5}
 \label{fig:sparse_simple_tree_em}
 \end{figure}
 
 \begin{figure}[t]
 \centering
-\includegraphics[scale=0.8]{acceptance_ratio_vs_simple_tree_em.eps}
+\includegraphics[scale=0.6]{acceptance_ratio_vs_simple_tree_em.eps}
 \caption{Acceptance Ratio v/s $moving\_average(F1^{(i)}_{admit})$ with a window of size 5}
 \label{fig:acceptance_simple_tree_em}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\includegraphics[scale=0.8]{rank_vs_simple_tree_em.eps}
-\caption{University Rank v/s $moving\_average(F1^{(i)}_{admit})$ with a window of size 5}
-\label{fig:rank_simple_tree_em}
 \end{figure}
 
 Table \ref{tab:all-f1} lists $F1_{sparse}$ and $F1_{admit}$ for both the schemes i.e. Simple features as well as Tree features. It should be noted that Logistic regression as used by Water et al \cite{waters:iaai13} does provide the best results if features extracted from the application are fed into the classifier directly, but these decisions can be improved significantly by other forms of modeling such as decision stumps, and even further by using generative modeling as detailed in Section \ref{subsec:em-exp}.
@@ -422,19 +415,26 @@ Table \ref{tab:all-f1} shows that $F1_{admit} > F1_{sparse}$ for all the schemes
 $$\rho(Acceptance~Ratio,~University~Rank) = 0.65$$
 Such a high correlation suggests a similar trend for $F1_{admit}$ for University ranking, which is confirmed in Figure \ref{fig:rank_simple_tree_em}. Figure \ref{fig:rank_simple_tree_em} also suggests that it gets easier to predict $Admit$ as we go down the rankings. Despite disagreeing on absolute values, both $F1_{sparse}$ and $F1_{admit}$ show similar trends, and given the student’s perspective as explained earlier, we’ll be using $F1_{admit}$ for the rest of our experiments as well as recommendation system.
 
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.6]{rank_vs_simple_tree_em.eps}
+\caption{University Rank v/s $moving\_average(F1^{(i)}_{admit})$ with a window of size 5}
+\label{fig:rank_simple_tree_em}
+\end{figure}
+
 
 \subsection{Feature Ablation}
 \label{subsec:ablation-exp}
 These experiments were aimed at understanding the value in each feature. We trained multiple classifiers using single features and evaluated their performances. Then we iteratively added more features to each of the classifiers and evaluated gain in performance. Each feature, when considered individually, is the only classifying parameter. We call its corresponding $F1_{admit}$ result the Discriminative Power of feature. It was observed that undergraduate GPA has the highest discriminative power and has an average $F1_{admit}$ over all universities close to 0.65. Figure \ref{fig:ablation} shows how overall $F1_{admit}$ increases if we sort the features into descending order of discriminative power and keep on adding them to the classifiers.
 
-\begin{figure}[h]
+\begin{figure}[t]
 \centering
 \includegraphics[scale=0.6]{ablation.eps}
 \caption{Cumulative F1 as we keep on increasing features on top of GPA}
 \label{fig:ablation}
 \end{figure}
 
-\begin{table}[h]
+\begin{table}[t]
 \centering
 \caption{Discriminative Power of each feature}
 \label{tab:ablation}
@@ -475,7 +475,7 @@ We observed from experiments that GPA results in a higher $F1_{admit}$ score com
 \label{subsec:em-exp}
 The EM model formulated in Section \ref{subsec:generative-modeling} was used to cluster students into different groups, representing potential programs. Subsequently, individual classifiers were learned for each of the clusters. Results for few of the universities for which significant growth was observed are listed in Table \ref{tab:em-gain}. As per the model assumption, EM bifurcates the data into two clusters (\textit{z}=2), each of which can be separated in a better way than the earlier cumulative cluster thereby increasing the performance of the models significantly. Improvement in $F1_{admit}$ due to EM clustering is reported in Figure \ref{fig:sparse_simple_tree_em} and Figure \ref{fig:acceptance_simple_tree_em}.
 
-\begin{table}[h]
+\begin{table}[t]
 \centering
 \caption{Gain in F1 score due to EM clustering}
 \label{tab:em-gain}
