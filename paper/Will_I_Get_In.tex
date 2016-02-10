@@ -202,24 +202,9 @@ Works such as Bruggink et al. and Moore et al. utilize domain knowledge to build
 \section{Problem Modeling}
 \label{sec:problem-modeling}
 
-\subsection{Data}
+\subsection{Dataset}
 \label{subsec:dataset}
-There are several online resources where applicants share their admission experiences \cite{edulix, gradcafe}. We scraped the data present on Edulix \cite{edulix}. It is an active resource which hosts applicant profiles from all over the world. GRE scores, undergraduate university name, GPA, TOEFL scores and other accomplishments such as work experience and research publications pertinent to the graduate admissions are reported in the profile. In addition, users mention the universities that they applied to and the result of each application (\textit{Admit}, \textit{Reject} or \textit{Result Not Available}).
-
-\subsection{Data Cleaning}
-\label{subsec:dataset-cleaning}
-Since the data is self reported, it had some erroneous records. We fixed these problematic entries using following techniques:
-\begin{itemize}
-\item \textit{Missing Values}: If the record did not have mandatory fields such as GRE Verbal \& Quantitative, or GPA, then such a record was completely deleted. Missing year and missing term were replaced with the mean of existing values.
-\item \textit{Out of Range Errors}: Records which had invalid values such as negative GPA, or out of range value for GRE score components were removed in a rule-based fashion.
-\item \textit{Illegal Data-types}: Records having incompatible data-types such as string for GPA, or numerical value for degree were removed.
-\item \textit{Quantitative Normalization}: Undergraduate institutions all over the world follow different scales for reporting GPA. Similarly, GRE and TOEFL tests have undergone various scale transformations over the years. As a standardization measure, we mapped these fields linearly to a scale of [0,100].
-\item \textit{Categorical Normalization}: Sometimes students refer to the same degree using various acronyms such as \textit{BE} or \textit{BEng} for \textit{Bachelor of Engineering}. Similar is the case for departmental majors such as \textit{CS} or \textit{Comp Science} for \textit{Computer Science}. Also, sometimes there are spelling mistakes and typos in these fields. Each of these fields is, hence, normalized to manually created codes e.g. \textit{\{ba,bs,be,btech etc.\}} instead of original strings. The code assignment was done using regular expressions or a manual mapping of string value to code.
-\item \textit{University Normalization}: An undergraduate university might be referred to by the differing names due to reasons such as usage of a popular acronym or spelling errors. We mitigated this problem by mapping the university names to their unique website homepage using web search engine. Under this scheme, a program queried a search engine which returned a ranked list of relevant URLs. These URLs were then filtered based on heuristics (e.g. remove blog or social network URLs, prefer \textit{.edu} domains and so on) and most relevant URL was assigned to the university. These assignments were then manually verified for consistency.
-\item \textit{Labels}: There were no such labels present in dataset as \textit{Waitlisted}, or \textit{Conditionally Accepted}. We excluded any application that was classified as \textit{Result Not Available} because it simply represents either a missing value or a pending decision.
-\end{itemize}
-
-In this paper we focus on modeling admission to computer science graduate programs, which form the plurality of our data. Our experiments are conducted only on this subset of the data. A few of the features of the resulting dataset for the computer science applications are in Table \ref{tab:dataset}.
+There are several online resources where applicants share their admission experiences \cite{edulix, gradcafe}. We scraped the data present on Edulix \cite{edulix}. It is an active resource which hosts applicant profiles from all over the world. GRE scores, undergraduate university name, GPA, TOEFL scores and other accomplishments such as work experience and research publications pertinent to the graduate admissions are reported in the profile. In addition, users mention the universities that they applied to and the result of each application (\textit{Admit}, \textit{Reject} or \textit{Result Not Available}). Since the data is self reported, it had some erroneous records. We fixed these problematic entries using techniques explained in Section \ref{subsec:dataset-cleaning}. In this paper we focus on modeling admission to computer science graduate programs, which form the plurality of our data. Our experiments are conducted only on this subset of the data. A few of the features of the resulting dataset for the computer science applications are in Table \ref{tab:dataset}.
 
 \begin{table}[]
 \centering
@@ -250,29 +235,7 @@ Degrees sought & [MS, PhD] \\
 
 \subsection{Supervised Learning}
 \label{subsec:supervised-learning}
-Each university offers binary decision to applicant (\textit{Admit} or \textit{Reject}) and this decision is independent of the decision of other universities. Hence, the overall problem can be modeled as a set of individual binary classification problems. Supervised learning algorithms can be trained using features extracted from a labeled dataset and evaluated on prediction accuracy. Accuracy, however, is a biased metric in this case, because most universities have moderate to heavy imbalance in terms of the presence of labels (\textit{Admit, Reject}) and a high accuracy doesn't necessarily indicate effective learning. Some of the universities have as low \textit{Acceptance Ratio} as 8\% while others accept more than half of the candidates that apply.
-$$Acceptance~Ratio = \frac{Admit}{Admit~+~Reject}$$
-We choose F1 as our evaluation metric which combines precision and recall. From a machine learning perspective, it is easy and uninteresting to predict for the denser label, while from a student's perspective, it makes sense to predict \textit{Admit}. Hence, we evaluate our models on both of the metrics i.e. F1 over sparser label ($F1_{sparse}$), as well as F1 over \textit{Admit} ($F1_{admit}$). F1 score takes into account not just the correct number of predictions made for the label (\textit{Precision}), but also the ratio of predicted true labels out of total true labels (\textit{Recall}). Let $U=\{1,2,...,N\}$ is the set of $N$ universities, then $F1^{(i)}$ for the university $i$ is defined as:
-$$F1^{(i)} = \frac{2 \times Precision^{(i)} \times Recall^{(i)}}{Precision^{(i)} + Recall^{(i)}}$$
-$$Precision^{(i)} = \frac{TP}{TP + FP}$$
-$$Recall^{(i)} = \frac{TP}{TP + FN}$$
-
-$F1$ over the set $U$ is defined as the statistical mean of individual $F1$s i.e.
-$$F1_{sparse} = \langle \{ F1^{(i)}_{sparse} \forall~i \in U \} \rangle $$
-$$F1_{admit} = \langle \{ F1^{(i)}_{admit} \forall~i \in U \} \rangle $$
-
-\begin{table}[]
-\centering
-\caption{Classification Context}
-\label{tab:classification-context}
-\begin{tabular}{|l|r|r|r|}
-\hline
-                  &  & \multicolumn{2}{r|}{True Condition} \\ \hline
-                  &  &  Admit         & Reject          \\ \hline
-\multirow{2}{*}{Predicted Condition} & Admit &  TP         & FP          \\ \cline{2-4} 
-                  & Reject & FN          & TN          \\ \hline
-\end{tabular}
-\end{table}
+Each university offers binary decision to applicant (\textit{Admit} or \textit{Reject}) and this decision is independent of the decision of other universities. Hence, the overall problem can be modeled as a set of individual binary classification problems. Supervised learning algorithms can be trained using features extracted from a labeled dataset and evaluated for performance.
 
 \textbf{Feature Engineering:}
 The dataset contains several fields such as standardized test scores and academic history records. We extract several numerical features from these such as GRE test scores (AWA\footnote{Analytical Writing Analysis}, Verbal \& Quantitative), undergraduate GPA, language test scores (TOEFL), as well as categorical features such as program applied to (e.g. MS, PhD), term (e.g. Fall, Spring) etc. These features are used for learning Logistic Regression, Support Vector Machine and Random Forest. Since most work available in the literature is confined to approaches we have mentioned so far, we'll regard it as the baseline for any novelties that we propose.
@@ -281,13 +244,13 @@ The dataset contains several fields such as standardized test scores and academi
 To improve the system performance, we use ensemble learning. Training decision trees without bounded depth is prone to overfitting \cite{tree-overfitting}. But we can hope to generalize better if we use several limited-depth decision trees using partial data, and then feeding each decision as a feature into another regularized classifier. Constrained by the variance-bias trade-off, the second classifier captures variance of data through multiple underlying decision trees while keeping a limit on its own variance by choosing simple models such as linear separators e.g. soft-margin support vector machine. We create \textit{d} such limited-depth decision tree classifiers where each classifier is trained on a bootstrapped sample from the original dataset. Corresponding to decision of each such classifier, we get a feature for the next classifier.
 
 
-\subsection{Generative Modeling}
+\subsection{Latent Variable Based Approach}
 \label{subsec:generative-modeling}
 For a few universities, we noticed that our discriminative classifiers do not perform as expected. We attribute it to the fact that some universities offer multiple degree programs that might target different kinds of applicants and have different admission criteria, e.g. professional master`s versus thesis master`s program at UIUC\footnote{University of Illinois at Urbana-Champaign}. Certain other universities, such as CMU\footnote{Carnegie Mellon University}, offer specific programs at same degree level such as master's degree in Machine Learning versus HCI\footnote{Human Computer Interaction} which fall under the purview of Computer Science. These distinctions, however, are not captured in the dataset, and are thus \textit{hidden} from our models. This distribution causes difficulties for linear separators which assume that data is coming from single source. In case the data is coming from multiple sources, it is impossible to linearly separate the data using a single classifier. To accommodate these phenomena, we use an \textit{Expectation-Maximization (EM)} algorithm that allows us to learn a model with a latent variable, capturing the missing information. The rest of this section, describes how we model the problem in this case.
 
 EM is one of the very effective techniques for finding a \textit{Maximum Likelihood Estimate} with \textit{hidden variables}. For the sake of brevity, we are not going into details of \textit{EM}. We will be using a setup similar to the one Grove et al. used in \cite{GroveRoth}.
 
-We assume a hidden variable called Program Type, \textit{z}, which might carry assume multiple values. These values can hold different semantics based on university, e.g. different for UIUC and CMU, and, hence, we refer to them simply by the value assigned by the model to the hidden variable such as \textit{1, 2 ... k} etc. Once we learn the most likely model with the hidden variable \textit{z} taking \textit{k} values we can use it in two different ways. In a soft-boundary setting, each student can be from either Program Type with some probability. In a hard boundary setting, the most likely cluster (program) completely owns the student record, and we can learn individual linear classifiers for each cluster. A student belongs to cluster $z=i$ if:
+We assume a latent (hidden) variable called Program Type, \textit{z}, which might carry one of multiple values. These values can hold different semantics based on university, e.g. different for UIUC and CMU, and, hence, we refer to them simply by the value assigned by the model to the hidden variable such as \textit{1, 2 ... k} etc. Once we learn the most likely model with the hidden variable \textit{z} taking \textit{k} values we can use it in two different ways. In a soft-boundary setting, each student can be from either Program Type with some probability. In a hard boundary setting, the most likely cluster (program) completely owns the student record, and we can learn individual linear classifiers for each cluster. A student belongs to cluster $z=i$ if:
 \begin{equation}P(student | z=i) > P(student | z=j), \forall {j\neq i}\end{equation}
 where
 \begin{equation}
@@ -362,7 +325,56 @@ Our experimental study is designed to investigate the following issues:
 \item Understanding the contribution of factors to admission.
 \item Understanding the differences among universities in terms of their admission decisions.
 \end{itemize}
+
+\subsection{Evaluation Metric}
+\label{subsec:evaluation-metric}
+Before we evaluate performance, it is important to understand the appropriate performance metric for this task. Prediction accuracy is a biased metric in this case, because most universities have moderate to heavy imbalance in terms of the presence of labels (\textit{Admit, Reject}) and a high accuracy doesn't necessarily indicate effective learning. Some of the universities have as low \textit{Acceptance Ratio} as 8\% while others accept more than half of the candidates that apply.
+$$Acceptance~Ratio = \frac{count(Admit)}{count(Admit)~+~count(Reject)}$$
+In such an imbalanced label distribution, simple baseline of dense label assignment as prediction will result in high accuracy, without the need to learn anything. Hence, we choose F1 as our evaluation metric which takes into account not just the correct number of predictions made for the label (\textit{Precision}), but also the ratio of predicted true labels out of total true labels (\textit{Recall}). A natural choice for the label is \textit{Admit}, since it is what any applicant cares about. But there are cases when it makes the problem suspiciously easier from theoretic standpoint. Consider two simple cases with following label distributions in data, and corresponding simple baselines where we blindly assign $Admit$ prediction to each of examples:
+\begin{enumerate}
+\item $Admit:Reject = 10:90 \\
+Precision = \frac{1}{10},~Recall=1,~\mathbf{F1(Admit)=\frac{2}{11}=0.18}$
+\item $Admit:Reject = 90:10 \\
+Precision = \frac{9}{10},~Recall=1,~\mathbf{F1(Admit)=\frac{18}{19}=0.95}$
+\end{enumerate}
+It is evident that valuating F1 on the sparse (less frequent) label provides stricter bounds on the performance. Hence, from a machine learning perspective, it is easy and uninteresting to predict for the denser label, but from a student's perspective, it makes sense to predict \textit{Admit}. Hence, we evaluate our models on both of the metrics i.e. F1 over sparser label ($F1_{sparse}$), as well as F1 over \textit{Admit} ($F1_{admit}$).
+
+Let $U=\{1,2,...,N\}$ is the set of $N$ universities. Using Table \ref{tab:classification-context}, $F1^{(i)}$ for the university $i$ is defined as:
+$$F1^{(i)} = \frac{2 \times Precision^{(i)} \times Recall^{(i)}}{Precision^{(i)} + Recall^{(i)}}$$
+$$Precision^{(i)} = \frac{TP}{TP + FP}$$
+$$Recall^{(i)} = \frac{TP}{TP + FN}$$
+
+$F1$ over the set $U$ is defined as the statistical mean of individual $F1$s i.e.
+$$F1_{sparse} = \langle \{ F1^{(i)}_{sparse} \forall~i \in U \} \rangle $$
+$$F1_{admit} = \langle \{ F1^{(i)}_{admit} \forall~i \in U \} \rangle $$
+
+\begin{table}[]
+\centering
+\caption{Classification Context}
+\label{tab:classification-context}
+\begin{tabular}{|l|r|r|r|}
+\hline
+                  &  & \multicolumn{2}{r|}{True Condition} \\ \hline
+                  &  &  Admit         & Reject          \\ \hline
+\multirow{2}{*}{Predicted Condition} & Admit &  TP         & FP          \\ \cline{2-4} 
+                  & Reject & FN          & TN          \\ \hline
+\end{tabular}
+\end{table}
+
 The rest of this section describes the details of our experimental study, and its results. In all our experiments we are reporting average F1 over 5-fold cross-validation.
+
+\subsection{Data Cleaning}
+\label{subsec:dataset-cleaning}
+Since the data is self reported, it had some erroneous records. We fixed these problematic entries using following techniques:
+\begin{itemize}
+\item \textit{Missing Values}: If the record did not have mandatory fields such as GRE Verbal \& Quantitative, or GPA, then such a record was completely deleted. Missing year and missing term were replaced with the mean of existing values.
+\item \textit{Out of Range Errors}: Records which had invalid values such as negative GPA, or out of range value for GRE score components were removed in a rule-based fashion.
+\item \textit{Illegal Data-types}: Records having incompatible data-types such as string for GPA, or numerical value for degree were removed.
+\item \textit{Quantitative Normalization}: Undergraduate institutions all over the world follow different scales for reporting GPA. Similarly, GRE and TOEFL tests have undergone various scale transformations over the years. As a standardization measure, we mapped these fields linearly to a scale of [0,100].
+\item \textit{Categorical Normalization}: Sometimes students refer to the same degree using various acronyms such as \textit{BE} or \textit{BEng} for \textit{Bachelor of Engineering}. Similar is the case for departmental majors such as \textit{CS} or \textit{Comp Science} for \textit{Computer Science}. Also, sometimes there are spelling mistakes and typos in these fields. Each of these fields is, hence, normalized to manually created codes e.g. \textit{\{ba,bs,be,btech etc.\}} instead of original strings. The code assignment was done using regular expressions or a manual mapping of string value to code.
+\item \textit{University Normalization}: An undergraduate university might be referred to by the differing names due to reasons such as usage of a popular acronym or spelling errors. We mitigated this problem by mapping the university names to their unique website homepage using web search engine. Under this scheme, a program queried a search engine which returned a ranked list of relevant URLs. These URLs were then filtered based on heuristics (e.g. remove blog or social network URLs, prefer \textit{.edu} domains and so on) and most relevant URL was assigned to the university. These assignments were then manually verified for consistency.
+\item \textit{Labels}: There were no such labels present in dataset as \textit{Waitlisted}, or \textit{Conditionally Accepted}. We excluded any application that was classified as \textit{Result Not Available} because it simply represents either a missing value or a pending decision.
+\end{itemize}
 
 \subsection{Discriminative Classifiers}
 \label{subsec:supervised-exp}
@@ -371,29 +383,9 @@ We ran multiple experiments with various classifiers such as - SVM with linear k
 \item \textbf{Simple features}: Features extracted from student records
 \item \textbf{Tree features} Training \textit{d} decision tree classifiers with bounded-depth and then using predictions of these classifiers as features. Each decision tree is trained on uniformly sampled 50\% data restricted to maximum depth of 3.
 \end{itemize}
-Using grid search in the range [10,1000], we found that \textit{d}=60 yields maximum average F1 over all universities. These classifiers can provide the probability of the label as well which we utilize in Section \ref{sec:recommendations}. These experiments were conducted using Scikit-learn \cite{scikit-learn}.
+Using grid search in the range [10,1000], we found that \textit{d}=60 yields maximum average F1 over all universities. These classifiers can provide the probability of the label as well which we utilize in Section \ref{sec:recommendations}. These experiments were conducted using Scikit-learn \cite{scikit-learn}. Table \ref{tab:params} lists the tuned parameter values for different classifiers. 
 
-\begin{table*}[t]
-\centering
-\caption{F1 over different classifiers and schemes}
-\label{tab:all-f1}
-\begin{tabular}{|l|l l|l l|l l|}
-\hline
-Classifier / \textbf{Scheme} & \multicolumn{2}{l|}{\textbf{Simple Features}} & \multicolumn{2}{l|}{\textbf{Tree Features}} & \multicolumn{2}{l|}{\textbf{Generative Modeling}} \\
- & $F1_{sparse}$ & $F1_{admit}$ & $F1_{sparse}$ & $F1_{admit}$ & $F1_{sparse}$ & $F1_{admit}$ \\ \hline
-SVM (Linear Kernel) 				& 0.34 & 0.52 & 0.60 & \textbf{0.73} & 0.66 & 0.75 \\ \hline
-SVM$_{balanced}$ (Linear Kernel)	& 0.46 & \textbf{0.58} & 0.61 & 0.70 & 0.66 & 0.75 \\ \hline
-SVM (RBF Kernel) 					& 0.18 & 0.46 & 0.57 & 0.70 & 0.60 & 0.76 \\ \hline
-SVM$_{balanced}$ (RBF Kernel) 		& 0.09 & 0.41 & 0.35 & 0.57 & 0.37 & 0.62 \\ \hline
-Logistic 							& 0.36 & 0.56 & 0.57 & 0.70 & 0.60 & 0.72 \\ \hline
-Logistic$_{balanced}$ 				& \textbf{0.48} & 0.57 & 0.57 & 0.68 & 0.62 & 0.72 \\ \hline
-AdaBoost 							& 0.37 & 0.54 & 0.55 & 0.70 & 0.59 & 0.71 \\ \hline
-Random Forest 						& 0.24 & 0.49 & 0.59 & 0.71 & 0.62 & 0.74 \\ \hline
-Random Forest$_{balanced}$ 			& 0.42 & 0.56 & \textbf{0.62} & 0.72 & \textbf{0.65} & \textbf{0.77} \\ \hline
-\end{tabular}
-\end{table*}
-
-\begin{table}[t]
+\begin{table}[h]
 \centering
 \caption{Classifier parameters tuned by grid search}
 \label{tab:params}
@@ -416,23 +408,48 @@ Random Forest: depth & [1,5] & 3 \\ \hline
 \end{tabular}
 \end{table}
 
-\begin{figure}[t]
+
+Table \ref{tab:all-f1} lists $F1_{sparse}$ and $F1_{admit}$ for both the schemes i.e. Simple features as well as Tree features. It should be noted that Logistic regression as used by Water et al \cite{waters:iaai13} does provide the best results if features extracted from the application are fed into the classifier directly, but these decisions can be improved significantly by other forms of modeling such as decision stumps, and even further by using latent variable based generative modeling as detailed in Section \ref{subsec:em-exp}.
+
+Figure \ref{fig:sparse_simple_tree_em} plots $F1_{sparse}$ as a function of the presence of sparser label. As expected, performance of the model gets better as the sparse label ratio gets closer to 0.5 (i.e. sparse label percentage gets closer to 50\%). It is also evident from the figure that all the individual $F1^{(i)}$s for decision tree featured model are performing better than simple feature model. The curves, fitted to the individual points by using moving average over a window of 5, show similar trend. Similar is the case for $F1_{admit}$ when it is plotted against \textit{Acceptance Ratio}, in Figure \ref{fig:acceptance_simple_tree_em}.
+
+
+\begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{sparse_label_vs_simple_tree_em.eps}
-\caption{Sparse label presence v/s $moving\_average(F1^{(i)}_{sparse})$ with a window of size 5}
+\includegraphics[scale=0.55]{sparse_label_vs_simple_tree_em.eps}
+\caption{$F1_{sparse}$ as a function of presence of sparse label.
+The curve is fitted with moving average function of window size 5.}
 \label{fig:sparse_simple_tree_em}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{acceptance_ratio_vs_simple_tree_em.eps}
-\caption{Acceptance Ratio v/s $moving\_average(F1^{(i)}_{admit})$ with a window of size 5}
+\caption{$F1_{admit}$ as a function of Acceptance Ratio.
+The curve is fitted with moving average function of window size 5.}
 \label{fig:acceptance_simple_tree_em}
 \end{figure}
 
-Table \ref{tab:all-f1} lists $F1_{sparse}$ and $F1_{admit}$ for both the schemes i.e. Simple features as well as Tree features. Table \ref{tab:params} lists the tuned parameter values for different classifiers. It should be noted that Logistic regression as used by Water et al \cite{waters:iaai13} does provide the best results if features extracted from the application are fed into the classifier directly, but these decisions can be improved significantly by other forms of modeling such as decision stumps, and even further by using generative modeling as detailed in Section \ref{subsec:em-exp}.
 
-Figure \ref{fig:sparse_simple_tree_em} plots $F1_{sparse}$ as a function of the presence of sparser label. As expected, performance of the model gets better as the sparse label ratio gets closer to 0.5 (i.e. sparse label percentage gets closer to 50\%). It is also evident from the figure that all the individual $F1^{(i)}$s for decision tree featured model are performing better than simple feature model. The curves, fitted to the individual points by using moving average over a window of 5, show similar trend. Similar is the case for $F1_{admit}$ when it is plotted against \textit{Acceptance Ratio}, in Figure \ref{fig:acceptance_simple_tree_em}.
+\begin{table*}[t]
+\centering
+\caption{F1 over different classifiers and schemes}
+\label{tab:all-f1}
+\begin{tabular}{|l|l l|l l|l l|}
+\hline
+Classifier / \textbf{Scheme} & \multicolumn{2}{l|}{\textbf{Simple Features}} & \multicolumn{2}{l|}{\textbf{Tree Features}} & \multicolumn{2}{l|}{\textbf{Latent Variable Based}} \\
+ & $F1_{sparse}$ & $F1_{admit}$ & $F1_{sparse}$ & $F1_{admit}$ & $F1_{sparse}$ & $F1_{admit}$ \\ \hline
+SVM (Linear Kernel) 				& 0.34 & 0.52 & 0.60 & \textbf{0.73} & 0.66 & 0.75 \\ \hline
+SVM$_{balanced}$ (Linear Kernel)	& 0.46 & \textbf{0.58} & 0.61 & 0.70 & 0.66 & 0.75 \\ \hline
+SVM (RBF Kernel) 					& 0.18 & 0.46 & 0.57 & 0.70 & 0.60 & 0.76 \\ \hline
+SVM$_{balanced}$ (RBF Kernel) 		& 0.09 & 0.41 & 0.35 & 0.57 & 0.37 & 0.62 \\ \hline
+Logistic 							& 0.36 & 0.56 & 0.57 & 0.70 & 0.60 & 0.72 \\ \hline
+Logistic$_{balanced}$ 				& \textbf{0.48} & 0.57 & 0.57 & 0.68 & 0.62 & 0.72 \\ \hline
+AdaBoost 							& 0.37 & 0.54 & 0.55 & 0.70 & 0.59 & 0.71 \\ \hline
+Random Forest 						& 0.24 & 0.49 & 0.59 & 0.71 & 0.62 & 0.74 \\ \hline
+Random Forest$_{balanced}$ 			& 0.42 & 0.56 & \textbf{0.62} & 0.72 & \textbf{0.65} & \textbf{0.77} \\ \hline
+\end{tabular}
+\end{table*}
 
 Table \ref{tab:all-f1} shows that $F1_{admit} > F1_{sparse}$ for all the schemes. This is because \textit{Acceptance Ratio} for some universities is greater than 0.5. Predicting $Admit$ in this case results in higher $F1$. Similar to the axis of Figure \ref{fig:sparse_simple_tree_em} and Figure \ref{fig:acceptance_simple_tree_em} can be other sorting criteria which can reveal interesting patterns. One such criteria is a proxy of the \textit{reputation} of the university i.e. University ranking. We chose this to be the US News Graduate School Ranking \cite{usnews}, primarily, because of its popularity among applicants. Whenever a rank was not available in this resource, a similar resource was consulted \cite{qs, shanghai}. In US News ranks, sometimes multiple adjacently ranked universities were stacked up on a single rank, and the resulting emptied out slots were left vacant. We flattened each stack to its nearest available slots. Interestingly, this ranking scheme has a high positive value of Pearson's correlation coefficient with \textit{Acceptance Ratio}.
 $$\rho(Acceptance~Ratio,~University~Rank) = 0.65$$
@@ -441,19 +458,20 @@ Such a high correlation suggests a similar trend for $F1_{admit}$ for University
 \begin{figure}[t]
 \centering
 \includegraphics[scale=0.6]{rank_vs_simple_tree_em.eps}
-\caption{University Rank v/s $moving\_average(F1^{(i)}_{admit})$ with a window of size 5}
+\caption{$F1_{admit}$ as a function of Graduate University US News Rank.
+The curve is fitted with moving average function of window size 5.}
 \label{fig:rank_simple_tree_em}
 \end{figure}
 
 
-\subsection{Feature Ablation}
+\subsection{Feature Selection}
 \label{subsec:ablation-exp}
 These experiments were aimed at understanding the value in each feature. We trained multiple classifiers using single features and evaluated their performances. Then we iteratively added more features to each of the classifiers and evaluated gain in performance. Each feature, when considered individually, is the only classifying parameter. We call its corresponding $F1_{admit}$ result the Discriminative Power of feature. It was observed that undergraduate GPA has the highest discriminative power and has an average $F1_{admit}$ over all universities close to 0.65. Figure \ref{fig:ablation} shows how overall $F1_{admit}$ increases if we sort the features into descending order of discriminative power and keep on adding them to the classifiers.
 
 \begin{figure}[t]
 \centering
 \includegraphics[scale=0.6]{ablation.eps}
-\caption{Cumulative F1 as we keep on increasing features on top of GPA}
+\caption{$F1_{admit}$ as we keep on increasing features on top of GPA. Refer to Table \ref{tab:ablation} for feature corresponding to index number on X-axis.}
 \label{fig:ablation}
 \end{figure}
 
@@ -462,7 +480,7 @@ These experiments were aimed at understanding the value in each feature. We trai
 \caption{Discriminative Power of each feature}
 \label{tab:ablation}
 \begin{tabular}{p{0.5 cm} p{2.5 cm} p{1.3 cm} p{1.3 cm}}\\
-Index & Feature Name & Cumulative F1 & Individual F1 \\ \hline
+Index & Feature Name & $F1_{admit}$ & Individual F1 \\ \hline
 1 & GPA & 0.65 & 0.65 \\ \hline
 2 & GRE Quant & 0.68 & 0.53 \\ \hline
 3 & GRE Verbal & 0.71 & 0.58 \\ \hline
@@ -494,7 +512,7 @@ Previous Department & 0.7518 \\ \hline
 We observed from experiments that GPA results in a higher $F1_{admit}$ score compared to any other single feature for any university. Also, if we calculate $F1_{admit}$ by excluding individual features, exclusion of GPA causes maximum loss in $F1_{admit}$. Both of these observations lead to the conclusion that GPA has the highest discriminative power among all available features. The result is intuitive as it validates the expectation that, broadly speaking, GPA is the prime factor in the admission process. It can also be seen that as the number of features that are considered is increased, performance goes up and is the highest when all the features are considered. Table \ref{tab:ablation} lists individual discriminative powers of each feature, as well as cumulative power for $i$ features i.e. when features ${1,...,i}$ are used for classification. Table \ref{tab:ablation-2} lists loss in $F1_{admit}$ due to exclusion of each feature during classification. Fig \ref{fig:ablation} plots the cumulative discriminative power when we keep on adding features.
 
 
-\subsection{Generative Modeling}
+\subsection{Latent Variable Based Approach}
 \label{subsec:em-exp}
 The EM model formulated in Section \ref{subsec:generative-modeling} was used to cluster students into different groups, representing potential programs. Subsequently, individual classifiers were learned for each of the clusters. Results for few of the universities for which significant growth was observed are listed in Table \ref{tab:em-gain}. As per the model assumption, EM bifurcates the data into two clusters (\textit{z}=2), each of which can be separated in a better way than the earlier cumulative cluster thereby increasing the performance of the models significantly. Improvement in $F1_{admit}$ due to EM clustering is reported in Figure \ref{fig:sparse_simple_tree_em} and Figure \ref{fig:acceptance_simple_tree_em}.
 
@@ -523,7 +541,7 @@ Our model before the use of EM relied on the fact that data for each university 
 
 \subsection{Understanding Institution Rankings}
 \label{subsec:ranking-exp}
-There is evidence in literature that if an applicant belongs to a \textit{reputed} institution it is regarded as grounds for, at least, some liberality in the way the admission decision would swing \cite{dagap}. We aimed to qualify this notion by formally validating the assumption - \textit{Undergrad university ranking plays an important role in admissions}. Proving or disproving such an assumption required two-fold experiments:\\
+There is evidence in literature that if an applicant belongs to a \textit{reputed} institution it is regarded as grounds for, at least, some liberality in the way the admission decision would swing \cite{dagap}. We aimed to qualify this notion by formally validating the assumption - \textit{Undergrad university ranking plays an important role in admissions}. Proving or disproving such an assumption required two-fold experiments:
 \begin{enumerate}
 \item Does university ranking play any role in admission?
 \item If yes, what is this rank list?
@@ -558,7 +576,7 @@ Since, we shuffled the institution categories based on precise rules, we called 
 \label{fig:undergrad_rank_gain}
 \end{figure}
 
-\begin{table}[]
+\begin{table}[t]
 \centering
 \caption{Gain in $F1_{admit}$ due to various rank-lists (Average over 100 iterations) (In the order of magnitude of $10^{-3}$)}
 \label{tab:undergrad_rank_gain}
@@ -599,17 +617,17 @@ Our hypothesis was that if yearly factors do not have an effect then, changing a
 
 The experiment is aimed at testing the hypothesis that a change in the application year leads to a change in the decision. If an application was correctly classified initially then if there isn't any change in the competition of the application pool then it should still be correctly classified. Over 100 iterations, approximately 60K records were tested, out of which ~55K were classified correctly. It was observed that out of these, a vast majority (>98\%) retained the same label even after the change of application year.
 
-We define competition per application to increase if increase in application year changed the decision from \textit{Admit} to \textit{Reject}, and vice versa. Out of all of the decision changes, a record was assigned `+1' if it showed that the competition increased, and `-1' if the competition decreased. Overall sum of these scores for most of the universities, individually, was very close to 0. Whereas, for all of the universities put together, the net sum was -56, which means 56/55K, approximately 0.1\% decrease in competition. Hence, it can be said that decision for an application depends solely on the university and the application, and not the application year.\\
+We define competition per application to increase if increase in application year changed the decision from \textit{Admit} to \textit{Reject}, and vice versa. Out of all of the decision changes, a record was assigned `+1' if it showed that the competition increased, and `-1' if the competition decreased. Overall sum of these scores for most of the universities, individually, was very close to 0. Whereas, for all of the universities put together, the net sum was -56, which means 56/55K, approximately 0.1\% decrease in competition. Hence, it can be said that decision for an application depends solely on the university and the application, and not the application year.
 
 
 \subsection{Which Universities Go Together}
 \label{subsec:similarity-exp}
 One of the unique features of our dataset construction is that applicant records capture various university combinations that the users apply to along with their results. This allowed us to find patterns, and formulate similarities among universities. Apriori algorithm \cite{apriori} produces interesting results that are reported in table \ref{tab:apriori}. But Apriori favors heavily populated universities over the less frequent ones. Hence, we expanded our experiments to include null-invariant measures. We computed similarity of two universities based on candidate acceptance using several null-invariant measures such as: AllConf, Jaccard, Cosine Similarity, Kulczynski coefficient, MaxConf defined in \cite{Han2012243}.
-Results of the experiments are reported in table \ref{tab:kulc} and \ref{tab:apriori}.
+Results of the experiments are reported in Table \ref{tab:kulc} and \ref{tab:apriori}.
 
 As discussed in Section \ref{sec:intro}, applicants have the tendency to apply to universities in buckets \textit{(Dream, Reach, Safety)}. This leads to the hypothesis that since applicants apply in buckets, it should be apparent through the similarity scores of the universities. As the results show this is infact the case. Kulczynski coefficient represents the average of conditional probability conditioned on each of the variables. Table \ref{tab:kulc} lists a few interesting associations based on the kulczynski coefficient and Table \ref{tab:apriori} lists such results for Apriori algorithm.
 
-\begin{table}[t]
+\begin{table}[h]
 \caption{Interesting similar universities based on Kulczynski score}
 \label{tab:kulc}
 \begin {center}
@@ -672,7 +690,7 @@ In step 1, the benefit of using US News rankings is that as the universities get
 
 \section{Discussion and Future Work}
 \label{sec:discussion}
-This paper studies the graduate admission process in American universities using a machine learning approach. Our goal is to build a decision support model that allows candidates to make informed decisions on which schools to apply to, what are their chances of admission, and a slew of other decision-related issues. We modeled the decision process as a learning problem and presented a system that can achieve high accuracy and can be generalized across multiple universities. By employing many approaches towards solving this problem, such as supervised learning and generative modeling, we prove that a mixture of approaches can provide better results than any of the individual approaches. We also provide a dataset that provides avenues for further research. This work can be extended in multiple ways such as towards improving accuracy or validating common notions. Some of the additions of this work may include expanding the EM formulation by modeling further variables such as undergraduate institution ranking mechanism. We proved that every university has a custom ranking mechanism. This mechanism can be modeled as a distribution which can, then, be assigned to one of the hidden variables in the EM model. Theoretically, such a model has more expressive power and can, thus, learn better regarding application decisions. We believe this is but a brisk start to the research that can be performed on the topic. Many more enhancements are possible by expanding the dataset and extracting richer data features from Letters of Recommendation or Statement of Purpose. By asking these questions and providing this dataset, we hope to initiate a discussion that can lead to better understanding of how academia accepts its new members.
+This paper studies the graduate admission process in American universities using a machine learning approach. Our goal is to build a decision support model that allows candidates to make informed decisions on which schools to apply to, what are their chances of admission, and a slew of other decision-related issues. We modeled the decision process as a learning problem and presented a system that can achieve high accuracy and can be generalized across multiple universities. By employing many approaches towards solving this problem, such as supervised learning and latent variable based generative modeling, we prove that a mixture of approaches can provide better results than any of the individual approaches. We also provide a dataset that provides avenues for further research. This work can be extended in multiple ways such as towards improving accuracy or validating common notions. Some of the additions of this work may include expanding the EM formulation by modeling further variables such as undergraduate institution ranking mechanism. We proved that every university has a custom ranking mechanism. This mechanism can be modeled as a distribution which can, then, be assigned to one of the hidden variables in the EM model. Theoretically, such a model has more expressive power and can, thus, learn better regarding application decisions. We believe this is but a brisk start to the research that can be performed on the topic. Many more enhancements are possible by expanding the dataset and extracting richer data features from Letters of Recommendation or Statement of Purpose. By asking these questions and providing this dataset, we hope to initiate a discussion that can lead to better understanding of how academia accepts its new members.
 
 
 %

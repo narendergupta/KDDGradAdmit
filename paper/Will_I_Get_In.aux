@@ -12,81 +12,83 @@
 \citation{edulix}
 \citation{gradcafe}
 \citation{edulix}
+\citation{tree-overfitting}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Problem Modeling}{\thepage }}
 \newlabel{sec:problem-modeling}{{2}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Data}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Dataset}{\thepage }}
 \newlabel{subsec:dataset}{{2.1}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Data Cleaning}{\thepage }}
-\newlabel{subsec:dataset-cleaning}{{2.2}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Supervised Learning}{\thepage }}
-\newlabel{subsec:supervised-learning}{{2.3}{\thepage }}
-\citation{tree-overfitting}
-\citation{GroveRoth}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Features of Data}}{\thepage }}
 \newlabel{tab:dataset}{{1}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Supervised Learning}{\thepage }}
+\newlabel{subsec:supervised-learning}{{2.2}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Latent Variable Based Approach}{\thepage }}
+\newlabel{subsec:generative-modeling}{{2.3}{\thepage }}
+\citation{GroveRoth}
+\newlabel{eq:expected-ll}{{7}{\thepage }}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Experimental Evaluation}{\thepage }}
+\newlabel{sec:experiments}{{3}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Evaluation Metric}{\thepage }}
+\newlabel{subsec:evaluation-metric}{{3.1}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Classification Context}}{\thepage }}
 \newlabel{tab:classification-context}{{2}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Generative Modeling}{\thepage }}
-\newlabel{subsec:generative-modeling}{{2.4}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Data Cleaning}{\thepage }}
+\newlabel{subsec:dataset-cleaning}{{3.2}{\thepage }}
 \citation{libsvm}
 \citation{svmtutorial}
 \citation{adaboost}
 \citation{decisiontree}
 \citation{randomforest}
 \citation{scikit-learn}
-\newlabel{eq:expected-ll}{{7}{\thepage }}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Experimental Evaluation}{\thepage }}
-\newlabel{sec:experiments}{{3}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Discriminative Classifiers}{\thepage }}
-\newlabel{subsec:supervised-exp}{{3.1}{\thepage }}
 \citation{waters:iaai13}
 \citation{usnews}
 \citation{qs}
 \citation{shanghai}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Sparse label presence v/s $moving\_average(F1^{(i)}_{sparse})$ with a window of size 5}}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Discriminative Classifiers}{\thepage }}
+\newlabel{subsec:supervised-exp}{{3.3}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Classifier parameters tuned by grid search}}{\thepage }}
+\newlabel{tab:params}{{3}{\thepage }}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces $F1_{sparse}$ as a function of presence of sparse label. The curve is fitted with moving average function of window size 5.}}{\thepage }}
 \newlabel{fig:sparse_simple_tree_em}{{1}{\thepage }}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Acceptance Ratio v/s $moving\_average(F1^{(i)}_{admit})$ with a window of size 5}}{\thepage }}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces $F1_{admit}$ as a function of Acceptance Ratio. The curve is fitted with moving average function of window size 5.}}{\thepage }}
 \newlabel{fig:acceptance_simple_tree_em}{{2}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Feature Ablation}{\thepage }}
-\newlabel{subsec:ablation-exp}{{3.2}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces F1 over different classifiers and schemes}}{\thepage }}
-\newlabel{tab:all-f1}{{3}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Classifier parameters tuned by grid search}}{\thepage }}
-\newlabel{tab:params}{{4}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Discriminative Power of each feature}}{\thepage }}
-\newlabel{tab:ablation}{{5}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Generative Modeling}{\thepage }}
-\newlabel{subsec:em-exp}{{3.3}{\thepage }}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces University Rank v/s $moving\_average(F1^{(i)}_{admit})$ with a window of size 5}}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces F1 over different classifiers and schemes}}{\thepage }}
+\newlabel{tab:all-f1}{{4}{\thepage }}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces $F1_{admit}$ as a function of Graduate University US News Rank. The curve is fitted with moving average function of window size 5.}}{\thepage }}
 \newlabel{fig:rank_simple_tree_em}{{3}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Feature Selection}{\thepage }}
+\newlabel{subsec:ablation-exp}{{3.4}{\thepage }}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces $F1_{admit}$ as we keep on increasing features on top of GPA. Refer to Table 5\hbox {} for feature corresponding to index number on X-axis.}}{\thepage }}
+\newlabel{fig:ablation}{{4}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Latent Variable Based Approach}{\thepage }}
+\newlabel{subsec:em-exp}{{3.5}{\thepage }}
 \citation{dagap}
 \citation{usnews}
 \citation{qs}
 \citation{shanghai}
 \citation{national-importance}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Cumulative F1 as we keep on increasing features on top of GPA}}{\thepage }}
-\newlabel{fig:ablation}{{4}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Discriminative Power of each feature}}{\thepage }}
+\newlabel{tab:ablation}{{5}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces F1 without each feature. Less F1 due to missing feature indicates more discriminative power of that feature.}}{\thepage }}
 \newlabel{tab:ablation-2}{{6}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Understanding Institution Rankings}{\thepage }}
-\newlabel{subsec:ranking-exp}{{3.4}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Gain in F1 score due to EM clustering}}{\thepage }}
 \newlabel{tab:em-gain}{{7}{\thepage }}
 \newlabel{tab:em-gain}{{7}{\thepage }}
-\citation{apriori}
-\citation{Han2012243}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Understanding Institution Rankings}{\thepage }}
+\newlabel{subsec:ranking-exp}{{3.6}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Gain in F1 due to various rank-lists}}{\thepage }}
 \newlabel{fig:undergrad_rank_gain}{{5}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Gain in $F1_{admit}$ due to various rank-lists (Average over 100 iterations) (In the order of magnitude of $10^{-3}$)}}{\thepage }}
 \newlabel{tab:undergrad_rank_gain}{{8}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Impact of Change in Application Year}{\thepage }}
-\newlabel{subsec:year-change-exp}{{3.5}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Impact of Change in Application Year}{\thepage }}
+\newlabel{subsec:year-change-exp}{{3.7}{\thepage }}
+\citation{apriori}
+\citation{Han2012243}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Which Universities Go Together}{\thepage }}
+\newlabel{subsec:similarity-exp}{{3.8}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Interesting similar universities based on Kulczynski score}}{\thepage }}
 \newlabel{tab:kulc}{{9}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Universities that go together based on Apriori algorithm}}{\thepage }}
 \newlabel{tab:apriori}{{10}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Which Universities Go Together}{\thepage }}
-\newlabel{subsec:similarity-exp}{{3.6}{\thepage }}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Recommendations}{\thepage }}
 \newlabel{sec:recommendations}{{4}{\thepage }}
 \bibstyle{abbrv}
