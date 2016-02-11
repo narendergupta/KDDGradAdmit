@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.16)  11 FEB 2016 02:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.16)  11 FEB 2016 02:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -439,7 +439,17 @@ File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 180.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
+
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
@@ -451,6 +461,10 @@ LaTeX Warning: No positions in optional float specifier.
 Overfull \hbox (12.70601pt too wide) in paragraph at lines 213--233
  [][] 
  []
+
+
+Overfull \vbox (2.51512pt too high) has occurred while \output is active []
+
 
 [2]
 Overfull \hbox (2.5998pt too wide) in paragraph at lines 253--254
@@ -680,7 +694,7 @@ tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Will_I_Get_In.pdf (10 pages, 367193 bytes).
+Output written on Will_I_Get_In.pdf (10 pages, 367191 bytes).
 PDF statistics:
  160 PDF objects out of 1000 (max. 8388607)
  113 compressed objects within 2 object streams
