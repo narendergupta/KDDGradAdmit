@@ -8,6 +8,10 @@
 {List of Institutes of National Importance in India}.
 \newblock {\em Web}, 2015.
 
+\bibitem{webometrics}
+{Ranking Web of Universities}.
+\newblock {\em Web}, 2015.
+
 \bibitem{gradcafe}
 {The Grad Cafe}.
 \newblock {\em Web}, 2015.
@@ -47,6 +51,18 @@ C.-C. Chang and C.-J. Lin.
 \newblock Libsvm: A library for support vector machines.
 \newblock {\em ACM Transactions on Intelligent Systems and Technology (TIST)},
   2(3):27, 2011.
+
+\bibitem{em-original}
+A.~P. Dempster, N.~M. Laird, and D.~B. Rubin.
+\newblock Maximum likelihood from incomplete data via the em algorithm.
+\newblock {\em Journal of the royal statistical society. Series B
+  (methodological)}, pages 1--38, 1977.
+
+\bibitem{bootstrapping}
+B.~Efron and R.~Tibshirani.
+\newblock Bootstrap methods for standard errors, confidence intervals, and
+  other measures of statistical accuracy.
+\newblock {\em Statist. Sci.}, 1(1):54--75, 02 1986.
 
 \bibitem{adaboost}
 Y.~Freund and R.~E. Schapire.
@@ -94,6 +110,11 @@ F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
   D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
 \newblock Scikit-learn: Machine learning in {P}ython.
 \newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
+
+\bibitem{decision-tree-original}
+J.~R. Quinlan.
+\newblock Induction of decision trees.
+\newblock {\em Machine learning}, 1(1):81--106, 1986.
 
 \bibitem{dagap}
 K.~Raghunathan.

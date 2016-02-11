@@ -7,52 +7,54 @@ Warning--to sort, need author or key in usnews
 Warning--to sort, need author or key in qs
 Warning--to sort, need author or key in gradcafe
 Warning--to sort, need author or key in shanghai
+Warning--to sort, need author or key in webometrics
 Warning--to sort, need author or key in national-importance
 Warning--empty author in shanghai
 Warning--empty author in national-importance
+Warning--empty author in webometrics
 Warning--empty author in gradcafe
 Warning--empty author in qs
 Warning--empty author in usnews
 Warning--empty year in edulix
-You've used 21 entries,
+You've used 25 entries,
             2118 wiz_defined-function locations,
-            607 strings with 6464 characters,
-and the built_in function-call counts, 6165 in all, are:
-= -- 599
-> -- 281
-< -- 2
-+ -- 116
-- -- 92
-* -- 428
-:= -- 1027
-add.period$ -- 59
-call.type$ -- 21
-change.case$ -- 107
+            628 strings with 6992 characters,
+and the built_in function-call counts, 7322 in all, are:
+= -- 719
+> -- 320
+< -- 3
++ -- 132
+- -- 104
+* -- 511
+:= -- 1212
+add.period$ -- 70
+call.type$ -- 25
+change.case$ -- 125
 chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 244
-empty$ -- 489
-format.name$ -- 92
-if$ -- 1278
+cite$ -- 38
+duplicate$ -- 292
+empty$ -- 585
+format.name$ -- 104
+if$ -- 1521
 int.to.chr$ -- 0
-int.to.str$ -- 21
-missing$ -- 19
-newline$ -- 102
-num.names$ -- 34
-pop$ -- 110
+int.to.str$ -- 25
+missing$ -- 23
+newline$ -- 121
+num.names$ -- 40
+pop$ -- 125
 preamble$ -- 1
-purify$ -- 86
+purify$ -- 100
 quote$ -- 0
-skip$ -- 177
+skip$ -- 212
 stack$ -- 0
-substring$ -- 323
-swap$ -- 41
-text.length$ -- 2
+substring$ -- 403
+swap$ -- 50
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 84
-warning$ -- 11
-while$ -- 50
-width$ -- 23
-write$ -- 214
-(There were 11 warnings)
+type$ -- 100
+warning$ -- 13
+while$ -- 63
+width$ -- 27
+write$ -- 255
+(There were 13 warnings)

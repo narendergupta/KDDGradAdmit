@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.16)  10 FEB 2016 13:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.16)  11 FEB 2016 01:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -400,18 +400,6 @@ Overfull \hbox (12.70601pt too wide) in paragraph at lines 213--233
  [][] 
  []
 
-
-Overfull \hbox (2.9597pt too wide) in paragraph at lines 240--242
-[]\T1/aer/bx/n/9 Feature En-gi-neer-ing: \T1/aer/m/n/9 The dataset con-tains se
-v-eral fields
- []
-
-
-Overfull \hbox (3.78673pt too wide) in paragraph at lines 240--242
-\T1/aer/m/n/9 such as stan-dard-ized test scores and aca-demic his-tory records
-.
- []
-
 [2]
 Overfull \hbox (2.5998pt too wide) in paragraph at lines 253--254
 []\T1/aer/m/n/9 We as-sume a la-tent (hid-den) vari-able called Pro-gram Type,
@@ -550,8 +538,11 @@ Overfull \hbox (3.1027pt too wide) in paragraph at lines 512--513
 []\T1/aer/m/n/9 We ob-served from ex-per-i-ments that GPA re-sults in a higher
  []
 
-[6 <./rank_vs_simple_tree_em-eps-converted-to.pdf> <./ablation-eps-converted-to
-.pdf>]
+
+Underfull \vbox (badness 6236) has occurred while \output is active []
+
+ [6 <./rank_vs_simple_tree_em-eps-converted-to.pdf> <./ablation-eps-converted-t
+o.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 524--524
 []\T1/aer/m/n/9 EM
  []
@@ -566,73 +557,71 @@ Underfull \hbox (badness 10000) in paragraph at lines 524--524
 []\T1/aer/m/n/9 EM
  []
 
-
-Overfull \hbox (8.49837pt too wide) in paragraph at lines 564--565
+[7]
+Overfull \hbox (8.49837pt too wide) in paragraph at lines 560--561
 \T1/aer/m/n/9 tion: Rank-A=47, Rank-B=217, Rank-C=363, Rank-D=2354.
  []
 
-[7]
 Package epstopdf Info: Source file: <undergrad_rank_gain.eps>
-(epstopdf)                    date: 2016-02-04 02:51:57
-(epstopdf)                    size: 77729 bytes
+(epstopdf)                    date: 2016-02-11 00:42:41
+(epstopdf)                    size: 15462 bytes
 (epstopdf)             Output file: <undergrad_rank_gain-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-02-04 02:51:57
-(epstopdf)                    size: 7982 bytes
+(epstopdf)                    date: 2016-02-11 00:43:16
+(epstopdf)                    size: 6858 bytes
 (epstopdf)             Command: <repstopdf --outfile=undergrad_rank_gain-eps-co
 nverted-to.pdf undergrad_rank_gain.eps>
-(epstopdf)             \includegraphics on input line 574.
+(epstopdf)             \includegraphics on input line 570.
 Package epstopdf Info: Output file is already uptodate.
- <undergrad_rank_gain-eps-converted-to.pdf, id=72, 421.575pt x 316.18124pt>
+<undergrad_rank_gain-eps-converted-to.pdf, id=72, 414.54875pt x 315.1775pt>
 File: undergrad_rank_gain-eps-converted-to.pdf Graphic file (type pdf)
 
 <use undergrad_rank_gain-eps-converted-to.pdf>
 Package pdftex.def Info: undergrad_rank_gain-eps-converted-to.pdf used on input
- line 574.
-(pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
+ line 570.
+(pdftex.def)             Requested size: 248.73116pt x 189.10796pt.
 
-Overfull \hbox (12.94695pt too wide) in paragraph at lines 574--575
+Overfull \hbox (8.73116pt too wide) in paragraph at lines 570--571
  [][] 
  []
 
 
-Overfull \hbox (6.83504pt too wide) in paragraph at lines 584--584
+Overfull \hbox (6.83504pt too wide) in paragraph at lines 580--580
 []\T1/aer/m/n/9 RSSDRL| 
  []
 
 
-Overfull \hbox (8.63509pt too wide) in paragraph at lines 584--584
+Overfull \hbox (8.63509pt too wide) in paragraph at lines 580--580
 []\T1/aer/m/n/9 RSUDRL| 
  []
 
 
-Overfull \hbox (4.63371pt too wide) in paragraph at lines 583--591
+Overfull \hbox (4.63371pt too wide) in paragraph at lines 579--587
  [][] 
  []
 
 [8 <./undergrad_rank_gain-eps-converted-to.pdf>]
-Overfull \hbox (9.33783pt too wide) in paragraph at lines 649--649
+Overfull \hbox (9.33783pt too wide) in paragraph at lines 643--643
 []\T1/aer/bx/n/9 Support| 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9]
-Overfull \hbox (4.25508pt too wide) in paragraph at lines 693--694
+[9]
+Overfull \hbox (4.25508pt too wide) in paragraph at lines 687--688
 []\T1/aer/m/n/9 This pa-per stud-ies the grad-u-ate ad-mis-sion pro-cess in Ame
 r-
  []
 
-(./Will_I_Get_In.bbl) [10] (./Will_I_Get_In.aux)
+(./Will_I_Get_In.bbl [10]) [11
+
+] (./Will_I_Get_In.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4159 strings out of 494957
- 55519 string characters out of 6180027
- 142640 words of memory out of 5000000
- 7237 multiletter control sequences out of 15000+600000
+ 4163 strings out of 494957
+ 55584 string characters out of 6180027
+ 143656 words of memory out of 5000000
+ 7241 multiletter control sequences out of 15000+600000
  59886 words of font info for 85 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  49i,16n,34p,1785b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -655,10 +644,10 @@ ype1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/hel
 vetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Will_I_Get_In.pdf (10 pages, 340158 bytes).
+Output written on Will_I_Get_In.pdf (11 pages, 341836 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
- 110 compressed objects within 2 object streams
+ 155 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
