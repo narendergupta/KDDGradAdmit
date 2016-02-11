@@ -47,7 +47,7 @@
 
 \documentclass{sig-alternate-05-2015}
 \usepackage[para]{footmisc}
-\renewcommand{\footnotesize}{\tiny}  
+\usepackage[font=small,labelfont=bf]{caption}
 \begin{document}
 
 % Copyright
@@ -416,7 +416,7 @@ Figure \ref{fig:sparse_simple_tree_em} plots $F1_{sparse}$ as a function of the 
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.55]{sparse_label_vs_simple_tree_em.eps}
+\includegraphics[scale=0.50]{sparse_label_vs_simple_tree_em.eps}
 \caption{$F1_{sparse}$ as a function of presence of sparse label.
 The curve is fitted with moving average function of window size 5.}
 \label{fig:sparse_simple_tree_em}
@@ -424,7 +424,7 @@ The curve is fitted with moving average function of window size 5.}
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{acceptance_ratio_vs_simple_tree_em.eps}
+\includegraphics[scale=0.5]{acceptance_ratio_vs_simple_tree_em.eps}
 \caption{$F1_{admit}$ as a function of Acceptance Ratio.
 The curve is fitted with moving average function of window size 5.}
 \label{fig:acceptance_simple_tree_em}
@@ -457,7 +457,7 @@ Such a high correlation suggests a similar trend for $F1_{admit}$ for University
 
 \begin{figure}[t]
 \centering
-\includegraphics[scale=0.6]{rank_vs_simple_tree_em.eps}
+\includegraphics[scale=0.5]{rank_vs_simple_tree_em.eps}
 \caption{$F1_{admit}$ as a function of Graduate University US News Rank.
 The curve is fitted with moving average function of window size 5.}
 \label{fig:rank_simple_tree_em}
@@ -470,7 +470,7 @@ These experiments were aimed at understanding the value in each feature. We trai
 
 \begin{figure}[t]
 \centering
-\includegraphics[scale=0.6]{ablation.eps}
+\includegraphics[scale=0.5]{ablation.eps}
 \caption{$F1_{admit}$ as we keep on increasing features on top of GPA. Refer to Table \ref{tab:ablation} for feature corresponding to index number on X-axis.}
 \label{fig:ablation}
 \end{figure}
@@ -567,7 +567,7 @@ Since, we shuffled the institution categories based on precise rules, we called 
 
 \begin{figure}[t]
 \centering
-\includegraphics[scale=0.6]{undergrad_rank_gain.eps}
+\includegraphics[scale=0.5]{undergrad_rank_gain.eps}
 \caption{Gain in F1 due to various rank-lists}
 \label{fig:undergrad_rank_gain}
 \end{figure}
