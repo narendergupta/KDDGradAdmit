@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.16)  11 FEB 2016 01:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.16)  11 FEB 2016 02:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,6 +6,58 @@ entering extended mode
 (./Will_I_Get_In.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 4 languages loaded.
+! Undefined control sequence.
+l.1 \setupnote
+              [footnote] [paragraph=yes,]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \setupnote[
+               footnote] [paragraph=yes,]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no [ in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no ] in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--48
+[]
+ []
+
 (./sig-alternate-05-2015.cls
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -284,10 +336,33 @@ LaTeX Info: Redefining \cite on input line 1413.
 \bibindent=\dimen125
 \colcntr=\count114
 \saveb@x=\box29
+! Undefined control sequence.
+\set@color ...\@pdfcolorstack push{\current@color 
+                                                  }\aftergroup \reset@color 
+l.1618 \twocolumn
+                              % Double column.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\set@color ...\@pdfcolorstack push{\current@color 
+                                                  }\aftergroup \reset@color 
+l.1618 \twocolumn
+                              % Double column.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[1]
 \copyrtyr=\toks32
 \acmcopyr=\toks33
 \boilerplate=\toks34
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (./acmcopyright.sty
@@ -324,18 +399,18 @@ LaTeX Warning: Label `tab:em-gain' multiply defined.
 )
 \openout1 = `Will_I_Get_In.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count116
@@ -350,84 +425,84 @@ LaTeX Font Info:    ... okay on input line 51.
 \makeMPintoPDFobject=\count121
 \everyMPtoPDFconversion=\toks39
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 136.
+LaTeX Font Info:    Try loading font information for U+msa on input line 137.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 136.
+LaTeX Font Info:    Try loading font information for U+msb on input line 137.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 136.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 137.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 136.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 137.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 136.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 137.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 136.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 137.
 
 Excluding 'CCSXML' comment.
-LaTeX Font Info:    Try loading font information for OMS+aer on input line 180.
+LaTeX Font Info:    Try loading font information for OMS+aer on input line 181.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/omsaer.fd
 File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 180.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 181.
+ [2{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 209.
+               Default added (so using `tbp') on input line 210.
 
 
-Overfull \hbox (12.70601pt too wide) in paragraph at lines 213--233
+Overfull \hbox (12.70601pt too wide) in paragraph at lines 214--234
  [][] 
  []
 
-[2]
-Overfull \hbox (2.5998pt too wide) in paragraph at lines 253--254
+[3]
+Overfull \hbox (2.5998pt too wide) in paragraph at lines 254--255
 []\T1/aer/m/n/9 We as-sume a la-tent (hid-den) vari-able called Pro-gram Type,
  []
 
 
-Overfull \hbox (7.58861pt too wide) in paragraph at lines 293--293
+Overfull \hbox (7.58861pt too wide) in paragraph at lines 294--294
 [] 
  []
 
-[3]
-Overfull \hbox (3.63297pt too wide) in paragraph at lines 335--337
+[4]
+Overfull \hbox (3.63297pt too wide) in paragraph at lines 336--338
 \OML/cmm/m/it/9 Precision \OT1/cmr/m/n/9 = []\OML/cmm/m/it/9 ;  []Recall \OT1/c
 mr/m/n/9 = 1\OML/cmm/m/it/9 ;  [][]$ 
  []
 
 
-Overfull \hbox (3.63297pt too wide) in paragraph at lines 337--339
+Overfull \hbox (3.63297pt too wide) in paragraph at lines 338--340
 \OML/cmm/m/it/9 Precision \OT1/cmr/m/n/9 = []\OML/cmm/m/it/9 ;  []Recall \OT1/c
 mr/m/n/9 = 1\OML/cmm/m/it/9 ;  [][]$ 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 351.
+               Default added (so using `tbp') on input line 352.
 
-[4]
-Overfull \hbox (1.84285pt too wide) in paragraph at lines 384--385
+[5]
+Overfull \hbox (1.84285pt too wide) in paragraph at lines 385--386
 \T1/aer/m/n/9 bounded-depth and then us-ing pre-dic-tions of these clas-
  []
 
@@ -440,16 +515,16 @@ ed-to.pdf>
 (epstopdf)                    size: 17336 bytes
 (epstopdf)             Command: <repstopdf --outfile=sparse_label_vs_simple_tre
 e_em-eps-converted-to.pdf sparse_label_vs_simple_tree_em.eps>
-(epstopdf)             \includegraphics on input line 419.
+(epstopdf)             \includegraphics on input line 420.
 Package epstopdf Info: Output file is already uptodate.
 
-<sparse_label_vs_simple_tree_em-eps-converted-to.pdf, id=35, 421.575pt x 343.28
+<sparse_label_vs_simple_tree_em-eps-converted-to.pdf, id=38, 421.575pt x 343.28
 25pt>
 File: sparse_label_vs_simple_tree_em-eps-converted-to.pdf Graphic file (type pd
 f)
  <use sparse_label_vs_simple_tree_em-eps-converted-to.pdf>
 Package pdftex.def Info: sparse_label_vs_simple_tree_em-eps-converted-to.pdf us
-ed on input line 419.
+ed on input line 420.
 (pdftex.def)             Requested size: 231.86696pt x 188.80594pt.
 Package epstopdf Info: Source file: <acceptance_ratio_vs_simple_tree_em.eps>
 (epstopdf)                    date: 2016-02-10 13:28:30
@@ -460,23 +535,23 @@ verted-to.pdf>
 (epstopdf)                    size: 16697 bytes
 (epstopdf)             Command: <repstopdf --outfile=acceptance_ratio_vs_simple
 _tree_em-eps-converted-to.pdf acceptance_ratio_vs_simple_tree_em.eps>
-(epstopdf)             \includegraphics on input line 427.
+(epstopdf)             \includegraphics on input line 428.
 Package epstopdf Info: Output file is already uptodate.
 
-<acceptance_ratio_vs_simple_tree_em-eps-converted-to.pdf, id=36, 421.575pt x 32
+<acceptance_ratio_vs_simple_tree_em-eps-converted-to.pdf, id=39, 421.575pt x 32
 2.20375pt>
 File: acceptance_ratio_vs_simple_tree_em-eps-converted-to.pdf Graphic file (typ
 e pdf)
  <use acceptance_ratio_vs_simple_tree_em-eps-converted-to.pdf>
 Package pdftex.def Info: acceptance_ratio_vs_simple_tree_em-eps-converted-to.pd
-f used on input line 427.
+f used on input line 428.
 (pdftex.def)             Requested size: 252.94695pt x 193.32373pt.
 
-Overfull \hbox (12.94695pt too wide) in paragraph at lines 427--429
+Overfull \hbox (12.94695pt too wide) in paragraph at lines 428--430
  [][] 
  []
 
-[5 <./sparse_label_vs_simple_tree_em-eps-converted-to.pdf> <./acceptance_ratio_
+[6 <./sparse_label_vs_simple_tree_em-eps-converted-to.pdf> <./acceptance_ratio_
 vs_simple_tree_em-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <rank_vs_simple_tree_em.eps>
 (epstopdf)                    date: 2016-02-10 13:31:15
@@ -487,18 +562,18 @@ f>
 (epstopdf)                    size: 16683 bytes
 (epstopdf)             Command: <repstopdf --outfile=rank_vs_simple_tree_em-eps
 -converted-to.pdf rank_vs_simple_tree_em.eps>
-(epstopdf)             \includegraphics on input line 460.
+(epstopdf)             \includegraphics on input line 461.
 Package epstopdf Info: Output file is already uptodate.
 
-<rank_vs_simple_tree_em-eps-converted-to.pdf, id=50, 421.575pt x 322.20375pt>
+<rank_vs_simple_tree_em-eps-converted-to.pdf, id=53, 421.575pt x 322.20375pt>
 File: rank_vs_simple_tree_em-eps-converted-to.pdf Graphic file (type pdf)
 
 <use rank_vs_simple_tree_em-eps-converted-to.pdf>
 Package pdftex.def Info: rank_vs_simple_tree_em-eps-converted-to.pdf used on in
-put line 460.
+put line 461.
 (pdftex.def)             Requested size: 252.94695pt x 193.32373pt.
 
-Overfull \hbox (12.94695pt too wide) in paragraph at lines 460--462
+Overfull \hbox (12.94695pt too wide) in paragraph at lines 461--463
  [][] 
  []
 
@@ -510,55 +585,55 @@ Package epstopdf Info: Source file: <ablation.eps>
 (epstopdf)                    size: 8565 bytes
 (epstopdf)             Command: <repstopdf --outfile=ablation-eps-converted-to.
 pdf ablation.eps>
-(epstopdf)             \includegraphics on input line 473.
+(epstopdf)             \includegraphics on input line 474.
 Package epstopdf Info: Output file is already uptodate.
-<ablation-eps-converted-to.pdf, id=51, 414.54875pt x 315.1775pt>
+<ablation-eps-converted-to.pdf, id=54, 414.54875pt x 315.1775pt>
 File: ablation-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ablation-eps-converted-to.pdf>
-Package pdftex.def Info: ablation-eps-converted-to.pdf used on input line 473.
+Package pdftex.def Info: ablation-eps-converted-to.pdf used on input line 474.
 (pdftex.def)             Requested size: 248.73116pt x 189.10796pt.
 
-Overfull \hbox (8.73116pt too wide) in paragraph at lines 473--474
+Overfull \hbox (8.73116pt too wide) in paragraph at lines 474--475
  [][] 
  []
 
 
-Overfull \hbox (8.35417pt too wide) in paragraph at lines 483--483
+Overfull \hbox (8.35417pt too wide) in paragraph at lines 484--484
 []\T1/aer/m/n/9 Index| 
  []
 
 
-Overfull \hbox (4.0504pt too wide) in paragraph at lines 483--483
+Overfull \hbox (4.0504pt too wide) in paragraph at lines 484--484
 []\T1/aer/m/n/9 Individual
  []
 
 
-Overfull \hbox (3.1027pt too wide) in paragraph at lines 512--513
+Overfull \hbox (3.1027pt too wide) in paragraph at lines 513--514
 []\T1/aer/m/n/9 We ob-served from ex-per-i-ments that GPA re-sults in a higher
  []
 
 
-Underfull \vbox (badness 6236) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [6 <./rank_vs_simple_tree_em-eps-converted-to.pdf> <./ablation-eps-converted-t
+ [7 <./rank_vs_simple_tree_em-eps-converted-to.pdf> <./ablation-eps-converted-t
 o.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 524--524
+Underfull \hbox (badness 10000) in paragraph at lines 525--525
 []\T1/aer/m/n/9 EM
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 524--524
+Underfull \hbox (badness 10000) in paragraph at lines 525--525
 \T1/aer/m/n/9 +
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 524--524
+Underfull \hbox (badness 10000) in paragraph at lines 525--525
 []\T1/aer/m/n/9 EM
  []
 
-[7]
-Overfull \hbox (8.49837pt too wide) in paragraph at lines 560--561
+[8]
+Overfull \hbox (8.49837pt too wide) in paragraph at lines 561--562
 \T1/aer/m/n/9 tion: Rank-A=47, Rank-B=217, Rank-C=363, Rank-D=2354.
  []
 
@@ -570,47 +645,47 @@ Package epstopdf Info: Source file: <undergrad_rank_gain.eps>
 (epstopdf)                    size: 6858 bytes
 (epstopdf)             Command: <repstopdf --outfile=undergrad_rank_gain-eps-co
 nverted-to.pdf undergrad_rank_gain.eps>
-(epstopdf)             \includegraphics on input line 570.
+(epstopdf)             \includegraphics on input line 571.
 Package epstopdf Info: Output file is already uptodate.
-<undergrad_rank_gain-eps-converted-to.pdf, id=72, 414.54875pt x 315.1775pt>
+<undergrad_rank_gain-eps-converted-to.pdf, id=75, 414.54875pt x 315.1775pt>
 File: undergrad_rank_gain-eps-converted-to.pdf Graphic file (type pdf)
 
 <use undergrad_rank_gain-eps-converted-to.pdf>
 Package pdftex.def Info: undergrad_rank_gain-eps-converted-to.pdf used on input
- line 570.
+ line 571.
 (pdftex.def)             Requested size: 248.73116pt x 189.10796pt.
 
-Overfull \hbox (8.73116pt too wide) in paragraph at lines 570--571
+Overfull \hbox (8.73116pt too wide) in paragraph at lines 571--572
  [][] 
  []
 
 
-Overfull \hbox (6.83504pt too wide) in paragraph at lines 580--580
+Overfull \hbox (6.83504pt too wide) in paragraph at lines 581--581
 []\T1/aer/m/n/9 RSSDRL| 
  []
 
 
-Overfull \hbox (8.63509pt too wide) in paragraph at lines 580--580
+Overfull \hbox (8.63509pt too wide) in paragraph at lines 581--581
 []\T1/aer/m/n/9 RSUDRL| 
  []
 
 
-Overfull \hbox (4.63371pt too wide) in paragraph at lines 579--587
+Overfull \hbox (4.63371pt too wide) in paragraph at lines 580--588
  [][] 
  []
 
-[8 <./undergrad_rank_gain-eps-converted-to.pdf>]
-Overfull \hbox (9.33783pt too wide) in paragraph at lines 643--643
+[9 <./undergrad_rank_gain-eps-converted-to.pdf>]
+Overfull \hbox (9.33783pt too wide) in paragraph at lines 644--644
 []\T1/aer/bx/n/9 Support| 
  []
 
-[9]
-Overfull \hbox (4.25508pt too wide) in paragraph at lines 687--688
+[10]
+Overfull \hbox (4.25508pt too wide) in paragraph at lines 688--689
 []\T1/aer/m/n/9 This pa-per stud-ies the grad-u-ate ad-mis-sion pro-cess in Ame
 r-
  []
 
-(./Will_I_Get_In.bbl [10]) [11
+(./Will_I_Get_In.bbl [11]) [12
 
 ] (./Will_I_Get_In.aux)
 
@@ -620,7 +695,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  4163 strings out of 494957
  55584 string characters out of 6180027
- 143656 words of memory out of 5000000
+ 143646 words of memory out of 5000000
  7241 multiletter control sequences out of 15000+600000
  59886 words of font info for 85 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -644,10 +719,10 @@ ype1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/hel
 vetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Will_I_Get_In.pdf (11 pages, 341836 bytes).
+Output written on Will_I_Get_In.pdf (12 pages, 341961 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 109 compressed objects within 2 object streams
+ 158 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
